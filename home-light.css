@@ -5,7 +5,7 @@
     box-sizing: border-box;
     font-size: 1em;
 }
-body,html{
+body{
     padding: 0px;
     margin: 0px;
 }
@@ -46,17 +46,32 @@ body,html{
     text-align: left;
     border-left: 1px solid white;
     margin-left: 0px ;
-} 
+}
 .item div{
     display: table-cell;
     vertical-align: middle;
+}
+.theme{
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    text-align: right;
+    right: 20px;
+}
+@media (max-width:430px) {
+    .container{
+        flex-wrap: wrap;
+    }
+    .item{
+        min-width: 320px;
+    }
 }
 a.main-heading{
     font-family: 'Stick', sans-serif ;
     font-size: 3.2em;
 }
 a.main-heading:hover{
-    background-color: rgb(0,0,0,0.25);
+    background-color: rgba(0,0,0,0.25);
     font-size: 3.4em;
 }
 .caption{
