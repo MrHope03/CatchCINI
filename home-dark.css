@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100&display=swap');
+* {
+    color: lightgoldenrodyellow;
+    box-sizing: border-box;
+    font-family: 1em;
+}
+body,html{
+    padding: 0px;
+    margin: 0px;
+}
+
+.left-bg{
+    background-image: url('ThinkstockPhotos-911590226.jpg');
+    background-color: #111;
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center;
+}
+.right-bg{
+    background-image: url('Cinema-Hall-Clipart-PNG-1024x1024.png');
+    background-color: #111;
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: left;
+}
+.container{
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    justify-content:left;
+    position: relative;
+}
+.item{
+    display: table;
+    margin: 0px;
+    padding: 1.2em;
+    height: 662px;
+    min-width: 50%;
+}
+.item-1{
+    text-align: right;
+    border-right: 1px solid white;
+    margin-right: 0px;
+}
+.item-2{
+    text-align: left;
+    border-left: 1px solid white;
+    margin-left: 0px ;
+} 
+.item div{
+    display: table-cell;
+    vertical-align: middle;
+}
+a.main-heading{
+    font-family: 'Stick', sans-serif ;
+    font-size: 3.2em;
+}
+a.main-heading:hover{
+    background-color: rgb(0,0,0,0.25);
+    font-size: 3.4em;
+}
+.caption{
+    color: #fff7ec;
+    font-family: 'Heebo',sans-serif;
+    font-size: 1.2em;
+}
+.end-credit{
+    text-align: center;
+    font-family: 'Heebo',sans-serif ;
+    background-color: #090909;
+    font-size: 1em;
+    margin: 0px;
+    padding: 1em;
+}

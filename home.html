@@ -1,0 +1,70 @@
+<!-- TODO: NEED TO ADD LINK TO WEBPAGES -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home</title>
+        <script
+            src="https://kit.fontawesome.com/704ddf1c0b.js"
+            crossorigin="anonymous"
+        ></script>
+        <link
+            id="mode"
+            rel="stylesheet"
+            type="text/css"
+            href="home-light.css"
+        />
+    </head>
+    <body>
+        <header class="container">
+            <div class="item item-1 left-bg">
+                <i id="light" class="far fa-sun fa-2x" style="position: relative; left: 42vw;"></i>
+                <div>
+                    <a class="main-heading">POPCORN METER</a>
+                    <p class="caption">Make poll on movies</p>
+                </div>
+            </div>
+            <div class="item item-2 right-bg">
+                <i id="dark" class="far fa-moon fa-2x"></i>
+                <div>
+                    <a class="main-heading">MOVIES CENTER</a>
+                    <p class="caption">Catch the Latest movies</p>
+                </div>
+            </div>
+        </header>
+        <footer class="end-credit">
+            <b style="color: white">POPCORNCRUNCHERS</b>
+            <div class="white">
+                <a href="#"
+                    ><i style="color: white" class="fab fa-instagram fa-2x"></i
+                ></a>
+                <a href="#"
+                    ><i style="color: white" class="fab fa-twitter fa-2x"></i
+                ></a>
+                <a href="#"
+                    ><i style="color: white" class="fab fa-pinterest fa-2x"></i
+                ></a>
+                <a href="#"
+                    ><i style="color: white" class="fas fa-envelope"></i
+                ></a>
+            </div>
+        </footer>
+        <script>
+            var sun = document.getElementById("light");
+            var night = document.getElementById("dark");
+            sun.addEventListener("click", lightmode);
+            night.addEventListener("click", darkmode);
+            function lightmode() {
+                document
+                    .getElementById("mode")
+                    .setAttribute("href", "home-light.css");
+            }
+            function darkmode() {
+                document
+                    .getElementById("mode")
+                    .setAttribute("href", "home-dark.css");
+            }
+        </script>
+    </body>
+</html>
