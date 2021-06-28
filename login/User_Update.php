@@ -15,29 +15,23 @@
     $phone_no = $_POST["phone_no"];
     $password = $_POST["password"];
     $con_password = $_POST["con_password"];
-    $flag = 1;
+
     if($password!=$con_password){
         echo '<script> alert("Password Mismatch!!!"); document.location.href="User_Signup.php";</script>';
     }
-    $cmd = "SELECT username,mail,phone_no FROM user_details";
+    $cmd = "SELECT * FROM user_details WHERE phone_no=$phone_no";
     $data = mysqli_query($con, $cmd);
     if($data) {
-        while($row = mysqli_fetch_assoc($data)){
-            if($row["username"]==$username || $row["mail"]==$mail || $row["phone_no"]==$phone_no){
-                $flag = 0;
-                break;
-            }
-        }
-        if(!$flag){
-            echo '<script> alert("Mail or Phone No already Registered.\nLogin using your mail or phone."); </script>';
+        if($row = mysqli_fetch_assoc($data)){
+            echo '<script> alert("Mail or Phone No already Registered.\n Login using your mail or phone."); </script>';
         } else {
-            echo '<script> alert("Successful.\nLogin using your credentials."); </script>';
-            $cmd = "INSERT INTO user_details (first_name, last_name, mail, username, phone_no, password) VALUES ('$first_name', '$last_name', '$mail', '$username', '$phone_no', '$password')";
-            $data = mysqli_query($con,$cmd);
+            $subject = "Confirmation Mail from POPCRUNCHERS";
+            $message = "Click here https://localhost/ADP/login/Confirmation-mail.php ";
+            mail($mail,$subject,$message);
         }
     } else {
         echo $con->error;
     }
-    echo '<script> document.location.href="User_Login.php";</script>';
+    echo "<script> document.location.href='User_Login.php'; </script>"; 
 
 ?>

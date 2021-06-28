@@ -15,7 +15,7 @@
         <form id="form_id" name='form' action="User_Update.php" method="POST" >
             <div>
                 <label>
-                    FIRST NAME
+                    FIRST NAME <span class="imp"> </span>
                     <input type="text" name="first_name" id="first_name_id" placeholder="First Name" required>
                 </label>
                 <label>
@@ -25,8 +25,8 @@
             </div>    
             <br>
             <div>
-                <label>
-                    EMAIL
+                <label> 
+                    EMAIL <span class="imp"> </span>
                     <input type="email" name="mail" id="mail_id" placeholder="Email Address" required>
                 </label>
             </div>
@@ -34,26 +34,28 @@
             <div>
                 <label>
                     CREATE USERNAME
-                    <input style="width: 46.5%;margin: 2px 0px 5px;" type="text" name="username" id="username_id" placeholder="Username" required> 
+                    <span class="imp"> </span>
+                    <span id="user_msg" class="error"></span>
+                    <br>
+                    <input style="width: 46.5%;margin: 2px 0px 5px;display: inline-block;" type="text" name="username" id="username_id" placeholder="Username" required> 
+                    <a style="margin:0px 15px 30px 15px;width:23%;" href="javascript:user_check()">Check for availability</a>
                 </label>
             </div>
             <br>
             <div>
                 <label>
-                    PHONE<br>
-                    <input style="width: 46.5%;display: inline-block" type="tel" name="phone_no" id="phone_no_id" placeholder="Phone" pattern="[6-9][0-9]{9}" required>
-                    <a style="margin:0px 15px 30px 15px;width:23%;" href="javascript:user_check()">Check for availability</a>
+                    PHONE <span class="imp"> </span> <br> 
+                    <input style="width: 46.5%;" type="tel" name="phone_no" id="phone_no_id" placeholder="Phone" pattern="[6-9][0-9]{9}" required>
                 </label>
             </div>
-            <label id="user_msg"></label><br>
-            <label id="pass_msg" style="margin:0px 30px;float:right"></label>
             <div>
                 <label>
-                PASSWORD
+                PASSWORD <span id="pass_msg" class="error"></span>
+                <span class="imp"> </span>
                 <input style="width: 46.5%;" type="password" name="password" id="password_id" placeholder="Password" required>
                 </label>
                 <label>
-                CONFIRM PASSWORD
+                CONFIRM PASSWORD <span class="imp"> </span>
                 <input style="width: 46.5%;" type="password" name="con_password" id="con_password_id" placeholder="Confirm Password" onkeyup="check();" required>
                 </label>
             </div>

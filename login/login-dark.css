@@ -71,5 +71,12 @@ input[type=submit]:hover{
     background-color: #24c726;
     color: white;
 }
+.error{
+    color: red;
+}
+.imp::after{
+    color: red;
+    content: '*';
+}
 
 
