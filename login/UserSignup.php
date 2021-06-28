@@ -23,7 +23,6 @@
         echo $con->error;
     }
 ?>
-
 <script>
     document.getElementById("first_name_id").value = localStorage.getItem("first_name");
     document.getElementById("last_name_id").value = localStorage.getItem("last_name");
