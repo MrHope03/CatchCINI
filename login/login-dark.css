@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100&display=swap');
+* {
+    color: black;
+    box-sizing: border-box;
+}
+body{
+    margin: 0px;
+    font-family: 'Heebo',sans-serif;
+    font-weight: 900;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bg{
+    background-image: url('c1xNqp\ \(1\).jpg');
+    background-color: #111;
+    background-blend-mode: soft-light;
+    background-size: cover;
+    background-position: center;
+}
+.container{
+    color: black;
+    
+    background-color: rgb(246, 248, 250);
+    width: 600px;
+    margin: 1.5em auto;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px 40px;
+    box-shadow: 0px 0px 5px white;
+    max-height: 700px;
+    overflow: auto;
+}
+.heading{
+    font-family: 'Stick',sans-serif;
+    text-align: center;
+    font-size: 1.2em;
+}
+a{
+    text-decoration: none;
+    color: blue;
+}
+a:hover{
+    text-decoration: underline;
+}
+input {
+    margin: 2px 0px 5px;
+    display: block;
+    font: 400 13.3333px 'Heebo',sans-serif;
+    padding: 5px 10px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: rgb(118, 118, 118);
+    border-radius: 5px;
+    width: 96.5%;
+    height: 35px;
+}
+input[type=submit] {
+    text-align: center;
+    margin: 20px 10px 10px;
+    cursor: pointer;
+    background-color: #1eb320;
+    color: antiquewhite;
+    font-weight: 800px;
+    font-size: 1.2em;
+    padding: 2px;
+}
+input[type=submit]:hover{
+    background-color: #24c726;
+    color: white;
+}
+
+
