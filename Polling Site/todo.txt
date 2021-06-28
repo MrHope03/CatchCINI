@@ -1,0 +1,12 @@
+a)	Polling site
+i.	Files - ?? (end)
+1.	Create New poll
+a)	Poll form
+b)	Create unique Poll id - ph no
+2.	Manage my polls
+a)	To let the user see their polls
+b)	Delete their poll
+3.	Remaining other polls - TOP 5
+a)	When clicked FIND MORE will lead to ALL POLLS
+4.	Share the poll links
+a)	Individual links for the poll
