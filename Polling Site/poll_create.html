@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Create a Poll</title>
+  </head>
+  <body>
+    <form>
+        <div>
+            <label for="question"> Give Poll Question </label>
+            <input type="text" name="question" id="q">
+        </div>
+        <div id = "options">
+            <label for="options"> Give Options </label>
+            <input type="button" value="Add an option" onclick="add_option()">
+            <input type="text" name="options" id="1"><input type="button" value="X" id="rem1" onclick="remove_option(this.id)"><br>
+        </div>
+        <script>
+          var id = 1;
+          function add_option(){
+            id++;
+            var rem = "rem" + id;
+            var options = document.getElementById("options");
+            options.innerHTML += '<input type="text" name="options" id="' + id + '"><input type="button" value="X" id="' + rem + '" onclick="remove_option(this.id)"><br>';
+          }
+          function remove_option(remid){
+            if (id>1){
+            var rem_temp = remid.substring(0,3);
+            var id_temp = remid.substring(3);
+            var box = document.getElementById(id_temp).outerHTML;
+            var cross = document.getElementById(remid).outerHTML;
+            var entire = document.getElementById("options");
+            entire.innerHTML = entire.innerHTML.replace(box+cross+"<br>","");
+
+            for(var i = parseInt(id_temp)+1; i <= id; i++){
+              var a = document.getElementById(i);
+              var b = document.getElementById(rem_temp+i);
+              var j = i-1;
+              a.id = j;
+              b.id = rem_temp + j;
+            }
+            id--;
+          }
+          }
+        </script>
+  </body>
+</html>
