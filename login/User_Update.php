@@ -25,9 +25,8 @@
         if($row = mysqli_fetch_assoc($data)){
             echo '<script> alert("Mail or Phone No already Registered.\n Login using your mail or phone."); </script>';
         } else {
-            $subject = "Confirmation Mail from POPCRUNCHERS";
-            $message = "Click here https://localhost/ADP/login/Confirmation-mail.php ";
-            mail($mail,$subject,$message);
+            $cmd = "INSERT INTO user_details (first_name, last_name, mail, username, phone_no, password) VALUES ('$first_name', '$last_name', '$mail', '$username', '$phone_no', '$password')";
+            $data = mysqli_query($con,$cmd);
         }
     } else {
         echo $con->error;
