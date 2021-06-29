@@ -11,7 +11,7 @@ html,body{
 }
 .header{
     /* Changed the blend to soft light it seemed better */
-    background-image: url('business-poll-survey2-2401-1080x495.jpg');
+    background-image: url('poll.jpg');
     background-color: #111;
     background-blend-mode: soft-light;
     background-size: cover;
