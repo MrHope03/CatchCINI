@@ -34,6 +34,30 @@
             echo '<script> alert("Successful.\nLogin using your credentials."); </script>';
             $cmd = "INSERT INTO user_details (first_name, last_name, mail, username, phone_no, password) VALUES ('$first_name', '$last_name', '$mail', '$username', '$phone_no', '$password')";
             $data = mysqli_query($con,$cmd);
+            $cmd = "CREATE TABLE `$username` (
+                `sno` int(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                `first_name` varchar(50) NOT NULL DEFAULT '$first_name',
+                `last_name` varchar(50) NOT NULL DEFAULT '$last_name',
+                `mail` varchar(50) NOT NULL DEFAULT '$mail',
+                `phone_no` bigint(20) NOT NULL DEFAULT '$phone_no',
+                `question` varchar(200) DEFAULT NULL,
+                `option_a` varchar(100) DEFAULT NULL,
+                `count_a` int(10) DEFAULT NULL,
+                `option_b` varchar(100) DEFAULT NULL,
+                `count_b` int(10) DEFAULT NULL,
+                `option_c` varchar(100) DEFAULT NULL,
+                `count_c` int(10) DEFAULT NULL,
+                `option_d` varchar(100) DEFAULT NULL,
+                `count_d` int(10) DEFAULT NULL,
+                `option_e` varchar(100) DEFAULT NULL,
+                `count_e` int(10) DEFAULT NULL,
+                `option_f` varchar(100) DEFAULT NULL,
+                `count_f` int(10) DEFAULT NULL,
+                `total_options` int(10) NOT NULL,
+                `ref` bigint(50) NOT NULL UNIQUE KEY,
+                `reg_date` date NOT NULL DEFAULT current_timestamp()
+              ) ";
+            $data = mysqli_query($con,$cmd);
         }
     } else {
         echo $con->error;
