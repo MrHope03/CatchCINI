@@ -1,47 +1,112 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Create a Poll</title>
-  </head>
-  <body>
-    <form>
-        <div>
-            <label for="question"> Give Poll Question </label>
-            <input type="text" name="question" id="q">
-        </div>
-        <div id = "options">
-            <label for="options"> Give Options </label>
-            <input type="button" value="Add an option" onclick="add_option()">
-            <input type="text" name="options" id="1"><input type="button" value="X" id="rem1" onclick="remove_option(this.id)"><br>
-        </div>
-        <script>
-          var id = 1;
-          function add_option(){
-            id++;
-            var rem = "rem" + id;
-            var options = document.getElementById("options");
-            options.innerHTML += '<input type="text" name="options" id="' + id + '"><input type="button" value="X" id="' + rem + '" onclick="remove_option(this.id)"><br>';
-          }
-          function remove_option(remid){
-            if (id>1){
-            var rem_temp = remid.substring(0,3);
-            var id_temp = remid.substring(3);
-            var box = document.getElementById(id_temp).outerHTML;
-            var cross = document.getElementById(remid).outerHTML;
-            var entire = document.getElementById("options");
-            entire.innerHTML = entire.innerHTML.replace(box+cross+"<br>","");
 
-            for(var i = parseInt(id_temp)+1; i <= id; i++){
-              var a = document.getElementById(i);
-              var b = document.getElementById(rem_temp+i);
-              var j = i-1;
-              a.id = j;
-              b.id = rem_temp + j;
-            }
-            id--;
+<head>
+  <meta charset="utf-8">
+  <title>Create a Poll</title>
+</head>
+
+<body>
+  <form>
+    <div>
+      <label for="question"> Give Poll Question </label>
+      <input type="text" name="question" id="q">
+    </div>
+    <div id="options">
+      <label for="options"> Give Options </label>
+      <input type="button" value="Add an option" onclick="add_option()">
+      <input type="text" name="options" id="1"><input type="button" value="X" id="rem1" onclick="remove_option(this.id)"><input type="button" id="swa1" onclick="swap_val(this.id)"><br>
+    </div>
+    <input type="button" value="Create Poll" onclick="send()">
+    <script>
+      var id = 1;
+      var sw_1 = 1000;
+      var sw_2 = 1000;
+
+      function add_option() {
+        var a = [];
+        for (var i = 1; i <= id; i++) {
+          a[i - 1] = document.getElementById(i).value;
+        }
+        id++;
+        var rem = "rem" + id;
+        var swa = "swa" + id;
+        var options = document.getElementById("options");
+        options.innerHTML += '<input type="text" name="options" id="' + id + '"><input type="button" value="X" id="' + rem + '" onclick="remove_option(this.id)"><input type="button" id="' + swa + '" onclick="swap_val(this.id)"><br>';
+        for (var i = 1; i < id; i++) {
+          document.getElementById(i).value = a[i - 1];
+        }
+      }
+
+      function remove_option(remid) {
+        if (id > 1) {
+          var rem_temp = remid.substring(0, 3);
+          var id_temp = parseInt(remid.substring(3));
+          var ar = [];
+          for (var i = 1; i < id_temp; i++) {
+            ar[i - 1] = document.getElementById(i).value;
           }
+          var br = [];
+          for (var i = id_temp + 1; i <= id; i++) {
+            br[i - id_temp - 1] = document.getElementById(i).value;
           }
-        </script>
-  </body>
+          var box = document.getElementById(id_temp).outerHTML;
+          var cross = document.getElementById(remid).outerHTML;
+          var swapp = document.getElementById("swa" + id_temp).outerHTML;
+          var entire = document.getElementById("options");
+          entire.innerHTML = entire.innerHTML.replace(box + cross + swapp + "<br>", "");
+          for (var i = 1; i < id_temp; i++) {
+            document.getElementById(i).value = ar[i - 1];
+          }
+          for (var i = id_temp + 1; i <= id; i++) {
+            var a = document.getElementById(i);
+            var b = document.getElementById(rem_temp + i);
+            var c = document.getElementById("swa" + i);
+            var j = i - 1;
+            a.id = j;
+            a.value = br[i - id_temp - 1]
+            b.id = rem_temp + j;
+            c.id = "swa" + j;
+          }
+          id--;
+        }
+      }
+
+      var butt = false;
+      var cl = false;
+
+      function wait() {
+        if (!butt) {
+          setTimeout(wait, 150);
+        } else {
+          swap();
+        }
+      }
+
+      function swap_val(tt) {
+        if (cl == false) {
+          sw_1 = parseInt(tt.substring(3));
+          wait();
+          cl = true;
+        } else {
+          sw_2 = parseInt(tt.substring(3));
+          butt = true;
+        }
+      }
+
+      function swap() {
+        if (sw_1 != sw_2) {
+          var a1 = document.getElementById(sw_1);
+          var b1 = document.getElementById(sw_2);
+          var temp = b1.value;
+          b1.value = a1.value;
+          a1.value = temp;
+        }
+        sw_1 = sw_2 = 1000;
+        butt = false;
+        cl = false;
+      }
+    </script>
+</body>
+
 </html>
