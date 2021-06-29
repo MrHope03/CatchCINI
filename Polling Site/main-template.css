@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+*{
+    box-sizing: border-box;
+}
+html,body{
+    color: black;
+    margin: 0px;
+    padding: 0px;
+}
+.header{
+    /* Changed the blend to soft light it seemed better */
+    background-image: url('business-poll-survey2-2401-1080x495.jpg');
+    background-color: #111;
+    background-blend-mode: soft-light;
+    background-size: cover;
+    background-position: center right;
+    height: 15em;
+}
+.nav{
+    margin: 0px;
+    padding: 0px;
+    background-color: #00000055;
+}
+.nav ul{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    text-align: center;
+    position: relative;
+}
+.nav ul li{
+    display: inline-block;
+    padding: .5em 1.2em;
+    margin: 0px;
+    height: 3em;
+}
+.nav a,.btn{
+    color: #ffffffbb;
+}
+.nav a:hover,.btn:hover{
+    color: white;
+    cursor: pointer;
+}
+.main-heading{
+    font-family: 'Stick', sans-serif ;
+    font-size: 3.2em;
+    text-align: center;
+    color: lightgoldenrodyellow;
+}
+.web-tag{
+    font-family: 'Stick',sans-serif;
+    font-size: 1.3em;
+    text-decoration: underline;
+    font-weight: bolder;
+    letter-spacing: .15em;
+    color:rgb(250, 211, 250);
+}
+.l-tag{
+    position: absolute;
+    left: 1.5em;
+    visibility: hidden;    
+}
+.r-tag{
+    position: absolute;
+    right: 2em;
+    visibility: hidden;    
+}
+.poll:hover + .l-tag{
+    visibility: visible;    
+}
+.movie:hover + .r-tag{
+    visibility: visible;
+}
+.container{
+    display: flex;
+    justify-content:center;
+    position: relative;
+    flex-grow: 0;
+}
+ /* The poll box styling */
+.box{
+    border: 2px solid black;
+    margin: 1.5em auto;
+    width: 650px;
+    color: black;
+    font-family: 'Orbitron',sans-serif;
+}
+/* Poll Qn section */
+.poll-qn{
+    margin: 1em;
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom: 2px groove black ;
+}
+.poll-qn textarea{
+    font-size: 1em;
+    margin: 1em auto;
+    text-align: center;
+    display: block;
+    height: 3em;
+    width: 80%;
+}
+/* Poll options section */
+.option-header{
+    margin: .5em;
+    font-size: 1.5em;
+}
+#error{
+    color: red;
+    font-size: 0.7em;
+    font-family: 'Heebo',sans-serif;
+}
+.option-table{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.add{
+    background-color: #34adf3;
+    padding: .7em;
+    width: 35%;
+    font-size: .7em;
+    font-family: 'Heebo',sans-serif;
+    margin: 3px auto 15px;
+    border: none;
+}
+.option-box{
+    min-width: 450px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.poll-option{
+    margin: 5px 13px;
+    height: 40px;
+    width: 75%;
+    font-size: 1em;
+}
+.close{
+    color: #ff0202;
+}   
+.edit{
+    color: gray;
+}
+.edit:hover{
+    color:green;
+    cursor: pointer;
+}
+.close:hover{
+    color: red;
+    cursor: pointer;
+}
+.submit{
+    display: block;
+    background-color: #ff0202;
+    padding: 1em;
+    font-size: .8em;
+    font-family: 'Heebo',sans-serif;
+    margin: 25px auto 15px;
+    border: 2px groove red;
+}
+.end-credit{
+    text-align: center;
+    font-family: 'Heebo',sans-serif ;
+    background-color: #090909;
+    font-size: 1em;
+    margin: 0px;
+    padding: 1em;
+}
+/* Coloring the box of create new poll */
+section.box{
+    border: 2px dashed green;
+    padding: 2em;
+}
+.new-poll{
+    display: block;
+    background-color: rgb(72, 199, 72);
+    text-align: center;
+    font-size: 1.2em;
+    margin: auto;
+    border: none;
+    padding: 10px;
+}
+.new-poll:hover{
+    background-color: #00ff00;
+}
+.sub-heading{
+    font-family: 'Orbitron',sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+}

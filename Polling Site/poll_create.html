@@ -2,28 +2,80 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <script src="https://kit.fontawesome.com/704ddf1c0b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="main-template.css" />
   <title>Create a Poll</title>
 </head>
 
 <body>
-  <form>
+  <header class="header">
+    <nav class="nav">
+      <ul>
+        <li class="poll">
+          <a href="#"><i class="fas fa-poll fa-2x"></i></a>
+        </li>
+        <li class="web-tag l-tag">Popcorn Cruchers</li>
+        <li>
+          <a><i class="fas fa-user fa-2x"></i></a>
+        </li>
+        <li class="movie">
+          <a><i class="fas fa-film fa-2x"></i></a>
+        </li>
+        <li class="web-tag r-tag">Movie center</li>
+      </ul>
+    </nav>
     <div>
-      <label for="question"> Give Poll Question </label>
-      <input type="text" name="question" id="q">
+      <h1 class="main-heading">Create ur Own poll</h1>
     </div>
-    <div id="options">
-      <label for="options"> Give Options </label>
-      <input type="button" value="Add an option" onclick="add_option()">
-      <input type="text" name="options" id="1"><input type="button" value="X" id="rem1" onclick="remove_option(this.id)"><input type="button" id="swa1" onclick="swap_val(this.id)"><br>
+  </header>
+  <div class="container">
+    <div class="box">
+      <form>
+        <div class="poll-qn">
+          <label for="question"> Give Poll Question </label>
+          <textarea placeholder="Type your question here" name="question" id="q"></textarea>
+          <input type="button" class="btn add" value="Add an option" onclick="add_option()" />
+        </div>
+        <div class="option-table" id="options">
+          <div class="option-header">
+            <label for="options"> Options </label>
+            <span id="error"></span>
+          </div>
+          <div class="option-box" id="#1">
+            <input type="text" class="poll-option" name="options" id="1" />
+            <i id="rem1" onclick="remove_option(this.id)" class="far fa-times-circle fa-2x close"></i>
+            <i id="swa1" onclick="swap_val(this.id)" class="far fa-dot-circle fa-2x edit"></i>
+          </div>
+        </div>
+        <input type="button" class="btn submit" value="Create Poll" onclick="send()" />
+      </form>
     </div>
-    <input type="button" value="Create Poll" onclick="send()">
-    <script>
-      var id = 1;
-      var sw_1 = 1000;
-      var sw_2 = 1000;
+  </div>
+  <footer class="end-credit">
+    <b style="color: white">POPCORNCRUNCHERS</b>
+    <div class="white">
+        <a href="#"
+            ><i style="color: white" class="fab fa-instagram fa-2x"></i
+        ></a>
+        <a href="#"
+            ><i style="color: white" class="fab fa-twitter fa-2x"></i
+        ></a>
+        <a href="#"
+            ><i style="color: white" class="fab fa-pinterest fa-2x"></i
+        ></a>
+        <a href="#"
+            ><i style="color: white" class="fas fa-envelope fa-2x"></i
+        ></a>
+    </div>
+</footer>
+  <script>
+    var id = 1;
+    var sw_1 = 1000;
+    var sw_2 = 1000;
 
-      function add_option() {
+    function add_option() {
+      if (id < 7){
         var a = [];
         for (var i = 1; i <= id; i++) {
           a[i - 1] = document.getElementById(i).value;
@@ -32,81 +84,100 @@
         var rem = "rem" + id;
         var swa = "swa" + id;
         var options = document.getElementById("options");
-        options.innerHTML += '<input type="text" name="options" id="' + id + '"><input type="button" value="X" id="' + rem + '" onclick="remove_option(this.id)"><input type="button" id="' + swa + '" onclick="swap_val(this.id)"><br>';
+        options.innerHTML +=
+          '<div class="option-box" id="#'+ id + '"><input type="text"class="poll-option" name="options" id="' +
+          id +
+          '"><i id="' +
+          rem +
+          '" onclick="remove_option(this.id)" class="far fa-times-circle fa-2x close"></i><i id="' +
+          swa +
+          '" onclick="swap_val(this.id)" class="far fa-dot-circle fa-2x edit"></i></div>';
         for (var i = 1; i < id; i++) {
           document.getElementById(i).value = a[i - 1];
         }
       }
-
-      function remove_option(remid) {
-        if (id > 1) {
-          var rem_temp = remid.substring(0, 3);
-          var id_temp = parseInt(remid.substring(3));
-          var ar = [];
-          for (var i = 1; i < id_temp; i++) {
-            ar[i - 1] = document.getElementById(i).value;
-          }
-          var br = [];
-          for (var i = id_temp + 1; i <= id; i++) {
-            br[i - id_temp - 1] = document.getElementById(i).value;
-          }
-          var box = document.getElementById(id_temp).outerHTML;
-          var cross = document.getElementById(remid).outerHTML;
-          var swapp = document.getElementById("swa" + id_temp).outerHTML;
-          var entire = document.getElementById("options");
-          entire.innerHTML = entire.innerHTML.replace(box + cross + swapp + "<br>", "");
-          for (var i = 1; i < id_temp; i++) {
-            document.getElementById(i).value = ar[i - 1];
-          }
-          for (var i = id_temp + 1; i <= id; i++) {
-            var a = document.getElementById(i);
-            var b = document.getElementById(rem_temp + i);
-            var c = document.getElementById("swa" + i);
-            var j = i - 1;
-            a.id = j;
-            a.value = br[i - id_temp - 1]
-            b.id = rem_temp + j;
-            c.id = "swa" + j;
-          }
-          id--;
-        }
+      else{
+        document.getElementById('error').innerHTML = "Option Limit Exceeded";
       }
+    }
 
-      var butt = false;
-      var cl = false;
+    function remove_option(remid) {
+      if (id > 1) {
+        var rem_temp = remid.substring(0, 3);
+        var id_temp = parseInt(remid.substring(3));
 
-      function wait() {
-        if (!butt) {
-          setTimeout(wait, 150);
-        } else {
-          swap();
+        var ar = [];
+        for (var i = 1; i < id_temp; i++) {
+          ar[i - 1] = document.getElementById(i).value;
         }
-      }
-
-      function swap_val(tt) {
-        if (cl == false) {
-          sw_1 = parseInt(tt.substring(3));
-          wait();
-          cl = true;
-        } else {
-          sw_2 = parseInt(tt.substring(3));
-          butt = true;
+        var br = [];
+        for (var i = id_temp + 1; i <= id; i++) {
+          br[i - id_temp - 1] = document.getElementById(i).value;
         }
-      }
-
-      function swap() {
-        if (sw_1 != sw_2) {
-          var a1 = document.getElementById(sw_1);
-          var b1 = document.getElementById(sw_2);
-          var temp = b1.value;
-          b1.value = a1.value;
-          a1.value = temp;
+        var container = document.getElementById('#'+id_temp).outerHTML;
+        var entire = document.getElementById("options");
+        entire.innerHTML = entire.innerHTML.replace(container,"");
+        for (var i = 1; i < id_temp; i++) {
+          document.getElementById(i).value = ar[i - 1];
         }
-        sw_1 = sw_2 = 1000;
-        butt = false;
-        cl = false;
+        for (var i = id_temp + 1; i <= id; i++) {
+          var z = document.getElementById('#'+i);
+          var a = document.getElementById(i);
+          var b = document.getElementById(rem_temp + i);
+          var c = document.getElementById("swa" + i);
+          var j = i - 1;
+          z.id = '#'+j;          
+          a.id = j;
+          a.value = br[i - id_temp - 1];
+          b.id = rem_temp + j;
+          c.id = "swa" + j;
+        }
+        id--;
       }
-    </script>
+      if (id <= 7){
+        document.getElementById('error').innerHTML = "";
+      }
+    }
+
+    var butt = false;
+    var cl = false;
+
+    function wait() {
+      if (!butt) {
+        setTimeout(wait, 150);
+      } else {
+        swap();
+      }
+    }
+
+    function swap_val(tt) {
+      if (cl == false) {
+        sw_1 = parseInt(tt.substring(3));
+        document.getElementById(tt).style.color="green";
+        wait();
+        cl = true;
+      } else {
+        document.getElementById(tt).style.color="green";
+        sw_2 = parseInt(tt.substring(3));
+        butt = true;
+      }
+    }
+
+    function swap() {
+      if (sw_1 != sw_2) {
+        var a1 = document.getElementById(sw_1);
+        var b1 = document.getElementById(sw_2);
+        var temp = b1.value;
+        b1.value = a1.value;
+        a1.value = temp;
+      }
+      document.getElementById('swa'+sw_1).style.color="gray";
+      document.getElementById('swa'+sw_2).style.color="gray";
+      sw_1 = sw_2 = 1000;
+      butt = false;
+      cl = false;
+    }
+  </script>
 </body>
 
 </html>

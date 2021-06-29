@@ -13,14 +13,14 @@ body{
 .left-bg{
     background-image: url('ThinkstockPhotos-911590226.jpg');
     background-color: #111;
-    background-blend-mode: multiply;
+    background-blend-mode: soft-light;
     background-size: cover;
     background-position: center;
 }
 .right-bg{
     background-image: url('Cinema-Hall-Clipart-PNG-1024x1024.png');
     background-color: #111;
-    background-blend-mode: multiply;
+    background-blend-mode: soft-light;
     background-size: cover;
     background-position: left;
 }

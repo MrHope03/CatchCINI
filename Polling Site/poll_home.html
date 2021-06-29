@@ -3,10 +3,67 @@
   <head>
     <meta charset="utf-8">
     <title>Poll</title>
+    <script
+            src="https://kit.fontawesome.com/704ddf1c0b.js"
+            crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="main-template.css">
   </head>
   <body>
-    <div><input type="button" value="Create a New Poll" onclick="location.href('poll_create.html')"></div>
-    <div><input type="button" value="Manage Past Polls"></div>
-    <div>Check Out Popular Polls</div>
+    <header class="header">
+      <nav class="nav">
+          <ul>
+              <li class="poll">
+                  <a href="#"><i class="fas fa-poll fa-2x"></i></a>
+              </li>
+              <li class="web-tag l-tag">
+                Popcorn Cruchers
+              </li>
+              <li>
+                  <a><i class="fas fa-user fa-2x"></i></a>
+              </li>
+              <li class="movie">
+                  <a><i class="fas fa-film fa-2x"></i></a>
+              </li>
+              <li class="web-tag r-tag">
+                Movie center
+              </li>
+          </ul>
+      </nav>
+      <div>
+          <h1 class="main-heading">Popcorn Meter</h1>
+      </div>
+  </header>
+  <section class="box">
+    <button class="btn new-poll" onclick="location.href('poll_create.html')">Create New Poll</button>
+  </section>
+  <section>
+    <div class="sub-heading">Check Out Popular Polls</div>
+    <!-- NEED TO ATTACH THE POLLS TO IT -->
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </section>
+
+    <footer class="end-credit">
+      <b style="color: white">POPCORNCRUNCHERS</b>
+      <div class="white">
+          <a href="#"
+              ><i style="color: white" class="fab fa-instagram fa-2x"></i
+          ></a>
+          <a href="#"
+              ><i style="color: white" class="fab fa-twitter fa-2x"></i
+          ></a>
+          <a href="#"
+              ><i style="color: white" class="fab fa-pinterest fa-2x"></i
+          ></a>
+          <a href="#"
+              ><i style="color: white" class="fas fa-envelope fa-2x"></i
+          ></a>
+      </div>
+  </footer>
   </body>
 </html>
