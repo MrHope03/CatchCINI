@@ -1,5 +1,34 @@
 <?php
     session_start();
+    $server = "localhost";
+    $user = "root";
+    $pass = "";
+    $db = "catchcini";
+    $con = mysqli_connect($server, $user, $pass, $db);
+    if (!$con) {
+        echo '<script> alert("Server Down!!! Try again Later"); </script>';
+    }
+
+    $cmd = "SELECT COUNT(*) FROM polls";
+    $data = mysqli_query($con, $cmd);
+    $total_polls = mysqli_fetch_row($data)[0];
+    if($total_polls>4){
+      $max_limit = 4;
+    } else {
+      $max_limit = $total_polls;
+    }
+    $cmd = "SELECT question,total_count FROM polls ORDER BY total_count DESC";
+    $data = mysqli_query($con, $cmd);
+    $i = 1;
+    if($data) {
+      while(($row = mysqli_fetch_assoc($data)) && $i<=$max_limit){
+          $question[$i-1] = $row["question"];
+          $total_count[$i-1] = "No of votes: ".$row["total_count"];
+          $i++;
+      }
+    }
+    $null_msg = "#No Polls";
+    $create_msg = "<a href='poll_create.php'>Create</a>"; //Add styling here
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -64,30 +93,29 @@
   </section>
   <section>
     <div class="sub-heading">Check Out Popular Polls</div>
-    <!-- NEED TO ATTACH THE POLLS TO IT -->
     <ul class="universe">
       <li class="box">
         <div onclick="location.href=''" class="item">
-          <h3>#Poll  Heading</h3>
-          <p>NO of votes: So far</p>
+          <h3><?php if(isset($question[0])){echo $question[0];} else {echo $null_msg;} ?></h3>
+          <p><?php if(isset($total_count[0])){echo $total_count[0];} else {echo $create_msg;} ?></p>
         </div>
       </li>
       <li class="box">
         <div onclick="location.href=''" class="item">
-          <h3>#Poll  Heading</h3>
-          <p>NO of votes: So far</p>
+          <h3><?php if(isset($question[1])){echo $question[1];} else {echo $null_msg;} ?></h3>
+          <p><?php if(isset($total_count[1])){echo $total_count[1];} else {echo $create_msg;} ?></p>
         </div>
       </li>
       <li class="box">
         <div onclick="location.href=''" class="item">
-          <h3>#Poll  Heading</h3>
-          <p>NO of votes: So far</p>
+          <h3><?php if(isset($question[2])){echo $question[2];} else {echo $null_msg;} ?></h3>
+          <p><?php if(isset($total_count[2])){echo $total_count[2];} else {echo $create_msg;} ?></p>
         </div>
       </li>
       <li  class="box">
         <div onclick="location.href=''" class="item">
-          <h3>#Poll  Heading</h3>
-          <p>NO of votes: So far</p>
+          <h3><?php if(isset($question[3])){echo $question[3];} else {echo $null_msg;} ?></h3>
+          <p><?php if(isset($total_count[3])){echo $total_count[3];} else {echo $create_msg;} ?></p>
         </div>
       </li>
     </ul>

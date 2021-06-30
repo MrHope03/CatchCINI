@@ -1,4 +1,6 @@
 <?php
+    //Need to add the location after updation
+    // location.href ?? Missing
     session_start();
     $server = "localhost";
     $user = "root";
