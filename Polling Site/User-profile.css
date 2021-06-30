@@ -1,4 +1,14 @@
+.header{
+    /* Changed the blend to soft light it seemed better */
+    background-image: url('popcorn-monster.jpg');
+    background-color: #111111ff;
+    background-blend-mode:soft-light;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 15em;
+}
 table.box{
+    background-color: rgb(235, 235, 235);
     min-width: 425px;
 }
 table tr{
