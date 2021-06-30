@@ -73,6 +73,14 @@ html,body{
 .movie:hover + .r-tag{
     visibility: visible;
 }
+@media (max-width :800px){
+    .poll:hover + .l-tag{
+        visibility: hidden;    
+    }
+    .movie:hover + .r-tag{
+        visibility: hidden;
+    }
+}
 .container{
     display: flex;
     justify-content:center;
