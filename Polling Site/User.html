@@ -1,3 +1,4 @@
+<!-- TODO: Need to remove polls from client side and server side -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -7,28 +8,54 @@
             src="https://kit.fontawesome.com/704ddf1c0b.js"
             crossorigin="anonymous">
     </script>
+    
     <link rel="stylesheet" href="main-template.css">
     <link rel="stylesheet" href="User-profile.css">
-  </head>
+    <link rel="stylesheet" href="box-arrange.css">
+    <style>
+        body{
+            background-image: url('movie\ roll.png');
+            background-repeat: no-repeat;
+            background-blend-mode:lighten;
+            background-color: #ffebcd25;
+            background-position: center;
+            background-size: 800px;
+        }
+        @media (min-width : 1040px){
+          body{
+            background-image: url('tenor.gif');
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-blend-mode:lighten;
+            background-color: #ffebcd25;
+            background-position: bottom right;
+            background-size: 20vw;
+          }
+        }
+        .close{
+            visibility: hidden;
+        }
+      </style>
+</head>
   <body>
     <header class="header">
       <nav class="nav">
           <ul>
-              <li class="poll">
-                  <a href="#"><i class="fas fa-poll fa-2x"></i></a>
-              </li>
-              <li class="web-tag l-tag">
-                Popcorn Cruchers
-              </li>
-              <li>
-                  <a><i class="fas fa-user fa-2x"></i></a>
-              </li>
-              <li class="movie">
-                  <a><i class="fas fa-film fa-2x"></i></a>
-              </li>
-              <li class="web-tag r-tag">
-                Movie center
-              </li>
+            <li class="poll">
+                <a href="poll_home.html"><i class="fas fa-poll fa-2x"></i></a>
+            </li>
+            <li class="web-tag l-tag">
+              Popcorn Meter
+            </li>
+            <li>
+                <a href="User.html"><i class="fas fa-user fa-2x"></i></a>
+            </li>
+            <li class="movie">
+                <a href="movie_home.html"><i class="fas fa-film fa-2x"></i></a>
+            </li>
+            <li class="web-tag r-tag">
+              Movie center
+            </li>
           </ul>
       </nav>
       <div>
@@ -61,8 +88,43 @@
     </section>
 
     <div>
-        <button class="btn new-poll manage">Manage My Polls</button>
+        <button class="btn new-poll manage"  id="manage" onclick="edit()">Manage My Polls</button>
     </div>
+
+    <section>
+        <div class="sub-heading">Your Polls</div>
+        <!-- NEED TO ATTACH THE POLLS TO IT -->
+        <ul class="universe">
+          <li class="box">
+            <div onclick="location.href=''" class="item">
+              <h3>#Poll  Heading</h3>
+              <p>NO of votes: So far</p>
+            <i class="far fa-times-circle fa-2x close"></i>
+            </div>
+          </li>
+          <li class="box">
+            <div onclick="location.href=''" class="item">
+              <h3>#Poll  Heading</h3>
+              <p>NO of votes: So far</p>
+            <i class="far fa-times-circle fa-2x close"></i>
+            </div>
+          </li>
+          <li class="box">
+            <div onclick="location.href=''" class="item">
+              <h3>#Poll  Heading</h3>
+              <p>NO of votes: So far</p>
+            <i class="far fa-times-circle fa-2x close"></i>
+            </div>
+          </li>
+          <li  class="box">
+            <div onclick="location.href=''" class="item">
+              <h3>#Poll  Heading</h3>
+              <p>NO of votes: So far</p>
+            <i class="far fa-times-circle fa-2x close"></i>
+            </div>
+          </li>
+        </ul>
+      </section>
 
     <footer class="end-credit">
         <b style="color: white">POPCORNCRUNCHERS</b>
@@ -82,4 +144,25 @@
         </div>
     </footer>
     </body>
+    <script>
+        function edit(){
+            document.getElementById('manage').innerHTML = "Confirm Changes";
+            document.getElementById('manage').removeEventListener('click',edit);
+            document.getElementById('manage').addEventListener('click',confirm);
+            let close = document.getElementsByClassName('close');
+            for (let i = 0; i < close.length; i++){
+                close[i].style.visibility="visible";
+            }
+            
+        }
+        function confirm(){
+            document.getElementById('manage').innerHTML = "Manage my Polls";
+            document.getElementById('manage').removeEventListener('click',confirm);
+            document.getElementById('manage').addEventListener('click',edit);
+            let close = document.getElementsByClassName('close');
+            for (let i = 0; i < close.length; i++){
+                close[i].style.visibility="hidden";
+            }
+        }
+    </script>
   </html>

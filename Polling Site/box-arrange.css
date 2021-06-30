@@ -1,0 +1,17 @@
+.universe{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0px;
+}
+.box{
+    margin: 1em auto;
+}
+.item{
+    padding: 10px;
+    text-align: center;
+    background-color: whitesmoke;
+}
+.item:hover{
+    cursor: pointer;
+}

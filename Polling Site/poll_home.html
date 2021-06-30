@@ -8,22 +8,44 @@
             crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="main-template.css">
+    <link rel="stylesheet" href="box-arrange.css">
+    <style>
+      body{
+          background-image: url('movie\ roll.png');
+          background-repeat: no-repeat;
+          background-blend-mode:lighten;
+          background-color: #ffebcd25;
+          background-position: center;
+          background-size: 800px;
+      }
+      @media (min-width : 1040px){
+        body{
+          background-image: url('tenor.gif');
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          background-blend-mode:lighten;
+          background-color: #ffebcd25;
+          background-position: bottom right;
+          background-size: 20vw;
+        }
+      }
+    </style>
   </head>
   <body>
     <header class="header">
       <nav class="nav">
           <ul>
               <li class="poll">
-                  <a href="#"><i class="fas fa-poll fa-2x"></i></a>
+                  <a href="poll_home.html"><i class="fas fa-poll fa-2x"></i></a>
               </li>
               <li class="web-tag l-tag">
-                Popcorn Cruchers
+                Popcorn Meter
               </li>
               <li>
-                  <a><i class="fas fa-user fa-2x"></i></a>
+                  <a href="User.html"><i class="fas fa-user fa-2x"></i></a>
               </li>
               <li class="movie">
-                  <a><i class="fas fa-film fa-2x"></i></a>
+                  <a href="movie_home.html"><i class="fas fa-film fa-2x"></i></a>
               </li>
               <li class="web-tag r-tag">
                 Movie center
@@ -35,16 +57,36 @@
       </div>
   </header>
   <section class="box">
-    <button class="btn new-poll" onclick="location.href('poll_create.html')">Create New Poll</button>
+    <button class="btn new-poll" onclick="location.href='poll_create.html'">Create New Poll</button>
   </section>
   <section>
     <div class="sub-heading">Check Out Popular Polls</div>
     <!-- NEED TO ATTACH THE POLLS TO IT -->
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
+    <ul class="universe">
+      <li class="box">
+        <div onclick="location.href=''" class="item">
+          <h3>#Poll  Heading</h3>
+          <p>NO of votes: So far</p>
+        </div>
+      </li>
+      <li class="box">
+        <div onclick="location.href=''" class="item">
+          <h3>#Poll  Heading</h3>
+          <p>NO of votes: So far</p>
+        </div>
+      </li>
+      <li class="box">
+        <div onclick="location.href=''" class="item">
+          <h3>#Poll  Heading</h3>
+          <p>NO of votes: So far</p>
+        </div>
+      </li>
+      <li  class="box">
+        <div onclick="location.href=''" class="item">
+          <h3>#Poll  Heading</h3>
+          <p>NO of votes: So far</p>
+        </div>
+      </li>
     </ul>
   </section>
 
