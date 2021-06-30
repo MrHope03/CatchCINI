@@ -47,6 +47,11 @@
             <i id="rem1" onclick="remove_option(this.id)" class="far fa-times-circle fa-2x close"></i>
             <i id="swa1" onclick="swap_val(this.id)" class="far fa-dot-circle fa-2x edit"></i>
           </div>
+          <div class="option-box" id="#2">
+            <input type="text" class="poll-option" name="options" id="2" />
+            <i id="rem2" onclick="remove_option(this.id)" class="far fa-times-circle fa-2x close"></i>
+            <i id="swa2" onclick="swap_val(this.id)" class="far fa-dot-circle fa-2x edit"></i>
+          </div>
         </div>
         <input type="button" class="btn submit" value="Create Poll" onclick="send()" />
       </form>
@@ -70,7 +75,7 @@
     </div>
 </footer>
   <script>
-    var id = 1;
+    var id = 2;
     var sw_1 = 1000;
     var sw_2 = 1000;
 
@@ -109,7 +114,7 @@
     }
 
     function remove_option(remid) {
-      if (id > 1) {
+      if (id > 2) {
         var rem_temp = remid.substring(0, 3);
         var id_temp = parseInt(remid.substring(3));
 
@@ -142,7 +147,7 @@
         id--;
       }
       else{
-        document.getElementById('error').innerHTML = "Atleast one option neccessary";
+        document.getElementById('error').innerHTML = "Atleast two options neccessary";
         setTimeout(error_dis, 1000);
       }
     }
