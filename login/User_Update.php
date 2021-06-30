@@ -40,7 +40,7 @@
                 `last_name` varchar(50) NOT NULL DEFAULT '$last_name',
                 `mail` varchar(50) NOT NULL DEFAULT '$mail',
                 `phone_no` bigint(20) NOT NULL DEFAULT '$phone_no',
-                `question` varchar(200) DEFAULT NULL,
+                `question` varchar(200) DEFAULT NULL UNIQUE KEY,
                 `option_a` varchar(100) DEFAULT NULL,
                 `count_a` int(10) DEFAULT NULL,
                 `option_b` varchar(100) DEFAULT NULL,
@@ -54,6 +54,7 @@
                 `option_f` varchar(100) DEFAULT NULL,
                 `count_f` int(10) DEFAULT NULL,
                 `total_options` int(10) NOT NULL,
+                `total_count` int(10) NULL,
                 `ref` bigint(50) NOT NULL UNIQUE KEY,
                 `reg_date` date NOT NULL DEFAULT current_timestamp()
               ) ";

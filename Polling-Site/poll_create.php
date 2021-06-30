@@ -1,8 +1,11 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
   <script src="https://kit.fontawesome.com/704ddf1c0b.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="main-template.css" />
   <title>Create a Poll</title>
@@ -13,16 +16,16 @@
     <nav class="nav">
       <ul>
         <li class="poll">
-          <a href="poll_home.html"><i class="fas fa-poll fa-2x"></i></a>
+          <a href="poll_home.php"><i class="fas fa-poll fa-2x"></i></a>
         </li>
         <li class="web-tag l-tag">
           Popcorn Meter
         </li>
         <li>
-            <a href="User.html"><i class="fas fa-user fa-2x"></i></a>
+            <a href="User.php"><i class="fas fa-user fa-2x"></i></a>
         </li>
         <li class="movie">
-            <a href="movie_home.html"><i class="fas fa-film fa-2x"></i></a>
+            <a href="movie_home.php"><i class="fas fa-film fa-2x"></i></a>
         </li>
         <li class="web-tag r-tag">
           Movie center
@@ -35,7 +38,7 @@
   </header>
   <div class="container">
     <div class="box">
-      <form>
+      <form action="poll_update.php" method="POST">
         <div class="poll-qn">
           <label for="question"> Give Poll Question </label>
           <textarea placeholder="Type your question here" name="question" id="q"></textarea>
@@ -57,7 +60,8 @@
             <i id="swa2" onclick="swap_val(this.id)" class="far fa-dot-circle fa-2x edit"></i>
           </div>
         </div>
-        <input type="button" class="btn submit" value="Create Poll" onclick="send()" />
+        <input type="submit" class="btn submit" value="Create Poll" onclick="send()" />
+        <input type="text" style="display:none;" name="hidden_val" id="hidden_val" >
       </form>
     </div>
   </div>
@@ -193,6 +197,10 @@
       sw_1 = sw_2 = 1000;
       butt = false;
       cl = false;
+    }
+
+    function send() {
+        document.getElementById("hidden_val").value = id;
     }
   </script>
 </body>

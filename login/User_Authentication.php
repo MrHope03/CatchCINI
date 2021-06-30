@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $server = "localhost";
     $user = "root";
     $pass = "";
@@ -16,6 +17,7 @@
             if($row["username"]==$login || $row["mail"]==$login || $row["phone_no"]==$login){
                 if($row["password"]==$password){
                     $flag = 1;
+                    $_SESSION["username"] = $row["username"];
                     break;
                 }
             }  

@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!-- TODO: Need to remove polls from client side and server side -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -44,16 +47,16 @@
       <nav class="nav">
           <ul>
             <li class="poll">
-                <a href="poll_home.html"><i class="fas fa-poll fa-2x"></i></a>
+                <a href="poll_home.php"><i class="fas fa-poll fa-2x"></i></a>
             </li>
             <li class="web-tag l-tag">
               Popcorn Meter
             </li>
             <li>
-                <a href="User.html"><i class="fas fa-user fa-2x"></i></a>
+                <a href="User.php"><i class="fas fa-user fa-2x"></i></a>
             </li>
             <li class="movie">
-                <a href="movie_home.html"><i class="fas fa-film fa-2x"></i></a>
+                <a href="movie_home.php"><i class="fas fa-film fa-2x"></i></a>
             </li>
             <li class="web-tag r-tag">
               Movie center

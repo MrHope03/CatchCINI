@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -36,16 +39,16 @@
       <nav class="nav">
           <ul>
               <li class="poll">
-                  <a href="poll_home.html"><i class="fas fa-poll fa-2x"></i></a>
+                  <a href="poll_home.php"><i class="fas fa-poll fa-2x"></i></a>
               </li>
               <li class="web-tag l-tag">
                 Popcorn Meter
               </li>
               <li>
-                  <a href="User.html"><i class="fas fa-user fa-2x"></i></a>
+                  <a href="User.php"><i class="fas fa-user fa-2x"></i></a>
               </li>
               <li class="movie">
-                  <a href="movie_home.html"><i class="fas fa-film fa-2x"></i></a>
+                  <a href="movie_home.php"><i class="fas fa-film fa-2x"></i></a>
               </li>
               <li class="web-tag r-tag">
                 Movie center
@@ -57,7 +60,7 @@
       </div>
   </header>
   <section class="box">
-    <button class="btn new-poll" onclick="location.href='poll_create.html'">Create New Poll</button>
+    <button class="btn new-poll" onclick="location.href='poll_create.php'">Create New Poll</button>
   </section>
   <section>
     <div class="sub-heading">Check Out Popular Polls</div>

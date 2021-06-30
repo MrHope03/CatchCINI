@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!-- TODO: NEED TO ADD LINK TO WEBPAGES -->
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +27,7 @@
                 <i id="dark" class="far fa-moon fa-2x"></i>
                 </div>
                 <div>
-                    <a href="../Polling-Site/poll_home.html" class="main-heading">POPCORN METER</a>
+                    <a href="../Polling-Site/poll_home.php" class="main-heading">POPCORN METER</a>
                     <p class="caption">Make poll on movies</p>
                 </div>
             </div>
