@@ -146,7 +146,7 @@ html,body{
     color: gray;
 }
 .edit:hover{
-    color:green;
+    color:green !important;
     cursor: pointer;
 }
 .close:hover{
