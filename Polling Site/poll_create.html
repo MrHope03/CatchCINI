@@ -75,12 +75,13 @@
     var sw_2 = 1000;
 
     function add_option() {
+      id++;
       if (id < 7){
         var a = [];
-        for (var i = 1; i <= id; i++) {
+        for (var i = 1; i <= id-1; i++) {
           a[i - 1] = document.getElementById(i).value;
         }
-        id++;
+
         var rem = "rem" + id;
         var swa = "swa" + id;
         var options = document.getElementById("options");
@@ -98,7 +99,13 @@
       }
       else{
         document.getElementById('error').innerHTML = "Option Limit Exceeded";
+        id--;
+        setTimeout(error_dis, 1000);
       }
+    }
+
+    function error_dis(){
+      document.getElementById('error').innerHTML = "";
     }
 
     function remove_option(remid) {
@@ -121,12 +128,12 @@
           document.getElementById(i).value = ar[i - 1];
         }
         for (var i = id_temp + 1; i <= id; i++) {
-          var z = document.getElementById('#'+i);
+          var z = document.getElementById('#' + i);
           var a = document.getElementById(i);
           var b = document.getElementById(rem_temp + i);
           var c = document.getElementById("swa" + i);
           var j = i - 1;
-          z.id = '#'+j;          
+          z.id = '#'+j;
           a.id = j;
           a.value = br[i - id_temp - 1];
           b.id = rem_temp + j;
@@ -134,8 +141,9 @@
         }
         id--;
       }
-      if (id <= 7){
-        document.getElementById('error').innerHTML = "";
+      else{
+        document.getElementById('error').innerHTML = "Atleast one option neccessary";
+        setTimeout(error_dis, 1000);
       }
     }
 
