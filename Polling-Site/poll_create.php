@@ -50,12 +50,12 @@
             <span id="error"></span>
           </div>
           <div class="option-box" id="#1">
-            <input type="text" class="poll-option" name="options" id="1" />
+            <input type="text" class="poll-option" name="options1" id="1" />
             <i id="rem1" onclick="remove_option(this.id)" class="far fa-times-circle fa-2x close"></i>
             <i id="swa1" onclick="swap_val(this.id)" class="far fa-dot-circle fa-2x edit"></i>
           </div>
           <div class="option-box" id="#2">
-            <input type="text" class="poll-option" name="options" id="2" />
+            <input type="text" class="poll-option" name="options2" id="2" />
             <i id="rem2" onclick="remove_option(this.id)" class="far fa-times-circle fa-2x close"></i>
             <i id="swa2" onclick="swap_val(this.id)" class="far fa-dot-circle fa-2x edit"></i>
           </div>
@@ -99,7 +99,7 @@
         var swa = "swa" + id;
         var options = document.getElementById("options");
         options.innerHTML +=
-          '<div class="option-box" id="#'+ id + '"><input type="text"class="poll-option" name="options" id="' +
+          '<div class="option-box" id="#'+ id + '"><input type="text"class="poll-option" name="options' + id + '" id="' +
           id +
           '"><i id="' +
           rem +
