@@ -143,7 +143,6 @@
                   echo '<i class="far fa-times-circle fa-2x close"></i>';
                   echo '</div>';
                   echo ' </li>';
-                  $i++;
               }
             }
           ?>
