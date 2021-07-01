@@ -16,9 +16,15 @@
         $options[$i] = $_POST[$index];
     }
     $username = $_SESSION["username"];
+    $flag = true;
+    while($flag){
     $ref = base_convert(mt_rand(100000000000,208827064575),10,36);
     $cmd = "INSERT INTO $username (question, total_options, ref) VALUES ('$question', '$hidden_val', '$ref')";
     $data = mysqli_query($con,$cmd);
+    if($data){
+      $flag=false;
+    }
+  }
     $cmd = "SELECT ref,phone_no FROM $username";
     $data = mysqli_query($con, $cmd);
     if($data) {
@@ -26,9 +32,11 @@
             if($row["ref"]==$ref){
                 $phone_no = $row["phone_no"];
                 break;
-            }  
+            }
         }
+        $flag = false;
     }
+
     $cmd = "INSERT INTO polls (username, phone_no, question, total_options, ref) VALUES ('$username', '$phone_no', '$question', '$hidden_val', '$ref')";
     $data = mysqli_query($con,$cmd);
     for($i =1; $i <= $hidden_val; $i++) {
