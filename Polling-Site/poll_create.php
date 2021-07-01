@@ -1,5 +1,12 @@
 <?php
   session_start();
+  if(isset($_SESSION["username"])){
+    $username = $_SESSION["username"];
+  } else {
+    echo '<script> alert("Log in to get access!!"); </script>';
+    $_SESSION["location"] = "polling_site";
+    echo '<script> window.location.href="../login/User_Login.php"; </script>';
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

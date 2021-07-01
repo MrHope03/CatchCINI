@@ -23,7 +23,15 @@
             }  
         } if($flag) {
             echo '<script> alert("Welcome Back :)"); </script>';
-            echo '<script> window.location.href="../Homepage/home.php"; </script>';
+            if(isset($_SESSION["location"])){
+                if($_SESSION["location"]=="polling_site"){
+                    echo '<script> window.location.href="../Polling-Site/poll_home.php"; </script>';
+                } else if ($_SESSION["location"]=="movie_site"){
+                    echo '<script> window.location.href="../Homepage/home.php"; </script>';
+                }
+            } else {
+                echo '<script> window.location.href="../Homepage/home.php"; </script>';
+            } 
         } else {
             echo '<script> alert("Incorrect Username or Password.\nPlease try again."); window.location.href="User_Login.php"; </script>';
         }

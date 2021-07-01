@@ -4,6 +4,7 @@
       $username = $_SESSION["username"];
     } else {
       echo '<script> alert("Log in to get access!!"); </script>';
+      $_SESSION["location"] = "polling_site";
       echo '<script> window.location.href="../login/User_Login.php"; </script>';
     }
 
@@ -47,9 +48,8 @@
       }
     }
     $null_msg = "#No Polls";
-    $create_msg = "<a href='poll_create.php'>Create</a>"; //Add styling here;
+    $create_msg = "<a href='poll_create.php'>Create</a>";
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
