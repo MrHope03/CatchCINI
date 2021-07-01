@@ -1,6 +1,4 @@
 <?php
-    //Need to add the location after updation
-    // location.href ?? Missing
     session_start();
     $server = "localhost";
     $user = "root";
@@ -40,4 +38,5 @@
         $cmd = "UPDATE polls SET $opt = '$options[$i]' WHERE phone_no = $phone_no";
         $data = mysqli_query($con,$cmd);
     }
+    echo '<script> window.location.href="User.php"; </script>';
 ?>

@@ -32,23 +32,8 @@
     $cmd = "SELECT COUNT(*) FROM $username";
     $data = mysqli_query($con, $cmd);
     $total_polls = mysqli_fetch_row($data)[0];
-    if($total_polls>4){
-      $max_limit = 4;
-    } else {
-      $max_limit = $total_polls;
-    }
-    $cmd = "SELECT question,total_count FROM $username";
+    $cmd = "SELECT question,total_count FROM $username ORDER BY sno DESC";
     $data = mysqli_query($con, $cmd);
-    $i = 1;
-    if($data) {
-      while(($row = mysqli_fetch_assoc($data)) && $i<=$max_limit){
-          $question[$i-1] = $row["question"];
-          $total_count[$i-1] = "No of votes: ".$row["total_count"];
-          $i++;
-      }
-    }
-    $null_msg = "#No Polls";
-    $create_msg = "<a href='poll_create.php'>Create</a>";
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -147,33 +132,25 @@
 
     <section>
         <div class="sub-heading">Your Polls</div>
-        <!-- NEED TO ATTACH THE POLLS TO IT -->
         <ul class="universe">
-          <li class="box">
-            <div onclick="location.href=''" class="item">
-              <h3><?php if(isset($question[0])){echo $question[0];} else {echo $null_msg;} ?></h3>
-              <p><?php if(isset($total_count[0])){echo $total_count[0];} else {echo $create_msg;} ?></p>
-            <i class="far fa-times-circle fa-2x close"></i>
-            </div>
-          </li>
-          <li class="box">
-            <div onclick="location.href=''" class="item">
-              <h3><?php if(isset($question[1])){echo $question[1];} else {echo $null_msg;} ?></h3>
-              <p><?php if(isset($total_count[1])){echo $total_count[1];} else {echo $create_msg;} ?></p>
-            <i class="far fa-times-circle fa-2x close"></i>
-            </div>
-          </li>
-          <li class="box">
-            <div onclick="location.href=''" class="item">
-              <h3><?php if(isset($question[2])){echo $question[2];} else {echo $null_msg;} ?></h3>
-              <p><?php if(isset($total_count[2])){echo $total_count[2];} else {echo $create_msg;} ?></p>
-            <i class="far fa-times-circle fa-2x close"></i>
-            </div>
-          </li>
+          <?php
+            if($data) {
+              while(($row = mysqli_fetch_assoc($data))){
+                  echo '<li class="box">';
+                  echo '<div class="item" onclick="manage_polls();">'; //Add function manage_poll() to redirect for individual polls
+                  echo '<h3>'.$row["question"].'</h3>';
+                  echo '<p> No of votes: '.$row["total_count"].'</p>';
+                  echo '<i class="far fa-times-circle fa-2x close"></i>';
+                  echo '</div>';
+                  echo ' </li>';
+                  $i++;
+              }
+            }
+          ?>
           <li  class="box">
             <div onclick="location.href=''" class="item">
-              <h3><?php if(isset($question[3])){echo $question[3];} else {echo $null_msg;} ?></h3>
-              <p><?php if(isset($total_count[3])){echo $total_count[3];} else {echo $create_msg;} ?></p>
+              <h3>#No Polls</h3>
+              <p><a href='poll_create.php'>Create</a></p> <!-- Add styling here -->
             <i class="far fa-times-circle fa-2x close"></i>
             </div>
           </li>
@@ -207,7 +184,6 @@
             for (let i = 0; i < close.length; i++){
                 close[i].style.visibility="visible";
             }
-            
         }
         function confirm(){
             document.getElementById('manage').innerHTML = "Manage my Polls";
