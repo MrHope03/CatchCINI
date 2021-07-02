@@ -16,6 +16,27 @@
     if (!$con) {
         echo '<script> alert("Server Down!!! Try again Later"); </script>';
     }
+    
+    $i = 0;
+    $array = array();
+    while(!empty($_GET['var'.$i])){
+        array_push($array,$_GET['var'.$i]);
+        $i++;
+    }
+    if (!empty($array)){
+      for ($i = 0; $i < count($array); $i++){
+        $ref_id = $array[$i];
+        $cmd = "DELETE FROM $username WHERE ref = '$ref_id'";
+        $q = mysqli_query($con,$cmd);
+        $cmd = "DELETE FROM polls WHERE ref = '$ref_id'";
+        $q = mysqli_query($con,$cmd);
+        if (!$q){
+            echo "couldn't delete";
+        }
+      }
+    } 
+      
+
     $cmd = "SELECT first_name,last_name,mail,phone_no,username FROM user_details";
     $data = mysqli_query($con, $cmd);
     if($data) {
@@ -32,7 +53,7 @@
     $cmd = "SELECT COUNT(*) FROM $username";
     $data = mysqli_query($con, $cmd);
     $total_polls = mysqli_fetch_row($data)[0];
-    $cmd = "SELECT question,total_count FROM $username ORDER BY sno DESC";
+    $cmd = "SELECT question,total_count,ref FROM $username ORDER BY sno DESC";
     $data = mysqli_query($con, $cmd);
 ?>
 <!DOCTYPE html>
@@ -53,14 +74,13 @@
     <link rel="stylesheet" href="box-arrange.css">
     <style>
         body{
-            background-image: url('movie\ roll.png');
+            /* background-image: url('movie\ roll.png'); */
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-blend-mode:multiply;
+            background-blend-mode: screen;
             background-color: #ffebcd25;
             background-position: center;
             background-size: cover;
-            background-size: 800px;
         }
         @media (min-width : 1040px){
           body{
@@ -74,7 +94,7 @@
           }
         }
         .close{
-            visibility: hidden;
+            display:none;
         }
       </style>
 </head>
@@ -127,30 +147,33 @@
     </section>
 
     <div>
-        <button class="btn new-poll manage"  id="manage" onclick="edit()">Manage My Polls</button>
+        <button class="btn new-poll manage"  id="manage" onclick="edit();">Manage My Polls</button>
+        <span id="reset" onclick="refresh();"><i class="fas fa-undo fa-2x reset"></i></span>
     </div>
-
+    
     <section>
         <div class="sub-heading">Your Polls</div>
-        <ul class="universe">
+        <ul class="universe" id="polls">
           <?php
+          function read($data){
             if($data) {
               while(($row = mysqli_fetch_assoc($data))){
-                  echo '<li class="box">';
-                  echo '<div class="item" onclick="manage_polls();">'; //Add function manage_poll() to redirect for individual polls
-                  echo '<h3>'.$row["question"].'</h3>';
+                  echo '<li class="box"  id='. $row['ref'].'>';
+                  echo '<div class="item">'; //Add function manage_poll() to redirect for individual polls
+                  echo '<h3 onclick="view_poll();">'.$row["question"].'</h3>';
                   echo '<p> No of votes: '.$row["total_count"].'</p>';
-                  echo '<i class="far fa-times-circle fa-2x close"></i>';
+                  echo '<i class="far fa-times-circle fa-2x close" onclick="remove(this.id);" id="rem'. $row['ref'].'"></i>';
                   echo '</div>';
                   echo ' </li>';
               }
             }
+          }
+          read($data);
           ?>
           <li  class="box">
-            <div onclick="location.href=''" class="item">
+            <div class="item">
               <h3>#No Polls</h3>
               <p><a href='poll_create.php'>Create</a></p> <!-- Add styling here -->
-            <i class="far fa-times-circle fa-2x close"></i>
             </div>
           </li>
         </ul>
@@ -175,23 +198,60 @@
     </footer>
     </body>
     <script>
-        function edit(){
-            document.getElementById('manage').innerHTML = "Confirm Changes";
-            document.getElementById('manage').removeEventListener('click',edit);
-            document.getElementById('manage').addEventListener('click',confirm);
-            let close = document.getElementsByClassName('close');
-            for (let i = 0; i < close.length; i++){
-                close[i].style.visibility="visible";
+          
+           // TODO: change the php hyperlink
+            function view_poll(){
+              location.href= "User.php";
             }
-        }
-        function confirm(){
-            document.getElementById('manage').innerHTML = "Manage my Polls";
-            document.getElementById('manage').removeEventListener('click',confirm);
-            document.getElementById('manage').addEventListener('click',edit);
-            let close = document.getElementsByClassName('close');
-            for (let i = 0; i < close.length; i++){
-                close[i].style.visibility="hidden";
+            function edit(){
+                    document.getElementById('manage').innerHTML = "Confirm Changes";
+                    document.getElementById('reset').style.display = "block";
+                    document.getElementById('manage').removeEventListener('click',edit);
+                    document.getElementById('manage').addEventListener('click',confirm);
+                    let close = document.getElementsByClassName('close');
+                    for (let i = 0; i < close.length; i++){
+                        close[i].style.display="block";
+                    }
             }
-        }
+            var remove_list = new Array;
+            function remove(id){
+              var id_temp = id.substring(3);
+              document.getElementById(id_temp).outerHTML = "";
+              remove_list.push(id);
+            }
+            function refresh(){
+              document.getElementById('polls').innerHTML = '<?php $cmd = "SELECT question,total_count,ref FROM $username ORDER BY sno DESC";
+                      $data = mysqli_query($con, $cmd);read($data); ?>'+
+                      '<li  class="box">'+
+                      '<div class="item">'+
+                      '<h3>#No Polls</h3>'+
+                      '<p><a href="poll_create.php">Create</a></p>'+
+                      '</div></li>';
+                    let close = document.getElementsByClassName('close');
+                    for (let i = 0; i < close.length; i++){
+                        close[i].style.display="block";
+                    }
+                    remove_list = [];
+            }
+            function confirm(){
+              document.getElementById('manage').innerHTML = "Manage my Polls";
+              document.getElementById('reset').style.display = "none";
+              document.getElementById('manage').removeEventListener('click',confirm);
+              document.getElementById('manage').addEventListener('click',edit);
+              let close = document.getElementsByClassName('close');
+              for (let i = 0; i < close.length; i++){
+                  close[i].style.display = "none";
+              }
+              var msg = "User.php?";
+              for (let i = 0; i < remove_list.length; i++){
+                let str = remove_list[i].slice(3,12);
+                msg += ("var"+i+"="+str);
+                if (i != (remove_list.length - 1)){
+                  msg += "&";
+                }
+              }
+              window.location.href = msg;
+            }
     </script>
+    
   </html>
