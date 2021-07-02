@@ -67,8 +67,6 @@
   </header>
 
   <?php
-          $cmd = "SELECT question,total_count FROM polls ORDER BY sno DESC";
-          $data = mysqli_query($con, $cmd);
 
           $i = 0;
           $array = array();
@@ -101,12 +99,14 @@
                   $data = mysqli_query($con,$cmd);
                 }
                 else{
+                  $cmd = "SELECT question,total_count FROM polls ORDER BY sno DESC";
                   $data = mysqli_query($con, $cmd);
                 }
             }
           }
           else{
-            $data = mysqli_query($con, $cmd);
+            $cmd = "SELECT question,total_count FROM polls ORDER BY sno DESC";
+            $data = mysqli_query($con, $cmd); 
           } 
   ?>
   <section>
