@@ -31,3 +31,10 @@ table tr td:nth-child(even){
 .manage:hover{
     background-color: #000000;
 }
+#reset{
+    display: none;
+    text-align: center;
+}
+.reset:hover{
+    transform: rotate(250deg);
+}
