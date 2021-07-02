@@ -118,6 +118,11 @@
           <p><?php if(isset($total_count[3])){echo $total_count[3];} else {echo $create_msg;} ?></p>
         </div>
       </li>
+      <li>
+          <div class="link">
+            <b>for more </b><a href="poll_search.php">Click here</a>
+          </div>
+        </li>
     </ul>
   </section>
 
