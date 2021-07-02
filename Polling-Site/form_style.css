@@ -49,9 +49,9 @@ html,body{
       font-family: 'Stick', sans-serif ;
       font-size: 3.2em;
       text-align: center;
+      color: lightgoldenrodyellow;
       height: 3.75em;
       margin: 0px;
-      color: lightgoldenrodyellow;
       overflow-y: scroll;
       overflow-wrap: break-word;
       -ms-overflow-style: none;
@@ -93,3 +93,46 @@ html,body{
           visibility: hidden;
       }
   }
+
+#options-box{
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.options{
+  font-size: 2em;
+  font-family: 'Heebo', sans-serif;
+  margin: 1em 0;
+  border: rgb(11, 174, 185) 2.5px solid;
+  border-radius: 50px;
+  padding: 0px 20px;
+}
+
+.options:hover{
+  border-color: rgb(2, 84, 244);
+  cursor: pointer;
+}
+
+#button-box{
+  text-align: center;
+}
+
+#button{
+  width: 6em;
+  height: 1.5em;
+  font-size: 2em;
+  border-radius: 5px;
+  color: grey;
+  opacity: 50%;
+  background-color: darkgrey;
+  border: 0px;
+}
+
+.button-style-hover:hover{
+  background-color : rgb(172, 172, 172) !important;
+}
+
+.button-style-active:active{
+  background-color : rgb(117, 117, 117) !important;
+}
