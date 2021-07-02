@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* Height growth*/
+            @keyframes popcorn {
+                from {
+                    /* Set it to 0 */
+                    height: 40px;
+                }
+                to{
+                    height: 100px; 
+                }
+            }
+            /* the graph for the page */
+            .graph{
+                display: flex;
+            }
+            /* Indivual popcorn height */
+            .popcorn{
+                display: flex;
+                margin: 1.2em;
+                align-content: center; /* To place the popcorn in the center horizontally*/
+                /* IMPORTANT */
+                height: 200px; /*The max height the popcorn could grow */
+                flex-direction: column; /*Makes the corn stick together with the box */
+                align-items: center ; /*To keep the popcorn head and box stick together */
+                justify-content: flex-end; /*To keep the popcorn in the bottom of the element*/
+            }
+            /* CHange acc */
+            img{
+                width:40px;
+                height: 18px; 
+            }
+            .red{
+                background-color: red;
+            }
+            .white{
+                background-color: whitesmoke;
+            }
+            /*the body of the popcorn box*/
+            .container{
+                display: flex;
+                justify-content: space-evenly;
+                margin: 0em 1em;
+            }
+            /* The properties of every individual box */
+            .box{
+                display: inline-block;
+                width: 7px;
+                animation-name: popcorn;
+                animation-duration: 3s;
+                animation-fill-mode: forwards; 
+                /*fill-mode edukada da this will keep 
+                the object remain in the same height after
+                 animation stops */
+                animation-timing-function: linear;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="graph">
+            <div class="popcorn">
+                <img src="popcorn.png">
+                <div class="container">
+                    <!-- RED -->
+                    <div class="red box"></div> 
+                    <!-- WHITE -->
+                    <div class="white box"></div>
+                    <!-- RED -->
+                    <div class="red box"></div> 
+                    <!-- WHITE -->
+                    <div class="white box"></div>
+                    <!-- RED -->
+                    <div class="red box"></div> 
+                </div>
+            </div>
+            <div class="popcorn">
+                <img src="popcorn.png">
+                <div class="container">
+                    <!-- RED -->
+                    <div class="red box"></div> 
+                    <!-- WHITE -->
+                    <div class="white box"></div>
+                    <!-- RED -->
+                    <div class="red box"></div> 
+                    <!-- WHITE -->
+                    <div class="white box"></div>
+                    <!-- RED -->
+                    <div class="red box"></div> 
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
