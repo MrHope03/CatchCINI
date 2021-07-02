@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+html,body{
+    color: black;
+    margin: 0px;
+    padding: 0px;
+}
+
+  .header{
+      /* Changed the blend to soft light it seemed better */
+      background-image: url('poll.jpg');
+      background-color: #111;
+      background-blend-mode: soft-light;
+      background-size: cover;
+      background-position: center right;
+      height: 15em;
+  }
+  .nav{
+      margin: 0px;
+      padding: 0px;
+      background-color: #00000055;
+  }
+  .nav ul{
+      margin: 0px;
+      padding: 0px;
+      list-style-type: none;
+      text-align: center;
+      position: relative;
+  }
+  .nav ul li{
+      display: inline-block;
+      padding: .5em 1.2em;
+      margin: 0px;
+      height: 3em;
+  }
+  .nav a,.btn{
+      color: #ffffffbb;
+  }
+  .nav a:hover,.btn:hover{
+      color: white;
+      cursor: pointer;
+  }
+  #question {
+      font-family: 'Stick', sans-serif ;
+      font-size: 3.2em;
+      text-align: center;
+      height: 3.75em;
+      margin: 0px;
+      color: lightgoldenrodyellow;
+      overflow-y: scroll;
+      overflow-wrap: break-word;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+  }
+
+  #question::-webkit-scrollbar{
+    display: none;
+  }
+  .web-tag{
+      font-family: 'Stick',sans-serif;
+      font-size: 1.3em;
+      text-decoration: underline;
+      font-weight: bolder;
+      letter-spacing: .15em;
+      color:rgb(250, 211, 250);
+  }
+  .l-tag{
+      position: absolute;
+      left: 1.5em;
+      visibility: hidden;
+  }
+  .r-tag{
+      position: absolute;
+      right: 2em;
+      visibility: hidden;
+  }
+  .poll:hover + .l-tag{
+      visibility: visible;
+  }
+  .movie:hover + .r-tag{
+      visibility: visible;
+  }
+  @media (max-width :800px){
+      .poll:hover + .l-tag{
+          visibility: hidden;
+      }
+      .movie:hover + .r-tag{
+          visibility: hidden;
+      }
+  }
