@@ -87,6 +87,7 @@
             $ct_info = mysqli_query($con, $cmd_2);
             $count = mysqli_fetch_row($ct_info)[0];
             if ($count > 0){
+              $cmd .= " ORDER BY reg_date DESC";
               $data = mysqli_query($con, $cmd);
             }
             else{
@@ -96,6 +97,7 @@
                 $count = mysqli_fetch_row($ct_info)[0];
                 if ($count > 0){
                   $cmd = str_replace("AND","OR",$cmd);
+                  $cmd .= " ORDER BY reg_date DESC";
                   $data = mysqli_query($con,$cmd);
                 }
                 else{
