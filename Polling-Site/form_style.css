@@ -136,3 +136,64 @@ html,body{
 .button-style-active:active{
   background-color : rgb(117, 117, 117) !important;
 }
+
+
+@keyframes popcorn {
+    from {
+        /* Set it to 0 */
+        height: 40px;
+    }
+    to{
+        height: 100px;
+    }
+}
+/* the graph for the page */
+#graph{
+    display: none;
+}
+/* Indivual popcorn height */
+.popcorn{
+    display: flex;
+    margin: 1.2em;
+    align-content: center; /* To place the popcorn in the center horizontally*/
+    /* IMPORTANT */
+    height: 200px; /*The max height the popcorn could grow */
+    flex-direction: column; /*Makes the corn stick together with the box */
+    align-items: center ; /*To keep the popcorn head and box stick together */
+    justify-content: flex-end; /*To keep the popcorn in the bottom of the element*/
+}
+/* CHange acc */
+img{
+    width:40px;
+    height: 18px;
+}
+.red{
+    background-color: red;
+}
+.white{
+    background-color: whitesmoke;
+}
+/*the body of the popcorn box*/
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0em 1em;
+}
+/* The properties of every individual box */
+.box{
+    display: inline-block;
+    width: 7px;
+    animation-name: popcorn;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    /*fill-mode edukada da this will keep
+    the object remain in the same height after
+     animation stops */
+    animation-timing-function: linear;
+}
+
+#pop_1, #pop_2,
+#pop_3, #pop_4,
+#pop_5, #pop_6{
+  visibility: hidden;
+}
