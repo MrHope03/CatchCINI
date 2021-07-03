@@ -1,0 +1,131 @@
+@keyframes popcorn_1 {
+    from {
+        /* Set it to 0 */
+        height: 40px;
+    }
+    to{
+        height: var(--size_1);
+    }
+}
+
+.box_1{
+    display: inline-block;
+    width: 7px;
+    animation-name: popcorn_1;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    /*fill-mode edukada da this will keep
+    the object remain in the same height after
+     animation stops */
+    animation-timing-function: linear;
+}
+
+@keyframes popcorn_2 {
+    from {
+        /* Set it to 0 */
+        height: 40px;
+    }
+    to{
+        height: var(--size_2);
+    }
+}
+
+.box_2{
+    display: inline-block;
+    width: 7px;
+    animation-name: popcorn_2;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    /*fill-mode edukada da this will keep
+    the object remain in the same height after
+     animation stops */
+    animation-timing-function: linear;
+}
+
+@keyframes popcorn_3 {
+    from {
+        /* Set it to 0 */
+        height: 40px;
+    }
+    to{
+        height: var(--size_3);
+    }
+}
+
+.box_3{
+    display: inline-block;
+    width: 7px;
+    animation-name: popcorn_3;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    /*fill-mode edukada da this will keep
+    the object remain in the same height after
+     animation stops */
+    animation-timing-function: linear;
+}
+
+@keyframes popcorn_4 {
+    from {
+        /* Set it to 0 */
+        height: 40px;
+    }
+    to{
+        height: var(--size_4);
+    }
+}
+
+.box_4{
+    display: inline-block;
+    width: 7px;
+    animation-name: popcorn_4;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    /*fill-mode edukada da this will keep
+    the object remain in the same height after
+     animation stops */
+    animation-timing-function: linear;
+}
+
+@keyframes popcorn_5 {
+    from {
+        /* Set it to 0 */
+        height: 40px;
+    }
+    to{
+        height: var(--size_5);
+    }
+}
+
+.box_5{
+    display: inline-block;
+    width: 7px;
+    animation-name: popcorn_5;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    /*fill-mode edukada da this will keep
+    the object remain in the same height after
+     animation stops */
+    animation-timing-function: linear;
+}
+
+@keyframes popcorn_6 {
+    from {
+        /* Set it to 0 */
+        height: 40px;
+    }
+    to{
+        height: var(--size_6);
+    }
+}
+
+.box_6{
+    display: inline-block;
+    width: 7px;
+    animation-name: popcorn_6;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    /*fill-mode edukada da this will keep
+    the object remain in the same height after
+     animation stops */
+    animation-timing-function: linear;
+}

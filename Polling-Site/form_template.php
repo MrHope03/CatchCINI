@@ -11,7 +11,7 @@ if (!$con) {
 //remove below comments after finishing dependent checks
 //$username = $_SESSION["username"];
 //$ref = $_POST["ref"];
-$ref = '1w9ww5ko';
+$ref = '2guj2llk';
 $cmd = "SELECT username FROM polls where ref LIKE '%$ref%'";
 $data = mysqli_query($con, $cmd);
 $row = mysqli_fetch_assoc($data);
@@ -37,6 +37,7 @@ for($i = 1; $i <= $tot_opts; $i++)
     <meta charset="utf-8">
     <script src="https://kit.fontawesome.com/704ddf1c0b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="form_style.css">
+    <link rel="stylesheet" href="pop_animate.css">
     <title><?php $ques ?></title>
     <style>
       body{
@@ -102,90 +103,90 @@ for($i = 1; $i <= $tot_opts; $i++)
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_1"></div>
                 <!-- WHITE -->
-                <div class="white box"></div>
+                <div class="white box_1"></div>
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_1"></div>
                 <!-- WHITE -->
-                <div class="white box"></div>
+                <div class="white box_1"></div>
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_1"></div>
             </div>
         </div>
         <div id="pop_2" class="popcorn">
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_2"></div>
                 <!-- WHITE -->
-                <div class="white box"></div>
+                <div class="white box_2"></div>
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_2"></div>
                 <!-- WHITE -->
-                <div class="white box"></div>
+                <div class="white box_2"></div>
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_2"></div>
             </div>
         </div>
         <div id="pop_3" class="popcorn">
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_3"></div>
                 <!-- WHITE -->
-                <div class="white box"></div>
+                <div class="white box_3"></div>
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_3"></div>
                 <!-- WHITE -->
-                <div class="white box"></div>
+                <div class="white box_3"></div>
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_3"></div>
             </div>
         </div>
         <div id="pop_4" class="popcorn">
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_4"></div>
                 <!-- WHITE -->
-                <div class="white box"></div>
+                <div class="white box_4"></div>
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_4"></div>
                 <!-- WHITE -->
-                <div class="white box"></div>
+                <div class="white box_4"></div>
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_4"></div>
             </div>
         </div>
         <div id="pop_5" class="popcorn">
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_5"></div>
                 <!-- WHITE -->
-                <div class="white box"></div>
+                <div class="white box_5"></div>
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_5"></div>
                 <!-- WHITE -->
-                <div class="white box"></div>
+                <div class="white box_5"></div>
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_5"></div>
             </div>
         </div>
         <div id="pop_6" class="popcorn">
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_6"></div>
                 <!-- WHITE -->
-                <div class="white box"></div>
+                <div class="white box_6"></div>
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_6"></div>
                 <!-- WHITE -->
-                <div class="white box"></div>
+                <div class="white box_6"></div>
                 <!-- RED -->
-                <div class="red box"></div>
+                <div class="red box_6"></div>
             </div>
         </div>
     </div>
@@ -264,7 +265,7 @@ for($i = 1; $i <= $tot_opts; $i++)
       $row = mysqli_fetch_assoc($data);
       echo "<script>";
       $sel_id = substr($upd_id,6);
-      echo "alert('$sel_id');";
+      //echo "alert('$sel_id');";
       echo "sel_opt = document.getElementById('$sel_id');";
       echo "sel_opt.style.borderColor = 'rgb(2, 84, 244)';";
       echo "first_click = true;";
@@ -275,12 +276,19 @@ for($i = 1; $i <= $tot_opts; $i++)
         //echo "document.getElementById('pop_$i').style.visibility = 'visible';";
         $temp = ($row['count_'.$i]/$row['total_count'])*200;
         echo "graph_data[$i] = $temp;";
-        echo "alert(graph_data[$i]);";
+        //echo "alert(graph_data[$i-1]);";
       }
       echo "var total = $tot_opts;";
+      echo "var size = ['--size_0','--size_1','--size_2','--size_3','--size_4','--size_5','--size_6'];";
       echo "for(var i = 1; i <= total; i++)";
       echo "{document.getElementById('pop_'+i).style.visibility = 'visible';";
+      echo "var r = document.querySelector(':root');";
+      echo " r.style.setProperty(size[i], graph_data[i]+'px');";
       echo "}";
+      //echo "for(var i=0; i<1; i++)";
+      //echo "{";
+      //echo " r.style.setProperty(size[i], graph_data[i]+'px');";
+      //echo "}";
       echo "</script>";
     }
     ?>

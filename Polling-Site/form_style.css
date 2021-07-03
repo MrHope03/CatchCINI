@@ -138,15 +138,6 @@ html,body{
 }
 
 
-@keyframes popcorn {
-    from {
-        /* Set it to 0 */
-        height: 40px;
-    }
-    to{
-        height: 100px;
-    }
-}
 /* the graph for the page */
 #graph{
     display: none;
@@ -180,17 +171,6 @@ img{
     margin: 0em 1em;
 }
 /* The properties of every individual box */
-.box{
-    display: inline-block;
-    width: 7px;
-    animation-name: popcorn;
-    animation-duration: 3s;
-    animation-fill-mode: forwards;
-    /*fill-mode edukada da this will keep
-    the object remain in the same height after
-     animation stops */
-    animation-timing-function: linear;
-}
 
 #pop_1, #pop_2,
 #pop_3, #pop_4,
