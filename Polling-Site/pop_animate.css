@@ -1,7 +1,7 @@
 @keyframes popcorn_1 {
     from {
         /* Set it to 0 */
-        height: 40px;
+        height: 0px;
     }
     to{
         height: var(--size_1);
@@ -23,7 +23,7 @@
 @keyframes popcorn_2 {
     from {
         /* Set it to 0 */
-        height: 40px;
+        height: 0px;
     }
     to{
         height: var(--size_2);
@@ -45,7 +45,7 @@
 @keyframes popcorn_3 {
     from {
         /* Set it to 0 */
-        height: 40px;
+        height: 0px;
     }
     to{
         height: var(--size_3);
@@ -67,7 +67,7 @@
 @keyframes popcorn_4 {
     from {
         /* Set it to 0 */
-        height: 40px;
+        height: 0px;
     }
     to{
         height: var(--size_4);
@@ -89,7 +89,7 @@
 @keyframes popcorn_5 {
     from {
         /* Set it to 0 */
-        height: 40px;
+        height: 0px;
     }
     to{
         height: var(--size_5);
@@ -111,7 +111,7 @@
 @keyframes popcorn_6 {
     from {
         /* Set it to 0 */
-        height: 40px;
+        height: 0px;
     }
     to{
         height: var(--size_6);

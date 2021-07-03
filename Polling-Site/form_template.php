@@ -11,7 +11,8 @@ if (!$con) {
 //remove below comments after finishing dependent checks
 //$username = $_SESSION["username"];
 //$ref = $_POST["ref"];
-$ref = '2guj2llk';
+//$ref = '2guj2llk';
+$ref = '1to0pob5';
 $cmd = "SELECT username FROM polls where ref LIKE '%$ref%'";
 $data = mysqli_query($con, $cmd);
 $row = mysqli_fetch_assoc($data);
@@ -118,75 +119,75 @@ for($i = 1; $i <= $tot_opts; $i++)
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
-                <div class="red box_2"></div>
+                <div class="black box_2"></div>
                 <!-- WHITE -->
                 <div class="white box_2"></div>
                 <!-- RED -->
-                <div class="red box_2"></div>
+                <div class="black box_2"></div>
                 <!-- WHITE -->
                 <div class="white box_2"></div>
                 <!-- RED -->
-                <div class="red box_2"></div>
+                <div class="black box_2"></div>
             </div>
         </div>
         <div id="pop_3" class="popcorn">
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
-                <div class="red box_3"></div>
+                <div class="blue box_3"></div>
                 <!-- WHITE -->
                 <div class="white box_3"></div>
                 <!-- RED -->
-                <div class="red box_3"></div>
+                <div class="blue box_3"></div>
                 <!-- WHITE -->
                 <div class="white box_3"></div>
                 <!-- RED -->
-                <div class="red box_3"></div>
+                <div class="blue box_3"></div>
             </div>
         </div>
         <div id="pop_4" class="popcorn">
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
-                <div class="red box_4"></div>
+                <div class="green box_4"></div>
                 <!-- WHITE -->
                 <div class="white box_4"></div>
                 <!-- RED -->
-                <div class="red box_4"></div>
+                <div class="green box_4"></div>
                 <!-- WHITE -->
                 <div class="white box_4"></div>
                 <!-- RED -->
-                <div class="red box_4"></div>
+                <div class="green box_4"></div>
             </div>
         </div>
         <div id="pop_5" class="popcorn">
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
-                <div class="red box_5"></div>
+                <div class="purple box_5"></div>
                 <!-- WHITE -->
                 <div class="white box_5"></div>
                 <!-- RED -->
-                <div class="red box_5"></div>
+                <div class="purple box_5"></div>
                 <!-- WHITE -->
                 <div class="white box_5"></div>
                 <!-- RED -->
-                <div class="red box_5"></div>
+                <div class="purple box_5"></div>
             </div>
         </div>
         <div id="pop_6" class="popcorn">
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
-                <div class="red box_6"></div>
+                <div class="orange box_6"></div>
                 <!-- WHITE -->
                 <div class="white box_6"></div>
                 <!-- RED -->
-                <div class="red box_6"></div>
+                <div class="orange box_6"></div>
                 <!-- WHITE -->
                 <div class="white box_6"></div>
                 <!-- RED -->
-                <div class="red box_6"></div>
+                <div class="orange box_6"></div>
             </div>
         </div>
     </div>
@@ -274,7 +275,7 @@ for($i = 1; $i <= $tot_opts; $i++)
       echo "var graph_data = [];";
       for($i = 1; $i <= $tot_opts; $i++){
         //echo "document.getElementById('pop_$i').style.visibility = 'visible';";
-        $temp = ($row['count_'.$i]/$row['total_count'])*200;
+        $temp = ($row['count_'.$i]/$row['total_count'])*400;
         echo "graph_data[$i] = $temp;";
         //echo "alert(graph_data[$i-1]);";
       }
