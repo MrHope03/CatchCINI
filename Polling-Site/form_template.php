@@ -11,8 +11,8 @@ if (!$con) {
 //remove below comments after finishing dependent checks
 //$username = $_SESSION["username"];
 //$ref = $_POST["ref"];
-//$ref = '2guj2llk';
-$ref = '1to0pob5';
+$ref = '2guj2llk';
+//$ref = '1to0pob5';
 $cmd = "SELECT username FROM polls where ref LIKE '%$ref%'";
 $data = mysqli_query($con, $cmd);
 $row = mysqli_fetch_assoc($data);
@@ -99,6 +99,12 @@ for($i = 1; $i <= $tot_opts; $i++)
       <input type="hidden" name="check" value="true">
     </div>
     </div>
+    <div id="graph-contain">
+      <div id="y-legend">
+          <div>100</div>
+          <div>50</div>
+          <div>0</div>
+      </div>
     <div id="graph">
         <div id="pop_1" class="popcorn">
             <img src="popcorn.png">
@@ -191,6 +197,7 @@ for($i = 1; $i <= $tot_opts; $i++)
             </div>
         </div>
     </div>
+  </div>
   </form>
     </section>
 
@@ -271,7 +278,7 @@ for($i = 1; $i <= $tot_opts; $i++)
       echo "sel_opt.style.borderColor = 'rgb(2, 84, 244)';";
       echo "first_click = true;";
       echo "post_first_click = true;";
-      echo "document.getElementById('graph').style.display = 'flex';";
+      echo "document.getElementById('graph-contain').style.display = 'flex';";
       echo "var graph_data = [];";
       for($i = 1; $i <= $tot_opts; $i++){
         //echo "document.getElementById('pop_$i').style.visibility = 'visible';";
@@ -280,9 +287,12 @@ for($i = 1; $i <= $tot_opts; $i++)
         //echo "alert(graph_data[$i-1]);";
       }
       echo "var total = $tot_opts;";
+      echo "var graph_w = ((total*(67 + (1.2*16*2))));";
+      echo "document.getElementById('graph').style.width = graph_w+'px';";
       echo "var size = ['--size_0','--size_1','--size_2','--size_3','--size_4','--size_5','--size_6'];";
       echo "for(var i = 1; i <= total; i++)";
       echo "{document.getElementById('pop_'+i).style.visibility = 'visible';";
+      echo "document.getElementById('pop_'+i).style.display = 'flex';";
       echo "var r = document.querySelector(':root');";
       echo " r.style.setProperty(size[i], graph_data[i]+'px');";
       echo "}";

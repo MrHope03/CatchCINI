@@ -137,11 +137,16 @@ html,body{
   background-color : rgb(117, 117, 117) !important;
 }
 
-
+#graph-contain {
+  display: none;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}
 /* the graph for the page */
 #graph{
-    display: none;
-    margin: 5px;
+    display: inherit;
+    margin: 10px;
     border-style: solid;
     border-color: black;
     border-right: 2px;
@@ -199,5 +204,6 @@ img{
 #pop_1, #pop_2,
 #pop_3, #pop_4,
 #pop_5, #pop_6{
+  display: none;
   visibility: hidden;
 }
