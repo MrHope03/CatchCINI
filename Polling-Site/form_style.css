@@ -2,149 +2,202 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
-*{
+* {
     box-sizing: border-box;
 }
-html,body{
+
+html,
+body {
     color: black;
     margin: 0px;
     padding: 0px;
 }
 
-  .header{
-      /* Changed the blend to soft light it seemed better */
-      background-image: url('poll.jpg');
-      background-color: #111;
-      background-blend-mode: soft-light;
-      background-size: cover;
-      background-position: center right;
-      height: 15em;
-  }
-  .nav{
-      margin: 0px;
-      padding: 0px;
-      background-color: #00000055;
-  }
-  .nav ul{
-      margin: 0px;
-      padding: 0px;
-      list-style-type: none;
-      text-align: center;
-      position: relative;
-  }
-  .nav ul li{
-      display: inline-block;
-      padding: .5em 1.2em;
-      margin: 0px;
-      height: 3em;
-  }
-  .nav a,.btn{
-      color: #ffffffbb;
-  }
-  .nav a:hover,.btn:hover{
-      color: white;
-      cursor: pointer;
-  }
-  #question {
-      font-family: 'Stick', sans-serif ;
-      font-size: 3.2em;
-      text-align: center;
-      color: lightgoldenrodyellow;
-      height: 3.75em;
-      margin: 0px;
-      overflow-y: scroll;
-      overflow-wrap: break-word;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-  }
+.header {
+    /* Changed the blend to soft light it seemed better */
+    background-image: url('poll.jpg');
+    background-color: #111;
+    background-blend-mode: soft-light;
+    background-size: cover;
+    background-position: center right;
+    height: 15em;
+}
 
-  #question::-webkit-scrollbar{
+.nav {
+    margin: 0px;
+    padding: 0px;
+    background-color: #00000055;
+}
+
+.nav ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    text-align: center;
+    position: relative;
+}
+
+.nav ul li {
+    display: inline-block;
+    padding: .5em 1.2em;
+    margin: 0px;
+    height: 3em;
+}
+
+.nav a,
+.btn {
+    color: #ffffffbb;
+}
+
+.nav a:hover,
+.btn:hover {
+    color: white;
+    cursor: pointer;
+}
+
+#question {
+    font-family: 'Stick', sans-serif;
+    font-size: 3.2em;
+    text-align: center;
+    color: lightgoldenrodyellow;
+    height: 3.75em;
+    margin: 0px;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#question::-webkit-scrollbar {
     display: none;
-  }
-  .web-tag{
-      font-family: 'Stick',sans-serif;
-      font-size: 1.3em;
-      text-decoration: underline;
-      font-weight: bolder;
-      letter-spacing: .15em;
-      color:rgb(250, 211, 250);
-  }
-  .l-tag{
-      position: absolute;
-      left: 1.5em;
-      visibility: hidden;
-  }
-  .r-tag{
-      position: absolute;
-      right: 2em;
-      visibility: hidden;
-  }
-  .poll:hover + .l-tag{
-      visibility: visible;
-  }
-  .movie:hover + .r-tag{
-      visibility: visible;
-  }
-  @media (max-width :800px){
-      .poll:hover + .l-tag{
-          visibility: hidden;
-      }
-      .movie:hover + .r-tag{
-          visibility: hidden;
-      }
-  }
-
-#options-box{
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
 }
 
-.options{
-  font-size: 2em;
-  font-family: 'Heebo', sans-serif;
-  margin: 1em 0;
-  border: rgb(11, 174, 185) 2.5px solid;
-  border-radius: 50px;
-  padding: 0px 20px;
+.web-tag {
+    font-family: 'Stick', sans-serif;
+    font-size: 1.3em;
+    text-decoration: underline;
+    font-weight: bolder;
+    letter-spacing: .15em;
+    color: rgb(250, 211, 250);
 }
 
-.options:hover{
-  border-color: rgb(2, 84, 244);
-  cursor: pointer;
+.l-tag {
+    position: absolute;
+    left: 1.5em;
+    visibility: hidden;
 }
 
-#button-box{
-  text-align: center;
+.r-tag {
+    position: absolute;
+    right: 2em;
+    visibility: hidden;
 }
 
-#button{
-  width: 6em;
-  height: 1.5em;
-  font-size: 2em;
-  border-radius: 5px;
-  color: grey;
-  opacity: 50%;
-  background-color: darkgrey;
-  border: 0px;
+.poll:hover + .l-tag {
+    visibility: visible;
 }
 
-.button-style-hover:hover{
-  background-color : rgb(172, 172, 172) !important;
+.movie:hover + .r-tag {
+    visibility: visible;
 }
 
-.button-style-active:active{
-  background-color : rgb(117, 117, 117) !important;
+@media (max-width :800px) {
+    .poll:hover + .l-tag {
+        visibility: hidden;
+    }
+
+    .movie:hover + .r-tag {
+        visibility: hidden;
+    }
+}
+
+#options-box {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.options {
+    font-size: 2em;
+    font-family: 'Heebo', sans-serif;
+    margin: 1em 0;
+    border: rgb(11, 174, 185) 2.5px solid;
+    border-radius: 50px;
+    padding: 0px 20px;
+}
+
+.options:hover {
+    border-color: rgb(2, 84, 244);
+    cursor: pointer;
+}
+
+#button-box {
+    text-align: center;
+}
+
+#button {
+    width: 6em;
+    height: 1.5em;
+    font-size: 2em;
+    border-radius: 5px;
+    color: grey;
+    opacity: 50%;
+    background-color: darkgrey;
+    border: 0px;
+}
+
+.button-style-hover:hover {
+    background-color: rgb(172, 172, 172) !important;
+}
+
+.button-style-active:active {
+    background-color: rgb(117, 117, 117) !important;
+}
+
+.color_1{
+  background: linear-gradient(90deg, white 95%, red 95%);
+}
+
+.color_2{
+  background: linear-gradient(90deg, white 95%, rgb(37, 53, 54) 95%);
+}
+
+.color_3{
+  background: linear-gradient(90deg, white 95%, rgb(18, 151, 224) 95%);
+}
+
+.color_4{
+  background: linear-gradient(90deg, white 95%, rgb(14, 172, 81) 95%);
+}
+
+.color_5{
+  background: linear-gradient(90deg, white 95%, purple 95%);
+}
+
+.color_6{
+  background: linear-gradient(90deg, white 95%, rgb(241, 137, 45) 95%);
 }
 
 #graph-contain {
-  display: none;
-  flex-wrap: wrap;
-  text-align: center;
-  justify-content: center;
+    display: none;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
 }
+
+#y-legend {
+    display: inherit;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bottom-space,
+.top-space {
+  font-family: 'Heebo', sans-serif;
+}
+
 /* the graph for the page */
-#graph{
+#graph {
     display: inherit;
     margin: 10px;
     border-style: solid;
@@ -152,58 +205,73 @@ html,body{
     border-right: 2px;
     border-top: 2px;
 }
+
 /* Indivual popcorn height */
-.popcorn{
+.popcorn {
     display: flex;
     margin: 1.2em;
-    align-content: center; /* To place the popcorn in the center horizontally*/
+    align-content: center;
+    /* To place the popcorn in the center horizontally*/
     /* IMPORTANT */
-    height: 400px; /*The max height the popcorn could grow */
-    flex-direction: column; /*Makes the corn stick together with the box */
-    align-items: center ; /*To keep the popcorn head and box stick together */
-    justify-content: flex-end; /*To keep the popcorn in the bottom of the element*/
+    height: 400px;
+    /*The max height the popcorn could grow */
+    flex-direction: column;
+    /*Makes the corn stick together with the box */
+    align-items: center;
+    /*To keep the popcorn head and box stick together */
+    justify-content: flex-end;
+    /*To keep the popcorn in the bottom of the element*/
 }
+
 /* CHange acc */
-img{
-    width:40px;
+img {
+    width: 40px;
     height: 18px;
 }
-.red{
+
+.red {
     background-color: red;
 }
 
-.black{
-  background-color: rgb(37, 53, 54);
-}
-.green{
-  background-color: rgb(14, 172, 81);
+.black {
+    background-color: rgb(37, 53, 54);
 }
 
-.blue{
-  background-color: rgb(18, 151, 224);
+.green {
+    background-color: rgb(14, 172, 81);
 }
 
-.orange{
-  background-color: rgb(241, 137, 45);
+.blue {
+    background-color: rgb(18, 151, 224);
 }
 
-.purple{
-  background-color: purple;
+.orange {
+    background-color: rgb(241, 137, 45);
 }
-.white{
+
+.purple {
+    background-color: purple;
+}
+
+.white {
     background-color: whitesmoke;
 }
+
 /*the body of the popcorn box*/
-.container{
+.container {
     display: flex;
     justify-content: space-evenly;
     margin: 0em 1em;
 }
+
 /* The properties of every individual box */
 
-#pop_1, #pop_2,
-#pop_3, #pop_4,
-#pop_5, #pop_6{
-  display: none;
-  visibility: hidden;
+#pop_1,
+#pop_2,
+#pop_3,
+#pop_4,
+#pop_5,
+#pop_6 {
+    display: none;
+    visibility: hidden;
 }

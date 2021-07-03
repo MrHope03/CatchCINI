@@ -129,3 +129,9 @@
      animation stops */
     animation-timing-function: linear;
 }
+
+.box_1, .box_2,
+.box_3, .box_4,
+.box_5, .box_6{
+  animation-delay: 1s;
+}

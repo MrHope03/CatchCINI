@@ -11,8 +11,8 @@ if (!$con) {
 //remove below comments after finishing dependent checks
 //$username = $_SESSION["username"];
 //$ref = $_POST["ref"];
-$ref = '2guj2llk';
-//$ref = '1to0pob5';
+//$ref = '2guj2llk'
+$ref = '1to0pob5';
 $cmd = "SELECT username FROM polls where ref LIKE '%$ref%'";
 $data = mysqli_query($con, $cmd);
 $row = mysqli_fetch_assoc($data);
@@ -37,6 +37,7 @@ for($i = 1; $i <= $tot_opts; $i++)
   <head>
     <meta charset="utf-8">
     <script src="https://kit.fontawesome.com/704ddf1c0b.js" crossorigin="anonymous"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="form_style.css">
     <link rel="stylesheet" href="pop_animate.css">
     <title><?php $ques ?></title>
@@ -101,9 +102,9 @@ for($i = 1; $i <= $tot_opts; $i++)
     </div>
     <div id="graph-contain">
       <div id="y-legend">
-          <div>100</div>
-          <div>50</div>
-          <div>0</div>
+          <div class="bottom-space">100</div>
+          <div class="top-space bottom-space">50</div>
+          <div class="top-space">0</div>
       </div>
     <div id="graph">
         <div id="pop_1" class="popcorn">
@@ -265,7 +266,7 @@ for($i = 1; $i <= $tot_opts; $i++)
       $data = mysqli_query($con,$cmd);
       $cmd = "UPDATE polls SET total_count = IFNULL(total_count,0) + 1 WHERE ref LIKE '%$ref%'";
       $data = mysqli_query($con,$cmd);
-      echo "<script>alert('Click to view results!');</script>";
+      //echo "<script>alert('Click to view results!');</script>";
     }
     if (isset($_POST["check"])){
       $cmd = "SELECT * from $username where ref LIKE '%$ref%'";
@@ -282,10 +283,17 @@ for($i = 1; $i <= $tot_opts; $i++)
       echo "var graph_data = [];";
       for($i = 1; $i <= $tot_opts; $i++){
         //echo "document.getElementById('pop_$i').style.visibility = 'visible';";
+        echo "document.getElementById('$i').classList.add('color_$i');";
         $temp = ($row['count_'.$i]/$row['total_count'])*400;
         echo "graph_data[$i] = $temp;";
         //echo "alert(graph_data[$i-1]);";
       }
+      echo "$(document).ready(function(){";
+      echo '$("html, body").animate({';
+      echo "scrollTop: $('#graph-contain').offset().top";
+      echo "}, 1000)";
+      echo "});";
+      echo "setTimeout(state_change, 1000);";
       echo "var total = $tot_opts;";
       echo "var graph_w = ((total*(67 + (1.2*16*2))));";
       echo "document.getElementById('graph').style.width = graph_w+'px';";
@@ -295,6 +303,8 @@ for($i = 1; $i <= $tot_opts; $i++)
       echo "document.getElementById('pop_'+i).style.display = 'flex';";
       echo "var r = document.querySelector(':root');";
       echo " r.style.setProperty(size[i], graph_data[i]+'px');";
+      echo "}";
+      echo "function state_change(){";
       echo "}";
       //echo "for(var i=0; i<1; i++)";
       //echo "{";
