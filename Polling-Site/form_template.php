@@ -9,7 +9,9 @@ if (!$con) {
     echo '<script> alert("Server Down!!! Try again Later"); </script>';
 }
 //remove below comments after finishing dependent checks
+if (isset($_SESSION["username"])){
 $username = $_SESSION["username"];
+}
 $ref = $_GET["ref"];
 $url = "form_template.php?ref=".$ref;
 $cmd = "SELECT * FROM polls where ref LIKE '%$ref%'";
@@ -23,8 +25,23 @@ for($i = 1; $i <= $total_options; $i++)
   $options[$i]=$row["option_$i"];
   $count[$i]=$row["count_$i"];
 }
+if(isset($username)){
 if($actual_username==$username){
   $flag = 1;
+  if (isset($_POST["check"])){
+    echo "<script> function onload(){";
+    echo "butt = document.getElementById('button');";
+    echo "butt.value = 'Results';";
+    echo "butt.style.color = 'grey';";
+    echo "butt.style.opacity = '50%';";
+    echo "butt.style.backgroundColor = 'darkgrey';";
+    echo "butt.style.border = '0px';";
+    echo "butt.classList.remove('button-style-hover');";
+    echo "butt.classList.remove('button-style-active');";
+    echo "butt.type = 'button';";
+    echo "</script>";
+  }
+  else{
   echo '<script> function onload(){
       butt = document.getElementById("button");
       butt.type = "submit";
@@ -37,7 +54,11 @@ if($actual_username==$username){
       butt.classList.add("button-style-active");
       }
      </script>';
-} else {
+   }
+}
+else{
+  $flag = 0;
+}} else {
   $flag = 0;
 }
 ?>
@@ -302,6 +323,7 @@ if($actual_username==$username){
     <?php
     if(isset($_POST['hidden-value'])){
       $upd_id = $_POST['hidden-value'];
+      if (!$flag){
       $cmd = "UPDATE $actual_username SET $upd_id = IFNULL($upd_id,0) + 1 WHERE ref LIKE '%$ref%'";
       $data = mysqli_query($con,$cmd);
       $cmd = "UPDATE polls SET $upd_id = IFNULL($upd_id,0) + 1 WHERE ref LIKE '%$ref%'";
@@ -310,6 +332,7 @@ if($actual_username==$username){
       $data = mysqli_query($con,$cmd);
       $cmd = "UPDATE polls SET total_count = IFNULL(total_count,0) + 1 WHERE ref LIKE '%$ref%'";
       $data = mysqli_query($con,$cmd);
+    }
       //echo "<script>alert('Click to view results!');</script>";
     }
     if (isset($_POST["check"])){
