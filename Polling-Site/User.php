@@ -160,7 +160,7 @@
               while(($row = mysqli_fetch_assoc($data))){
                   echo '<li class="box"  id='. $row['ref'].'>';
                   echo '<div class="item">'; //Add function manage_poll() to redirect for individual polls
-                  echo '<h3 onclick="view_poll();">'.$row["question"].'</h3>';
+                  echo '<h3 id="ref'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</h3>';
                   echo '<p> No of votes: '.$row["total_count"].'</p>';
                   echo '<i class="far fa-times-circle fa-2x close" onclick="remove(this.id);" id="rem'. $row['ref'].'"></i>';
                   echo '</div>';
@@ -200,8 +200,9 @@
     <script>
           
            // TODO: change the php hyperlink
-            function view_poll(){
-              location.href= "User.php";
+            function view_poll(ref){
+              var temp_ref = ref.slice(3);
+              location.href= "form_template.php?ref="+temp_ref;
             }
             function edit(){
                     document.getElementById('manage').innerHTML = "Confirm Changes";

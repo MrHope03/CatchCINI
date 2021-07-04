@@ -109,7 +109,7 @@
             }
           }
           else{
-            $cmd = "SELECT question,total_count FROM polls ORDER BY sno DESC";
+            $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC";
             $data = mysqli_query($con, $cmd);
           }
   ?>
@@ -121,7 +121,7 @@
               while(($row = mysqli_fetch_assoc($data))){
                   echo '<li class="box">';
                   echo '<div class="item">'; //Add function view_poll() to redirect for individual polls
-                  echo '<h3 onclick="view_poll();">'.$row["question"].'</h3>';
+                  echo '<h3 id="ref'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</h3>';
                   echo '<p> No of votes: '.$row["total_count"].'</p>';
                   echo '</div>';
                   echo '</li>';
@@ -148,9 +148,10 @@
             $('#query').keyup(send_data);
           });
 
-        function view_poll(){
-              location.href= "User.php"; // NEED TO ADD THE TEMPLATE PAGE LINKAGE TO THIS
-        }
+          function view_poll(ref){
+              var temp_ref = ref.slice(3);
+              location.href= "form_template.php?ref="+temp_ref;
+            }
         function search(){
           var msg = "";
 

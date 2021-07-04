@@ -15,7 +15,7 @@
         $i++;
     }
     if (!empty($array)){
-      $cmd = "SELECT question,total_count FROM polls WHERE question LIKE ";
+      $cmd = "SELECT question,total_count,ref FROM polls WHERE question LIKE ";
       for ($i = 0; $i < count($array); $i++){
         $str = $array[$i];
         $cmd .= "'%$str%'";
@@ -41,20 +41,20 @@
             $data = mysqli_query($con,$cmd);
           }
           else{
-            $cmd = "SELECT question,total_count FROM polls ORDER BY sno DESC";
+            $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC";
             $data = mysqli_query($con, $cmd);
           }
       }
     }
     else{
-      $cmd = "SELECT question,total_count FROM polls ORDER BY sno DESC";
+      $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC";
       $data = mysqli_query($con, $cmd);
     }
       if($data) {
         while(($row = mysqli_fetch_assoc($data))){
             echo '<li class="box">';
             echo '<div class="item">'; //Add function view_poll() to redirect for individual polls
-            echo '<h3 onclick="view_poll();">'.$row["question"].'</h3>';
+            echo '<h3 id="ref'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</h3>';
             echo '<p> No of votes: '.$row["total_count"].'</p>';
             echo '</div>';
             echo '</li>';

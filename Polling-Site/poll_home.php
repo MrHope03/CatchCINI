@@ -17,13 +17,14 @@
     } else {
       $max_limit = $total_polls;
     }
-    $cmd = "SELECT question,total_count FROM polls ORDER BY total_count DESC";
+    $cmd = "SELECT question,total_count,ref FROM polls ORDER BY total_count DESC";
     $data = mysqli_query($con, $cmd);
     $i = 1;
     if($data) {
       while(($row = mysqli_fetch_assoc($data)) && $i<=$max_limit){
           $question[$i-1] = $row["question"];
           $total_count[$i-1] = "No of votes: ".$row["total_count"];
+          $ref[$i-1] = $row["ref"];
           $i++;
       }
     }
@@ -95,26 +96,26 @@
     <div class="sub-heading">Check Out Popular Polls</div>
     <ul class="universe">
       <li class="box">
-        <div onclick="location.href=''" class="item">
-          <h3><?php if(isset($question[0])){echo $question[0];} else {echo $null_msg;} ?></h3>
+        <div  class="item">
+          <h3 id=<?php if(isset($ref[0])){echo $ref[0];} ?> onclick="view_polls(this.id)"><?php if(isset($question[0])){echo $question[0];} else {echo $null_msg;} ?></h3>
           <p><?php if(isset($total_count[0])){echo $total_count[0];} else {echo $create_msg;} ?></p>
         </div>
       </li>
       <li class="box">
-        <div onclick="location.href=''" class="item">
-          <h3><?php if(isset($question[1])){echo $question[1];} else {echo $null_msg;} ?></h3>
+        <div  class="item">
+          <h3 id=<?php if(isset($ref[1])){echo $ref[1];}?> onclick="view_polls(this.id)"><?php if(isset($question[1])){echo $question[1];} else {echo $null_msg;} ?></h3>
           <p><?php if(isset($total_count[1])){echo $total_count[1];} else {echo $create_msg;} ?></p>
         </div>
       </li>
       <li class="box">
-        <div onclick="location.href=''" class="item">
-          <h3><?php if(isset($question[2])){echo $question[2];} else {echo $null_msg;} ?></h3>
+        <div  class="item">
+          <h3 id=<?php if(isset($ref[2])){echo $ref[2];}?> onclick="view_polls(this.id)"><?php if(isset($question[2])){echo $question[2];} else {echo $null_msg;} ?></h3>
           <p><?php if(isset($total_count[2])){echo $total_count[2];} else {echo $create_msg;} ?></p>
         </div>
       </li>
       <li  class="box">
-        <div onclick="location.href=''" class="item">
-          <h3><?php if(isset($question[3])){echo $question[3];} else {echo $null_msg;} ?></h3>
+        <div  class="item">
+          <h3 id=<?php if(isset($ref[3])){echo $ref[3];}?> onclick="view_polls(this.id)"><?php if(isset($question[3])){echo $question[3];} else {echo $null_msg;} ?></h3>
           <p><?php if(isset($total_count[3])){echo $total_count[3];} else {echo $create_msg;} ?></p>
         </div>
       </li>
@@ -145,3 +146,9 @@
   </footer>
   </body>
 </html>
+<script>
+  function view_polls(id){
+    location.href = "form_template.php?ref=" + id;
+  }
+</script>
+
