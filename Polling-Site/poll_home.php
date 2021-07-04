@@ -22,6 +22,7 @@
     $i = 1;
     if($data) {
       while(($row = mysqli_fetch_assoc($data)) && $i<=$max_limit){
+        if ($row["total_count"]==NULL) {$row["total_count"]=0;}
           $question[$i-1] = $row["question"];
           $total_count[$i-1] = "No of votes: ".$row["total_count"];
           $ref[$i-1] = $row["ref"];

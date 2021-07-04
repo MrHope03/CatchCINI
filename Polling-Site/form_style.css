@@ -199,6 +199,7 @@ body {
 /* the graph for the page */
 #graph {
     display: inherit;
+    height: 403px;
     margin: 10px;
     border-style: solid;
     border-color: black;
@@ -209,11 +210,10 @@ body {
 /* Indivual popcorn height */
 .popcorn {
     display: flex;
-    margin: 1.2em;
+    margin: 0 1.2em;
     align-content: center;
     /* To place the popcorn in the center horizontally*/
     /* IMPORTANT */
-    height: 400px;
     /*The max height the popcorn could grow */
     flex-direction: column;
     /*Makes the corn stick together with the box */
@@ -225,8 +225,9 @@ body {
 
 /* CHange acc */
 img {
-    width: 40px;
+    width: 35px;
     height: 18px;
+    opacity: 60%;
 }
 
 .red {
@@ -262,6 +263,7 @@ img {
     display: flex;
     justify-content: space-evenly;
     margin: 0em 1em;
+    opacity: 60%;
 }
 
 /* The properties of every individual box */
@@ -274,4 +276,25 @@ img {
 #pop_6 {
     display: none;
     visibility: hidden;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  background-color: whitesmoke;
+  color: black;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 35%;
+  font-size: 2em;
+  font-family: 'Heebo', sans-serif;
+  border: rgb(11, 174, 185) 2.5px solid;
+  border-radius: 50px;
+  padding: 0px 20px;
 }

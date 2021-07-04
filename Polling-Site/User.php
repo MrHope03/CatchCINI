@@ -16,7 +16,7 @@
     if (!$con) {
         echo '<script> alert("Server Down!!! Try again Later"); </script>';
     }
-    
+
     $i = 0;
     $array = array();
     while(!empty($_GET['var'.$i])){
@@ -34,8 +34,8 @@
             echo "couldn't delete";
         }
       }
-    } 
-      
+    }
+
 
     $cmd = "SELECT first_name,last_name,mail,phone_no,username FROM user_details";
     $data = mysqli_query($con, $cmd);
@@ -47,7 +47,7 @@
                 $last_name = $row["last_name"];
                 $mail = $row["mail"];
                 break;
-            }  
+            }
         }
     }
     $cmd = "SELECT COUNT(*) FROM $username";
@@ -68,7 +68,7 @@
             document.getElementById("poll_question_01").innerHTML = "hello"; }
             a();
     </script>
-    
+
     <link rel="stylesheet" href="main-template.css">
     <link rel="stylesheet" href="User-profile.css">
     <link rel="stylesheet" href="box-arrange.css">
@@ -150,7 +150,7 @@
         <button class="btn new-poll manage"  id="manage" onclick="edit();">Manage My Polls</button>
         <span id="reset" onclick="refresh();"><i class="fas fa-undo fa-2x reset"></i></span>
     </div>
-    
+
     <section>
         <div class="sub-heading">Your Polls</div>
         <ul class="universe" id="polls">
@@ -158,6 +158,7 @@
           function read($data){
             if($data) {
               while(($row = mysqli_fetch_assoc($data))){
+                  if ($row["total_count"]==NULL) {$row["total_count"]=0;}
                   echo '<li class="box"  id='. $row['ref'].'>';
                   echo '<div class="item">'; //Add function manage_poll() to redirect for individual polls
                   echo '<h3 id="ref'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</h3>';
@@ -198,7 +199,7 @@
     </footer>
     </body>
     <script>
-          
+
            // TODO: change the php hyperlink
             function view_poll(ref){
               var temp_ref = ref.slice(3);
@@ -254,5 +255,5 @@
               window.location.href = msg;
             }
     </script>
-    
+
   </html>
