@@ -20,6 +20,7 @@
     </script>
     <link rel="stylesheet" href="main-template.css">
     <link rel="stylesheet" href="box-arrange.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
       body{
           background-color: #ffebcd25;
@@ -62,7 +63,8 @@
           <h1 class="main-heading">Popcorn Meter</h1>
       </div>
       <div class="search-bar">
-           <textarea id="query"></textarea><i class="fas fa-search fa-2x" onclick="search();"></i>
+          <i class="fas fa-search fa-2x"></i>
+           <input type="text" id="query"></input>
       </div>
   </header>
 
@@ -108,8 +110,8 @@
           }
           else{
             $cmd = "SELECT question,total_count FROM polls ORDER BY sno DESC";
-            $data = mysqli_query($con, $cmd); 
-          } 
+            $data = mysqli_query($con, $cmd);
+          }
   ?>
   <section>
         <ul class="universe" id="polls">
@@ -131,11 +133,26 @@
         </ul>
   </section>
     <script>
+
+        $(document).ready(function(){
+            function send_data(){
+              $.ajax({
+                  type: "GET",
+                  url: "poll_cache.php",
+                  data: search(),
+                success:function(data){
+                  document.getElementById('polls').innerHTML = data;
+                }
+              });
+            }
+            $('#query').keyup(send_data);
+          });
+
         function view_poll(){
               location.href= "User.php"; // NEED TO ADD THE TEMPLATE PAGE LINKAGE TO THIS
         }
         function search(){
-          var msg = "poll_search.php?";
+          var msg = "";
 
           var query = document.getElementById('query').value;
           query = query.trim();
@@ -147,7 +164,7 @@
                 msg += "&";
               }
             }
-            window.location.href = msg;
+            return msg;
         }
     </script>
   </body>
