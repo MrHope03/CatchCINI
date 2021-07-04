@@ -31,7 +31,6 @@ if($actual_username==$username){
   if (isset($_POST["check"])){
     echo "<script> function onload(){";
     echo "butt = document.getElementById('button');";
-    echo "butt.value = 'Results';";
     echo "butt.style.color = 'grey';";
     echo "butt.style.opacity = '50%';";
     echo "butt.style.backgroundColor = 'darkgrey';";
@@ -346,13 +345,18 @@ else{
       echo "sel_opt.style.borderColor = 'rgb(2, 84, 244)';";}
       echo "first_click = true;";
       echo "post_first_click = true;";
+      echo "document.getElementById('button').value = 'Results';";
       echo "document.getElementById('graph-contain').style.display = 'flex';";
       echo "var graph_data = [];";
       for($i = 1; $i <= $total_options; $i++){
         //echo "document.getElementById('pop_$i').style.visibility = 'visible';";
         //echo "document.getElementById('$i').classList.add('color_$i');";
+        if ($row['total_count']!=0){
         $temp = ($row['count_'.$i]/$row['total_count'])*400;
-        echo "graph_data[$i] = $temp;";
+        echo "graph_data[$i] = $temp;";}
+        else{
+          echo "graph_data[$i] = 0;";
+        }
         //echo "alert(graph_data[$i-1]);";
       }
       echo "$(document).ready(function(){";
@@ -372,7 +376,7 @@ else{
       echo "document.getElementById('tool_'+i).style.width = (txt+4)+'em';";
       echo "document.getElementById('tool_'+i).style.marginTop = (400-70-graph_data[i])+'px';";
       echo "var r = document.querySelector(':root');";
-      echo " r.style.setProperty(size[i], (graph_data[i]-18)+'px');";
+      echo " r.style.setProperty(size[i], (graph_data[i])+'px');";
       echo "}";
       //echo "for(var i=0; i<1; i++)";
       //echo "{";
