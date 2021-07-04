@@ -119,6 +119,7 @@
           function read($data){
             if($data) {
               while(($row = mysqli_fetch_assoc($data))){
+                if ($row["total_count"]==NULL) {$row["total_count"]=0;}
                   echo '<li class="box">';
                   echo '<div class="item">'; //Add function view_poll() to redirect for individual polls
                   echo '<h3 onclick="view_poll();">'.$row["question"].'</h3>';

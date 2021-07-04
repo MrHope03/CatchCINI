@@ -107,7 +107,8 @@ for($i = 1; $i <= $tot_opts; $i++)
           <div class="top-space">0</div>
       </div>
     <div id="graph">
-        <div id="pop_1" class="popcorn">
+        <div id="pop_1" class="popcorn tooltip">
+          <span class="tooltiptext" id="tool_1"></span>
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
@@ -122,7 +123,8 @@ for($i = 1; $i <= $tot_opts; $i++)
                 <div class="red box_1"></div>
             </div>
         </div>
-        <div id="pop_2" class="popcorn">
+        <div id="pop_2" class="popcorn tooltip">
+            <span class="tooltiptext" id="tool_2"></span>
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
@@ -137,7 +139,8 @@ for($i = 1; $i <= $tot_opts; $i++)
                 <div class="black box_2"></div>
             </div>
         </div>
-        <div id="pop_3" class="popcorn">
+        <div id="pop_3" class="popcorn tooltip">
+            <span class="tooltiptext" id="tool_3"></span>
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
@@ -152,7 +155,8 @@ for($i = 1; $i <= $tot_opts; $i++)
                 <div class="blue box_3"></div>
             </div>
         </div>
-        <div id="pop_4" class="popcorn">
+        <div id="pop_4" class="popcorn tooltip">
+            <span class="tooltiptext" id="tool_4"></span>
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
@@ -167,7 +171,8 @@ for($i = 1; $i <= $tot_opts; $i++)
                 <div class="green box_4"></div>
             </div>
         </div>
-        <div id="pop_5" class="popcorn">
+        <div id="pop_5" class="popcorn tooltip">
+            <span class="tooltiptext" id="tool_5"></span>
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
@@ -182,7 +187,8 @@ for($i = 1; $i <= $tot_opts; $i++)
                 <div class="purple box_5"></div>
             </div>
         </div>
-        <div id="pop_6" class="popcorn">
+        <div id="pop_6" class="popcorn tooltip">
+            <span class="tooltiptext" id="tool_6"></span>
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
@@ -203,6 +209,30 @@ for($i = 1; $i <= $tot_opts; $i++)
     </section>
 
     <script>
+    $('.container').mouseenter(function(){
+      $(this).css("opacity", "100%");
+      $(this).prev().css("opacity", "100%");
+      $(this).prev().prev().css("visibility","visible");
+    });
+
+    $('.container').mouseleave(function(){
+      $(this).css("opacity", "60%");
+      $(this).prev().css("opacity", "60%");
+      $(this).prev().prev().css("visibility","hidden");
+    });
+
+    $('img').mouseenter(function(){
+      $(this).css("opacity", "100%");
+      $(this).next().css("opacity", "100%");
+      $(this).prev().css("visibility","visible");
+    });
+
+    $('img').mouseleave(function(){
+      $(this).css("opacity", "60%");
+      $(this).next().css("opacity", "60%");
+      $(this).prev().css("visibility","hidden");
+    });
+
     function isOverflown(element) {
       return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
     }
@@ -283,7 +313,7 @@ for($i = 1; $i <= $tot_opts; $i++)
       echo "var graph_data = [];";
       for($i = 1; $i <= $tot_opts; $i++){
         //echo "document.getElementById('pop_$i').style.visibility = 'visible';";
-        echo "document.getElementById('$i').classList.add('color_$i');";
+        //echo "document.getElementById('$i').classList.add('color_$i');";
         $temp = ($row['count_'.$i]/$row['total_count'])*400;
         echo "graph_data[$i] = $temp;";
         //echo "alert(graph_data[$i-1]);";
@@ -293,7 +323,6 @@ for($i = 1; $i <= $tot_opts; $i++)
       echo "scrollTop: $('#graph-contain').offset().top";
       echo "}, 1000)";
       echo "});";
-      echo "setTimeout(state_change, 1000);";
       echo "var total = $tot_opts;";
       echo "var graph_w = ((total*(67 + (1.2*16*2))));";
       echo "document.getElementById('graph').style.width = graph_w+'px';";
@@ -301,10 +330,12 @@ for($i = 1; $i <= $tot_opts; $i++)
       echo "for(var i = 1; i <= total; i++)";
       echo "{document.getElementById('pop_'+i).style.visibility = 'visible';";
       echo "document.getElementById('pop_'+i).style.display = 'flex';";
+      echo "document.getElementById('tool_'+i).innerHTML = Math.round(graph_data[i]/4) + '%' + ' - ' + document.getElementById(i).innerHTML;";
+      echo "var txt = document.getElementById(i).innerHTML.length;";
+      echo "document.getElementById('tool_'+i).style.width = (txt+4)+'em';";
+      echo "document.getElementById('tool_'+i).style.marginTop = (400-70-graph_data[i])+'px';";
       echo "var r = document.querySelector(':root');";
-      echo " r.style.setProperty(size[i], graph_data[i]+'px');";
-      echo "}";
-      echo "function state_change(){";
+      echo " r.style.setProperty(size[i], (graph_data[i]-18)+'px');";
       echo "}";
       //echo "for(var i=0; i<1; i++)";
       //echo "{";

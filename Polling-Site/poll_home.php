@@ -22,6 +22,7 @@
     $i = 1;
     if($data) {
       while(($row = mysqli_fetch_assoc($data)) && $i<=$max_limit){
+        if ($row["total_count"]==NULL) {$row["total_count"]=0;}
           $question[$i-1] = $row["question"];
           $total_count[$i-1] = "No of votes: ".$row["total_count"];
           $i++;
@@ -97,25 +98,25 @@
       <li class="box">
         <div onclick="location.href=''" class="item">
           <h3><?php if(isset($question[0])){echo $question[0];} else {echo $null_msg;} ?></h3>
-          <p><?php if(isset($total_count[0])){echo $total_count[0];} else {echo $create_msg;} ?></p>
+          <p><?php if(isset($total_count[0])){if ($total_count[0]==NULL) {$total_count[0]=0;}echo $total_count[0];} else {echo $create_msg;} ?></p>
         </div>
       </li>
       <li class="box">
         <div onclick="location.href=''" class="item">
           <h3><?php if(isset($question[1])){echo $question[1];} else {echo $null_msg;} ?></h3>
-          <p><?php if(isset($total_count[1])){echo $total_count[1];} else {echo $create_msg;} ?></p>
+          <p><?php if(isset($total_count[1])){if ($total_count[1]==NULL) {$total_count[1]=0;}echo $total_count[1];} else {echo $create_msg;} ?></p>
         </div>
       </li>
       <li class="box">
         <div onclick="location.href=''" class="item">
           <h3><?php if(isset($question[2])){echo $question[2];} else {echo $null_msg;} ?></h3>
-          <p><?php if(isset($total_count[2])){echo $total_count[2];} else {echo $create_msg;} ?></p>
+          <p><?php if(isset($total_count[2])){if ($total_count[2]==NULL) {$total_count[2]=0;}echo $total_count[2];} else {echo $create_msg;} ?></p>
         </div>
       </li>
       <li  class="box">
         <div onclick="location.href=''" class="item">
           <h3><?php if(isset($question[3])){echo $question[3];} else {echo $null_msg;} ?></h3>
-          <p><?php if(isset($total_count[3])){echo $total_count[3];} else {echo $create_msg;} ?></p>
+          <p><?php if(isset($total_count[3])){if ($total_count[3]==NULL) {$total_count[3]=0;}echo $total_count[3];} else {echo $create_msg;} ?></p>
         </div>
       </li>
       <li>
