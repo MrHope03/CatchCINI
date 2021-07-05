@@ -14,7 +14,6 @@
             background-image: url('Movie.jpg');
             background-blend-mode: overlay;
         }
-      
     </style>
   </head>
   <body>
@@ -28,7 +27,7 @@
                     Popcorn Meter
                 </li>
                 <li>
-                    <a href="../Polling-Site/User.php"><i class="fas fa-user fa-2x"></i></a>
+                    <a href="../Polling-Site/User.php" title="User Profile"><i class="fas fa-user fa-2x"></i></a>
                 </li>
                 <li class="movie">
                     <a href="../movie-center/movie_home.php"><i class="fas fa-film fa-2x"></i></a>
@@ -107,5 +106,14 @@
             ></a>
         </div>
     </footer>
+    <script>
+            function movie_rating(rating){
+            // ratiing is the variable
+            for (let i = 0; i < rating; i++){
+                document.getElementById('r-'+i).style.color = "gold";
+            }
+            }
+            movie_rating(4); // Substitute rating varaible in here
+    </script>
   </body>
 </html>

@@ -52,12 +52,7 @@
     }
     $cmd = "SELECT COUNT(*) FROM $username";
     $data = mysqli_query($con, $cmd);
-    if ($data){
     $total_polls = mysqli_fetch_row($data)[0];
-    }
-    else{
-    $total_polls = 0;
-    }
     $cmd = "SELECT question,total_count,ref FROM $username ORDER BY sno DESC";
     $data = mysqli_query($con, $cmd);
 ?>
@@ -114,7 +109,7 @@
               Popcorn Meter
             </li>
             <li>
-                <a href="User.php"><i class="fas fa-user fa-2x"></i></a>
+                <a href="User.php" title="User Profile"><i class="fas fa-user fa-2x"></i></a>
             </li>
             <li class="movie">
                 <a href="../movie-center/movie_home.php"><i class="fas fa-film fa-2x"></i></a>

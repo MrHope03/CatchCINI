@@ -53,7 +53,7 @@
                 Popcorn Meter
               </li>
               <li>
-                  <a href="User.php"><i class="fas fa-user fa-2x"></i></a>
+                  <a href="User.php" title="User Profile"><i class="fas fa-user fa-2x"></i></a>
               </li>
               <li class="movie">
               <!-- CAn't able to link to movie center -->
@@ -68,8 +68,10 @@
           <h1 class="main-heading">Popcorn Meter</h1>
       </div>
       <div class="search-bar">
-          <i class="fas fa-search fa-2x"></i>
            <input type="text" id="query"></input>
+           <i class="fas fa-search fa-2x" onclick="complete_search();"></i>
+              <ul id="query-ans">
+              </ul>
       </div>
   </header>
 
@@ -82,7 +84,7 @@
               $i++;
           }
           if (!empty($array)){
-            $cmd = "SELECT question,total_count FROM polls WHERE question LIKE ";
+            $cmd = "SELECT question,total_count,ref FROM polls WHERE question LIKE ";
             for ($i = 0; $i < count($array); $i++){
               $str = $array[$i];
               $cmd .= "'%$str%'";
@@ -90,7 +92,7 @@
                 $cmd .= "AND question LIKE";
               }
             }
-            $cmd_2 = str_replace("question,total_count",'COUNT(*)',$cmd);
+            $cmd_2 = str_replace("question,total_count,ref",'COUNT(*)',$cmd);
             $ct_info = mysqli_query($con, $cmd_2);
             $count = mysqli_fetch_row($ct_info)[0];
             if ($count > 0){
@@ -108,7 +110,7 @@
                   $data = mysqli_query($con,$cmd);
                 }
                 else{
-                  $cmd = "SELECT question,total_count FROM polls ORDER BY sno DESC";
+                  $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC";
                   $data = mysqli_query($con, $cmd);
                 }
             }
@@ -147,13 +149,18 @@
                   url: "poll_cache.php",
                   data: search(),
                 success:function(data){
-                  document.getElementById('polls').innerHTML = data;
+                  document.getElementById('query-ans').innerHTML = data;
                 }
               });
             }
+            
             $('#query').keyup(send_data);
           });
 
+          function no_search(){
+              document.getElementById('query-ans').innerHTML = "";
+          }
+          document.getElementById('query').addEventListener('blur',no_search);
           function view_poll(ref){
               var temp_ref = ref.slice(3);
               location.href= "form_template.php?ref="+temp_ref;
@@ -172,6 +179,20 @@
               }
             }
             return msg;
+        }
+        function complete_search(){
+          var msg = "poll_search.php?";
+          var query = document.getElementById('query').value;
+          query = query.trim();
+          var search_string = query.split(' ');
+          for (let i = 0; i < search_string.length; i++){
+            let str = search_string[i];
+              msg += ("var"+i+"="+str);
+              if (i != (search_string.length - 1)){
+                msg += "&";
+              }
+            }
+          window.location.href = msg;
         }
     </script>
   </body>
