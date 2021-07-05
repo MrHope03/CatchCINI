@@ -52,7 +52,12 @@
     }
     $cmd = "SELECT COUNT(*) FROM $username";
     $data = mysqli_query($con, $cmd);
+    if ($data){
     $total_polls = mysqli_fetch_row($data)[0];
+    }
+    else{
+    $total_polls = 0;
+    }
     $cmd = "SELECT question,total_count,ref FROM $username ORDER BY sno DESC";
     $data = mysqli_query($con, $cmd);
 ?>
