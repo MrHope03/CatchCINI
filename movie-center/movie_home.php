@@ -14,26 +14,7 @@
             background-image: url('Movie.jpg');
             background-blend-mode: overlay;
         }
-      body{
-            background-image: url('giphy.gif');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-blend-mode: color-dodge;
-            background-color: #ffebcd25;
-            background-position: center;
-            background-size: 70vw;
-      }
-      @media (min-width : 1040px){
-        body{
-          background-image: url('tenor.gif');
-          background-attachment: fixed;
-          background-repeat: no-repeat;
-          background-blend-mode:lighten;
-          background-color: #ffebcd25;
-          background-position: bottom right;
-          background-size: 20vw;
-        }
-      }
+      
     </style>
   </head>
   <body>
