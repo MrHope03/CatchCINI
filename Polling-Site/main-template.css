@@ -9,6 +9,7 @@ html,body{
     margin: 0px;
     padding: 0px;
 }
+/* Heading styling */
 .header{
     /* Changed the blend to soft light it seemed better */
     background-image: url('poll.jpg');
@@ -81,6 +82,7 @@ html,body{
         visibility: hidden;
     }
 }
+/* container styling */
 .container{
     display: flex;
     justify-content:center;
@@ -91,7 +93,7 @@ html,body{
 .box{
     border: 2px solid black;
     margin: 1.5em auto;
-    width: 650px;
+    max-width: 650px;
     color: black;
     font-family: 'Orbitron',sans-serif;
 }
@@ -147,9 +149,11 @@ html,body{
     width: 75%;
     font-size: 1em;
 }
+/* Close option */
 .close{
     color: #ff0202;
 }   
+/* edit option */
 .edit{
     color: gray;
 }
@@ -170,6 +174,7 @@ html,body{
     margin: 25px auto 15px;
     border: 2px groove red;
 }
+/* footer */
 .end-credit{
     text-align: center;
     font-family: 'Heebo',sans-serif ;
@@ -200,6 +205,7 @@ section.box{
     font-size: 1.5em;
     text-align: center;
 }
+/* link to search */
 .link{
     text-align: center;
     font-family: 'Orbitron',sans-serif;

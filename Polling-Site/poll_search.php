@@ -22,6 +22,10 @@
     <link rel="stylesheet" href="box-arrange.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
+    .header{
+      background-image: url('search.png');
+      background-position: center;
+    }
       body{
           background-color: #ffebcd25;
       }
@@ -52,7 +56,8 @@
                   <a href="User.php"><i class="fas fa-user fa-2x"></i></a>
               </li>
               <li class="movie">
-                  <a href="movie_home.php"><i class="fas fa-film fa-2x"></i></a>
+              <!-- CAn't able to link to movie center -->
+                  <a href=".../movie-center/movie_home.php"><i class="fas fa-film fa-2x"></i></a>
               </li>
               <li class="web-tag r-tag">
                 Movie center

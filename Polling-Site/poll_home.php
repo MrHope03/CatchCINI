@@ -45,12 +45,13 @@
     <link rel="stylesheet" href="box-arrange.css">
     <style>
       body{
-          background-image: url('movie\ roll.png');
-          background-repeat: no-repeat;
-          background-blend-mode:multiply;
-          background-color: #ffebcd25;
-          background-position: center;
-          background-size: 800px;
+            background-image: url('giphy.gif');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-blend-mode: color-dodge;
+            background-color: #ffebcd25;
+            background-position: center;
+            background-size: 70vw;
       }
       @media (min-width : 1040px){
         body{
@@ -79,7 +80,7 @@
                   <a href="User.php"><i class="fas fa-user fa-2x"></i></a>
               </li>
               <li class="movie">
-                  <a href="movie_home.php"><i class="fas fa-film fa-2x"></i></a>
+                  <a href="../movie-center/movie_home.php"><i class="fas fa-film fa-2x"></i></a>
               </li>
               <li class="web-tag r-tag">
                 Movie center

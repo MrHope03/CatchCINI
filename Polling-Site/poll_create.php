@@ -32,7 +32,7 @@
             <a href="User.php"><i class="fas fa-user fa-2x"></i></a>
         </li>
         <li class="movie">
-            <a href="movie_home.php"><i class="fas fa-film fa-2x"></i></a>
+            <a href="../movie-center/movie_home.php"><i class="fas fa-film fa-2x"></i></a>
         </li>
         <li class="web-tag r-tag">
           Movie center

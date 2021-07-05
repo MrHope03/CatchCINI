@@ -73,12 +73,7 @@ else{
     <title><?php $ques ?></title>
     <style>
       body{
-          background-image: url('movie\ roll.png');
-          background-repeat: no-repeat;
-          background-blend-mode:multiply;
           background-color: #ffebcd25;
-          background-position: center;
-          background-size: 800px;
       }
       @media (min-width : 1040px){
         body{
@@ -107,7 +102,7 @@ else{
                   <a href="User.php"><i class="fas fa-user fa-2x"></i></a>
               </li>
               <li class="movie">
-                  <a href="movie_home.php"><i class="fas fa-film fa-2x"></i></a>
+                  <a href="../movie-center/movie_home.php"><i class="fas fa-film fa-2x"></i></a>
               </li>
               <li class="web-tag r-tag">
                 Movie center
