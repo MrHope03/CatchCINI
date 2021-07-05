@@ -160,7 +160,7 @@
           function no_search(){
               document.getElementById('query-ans').innerHTML = "";
           }
-          document.getElementById('query').addEventListener('blur',no_search);
+          document.getElementById('polls').addEventListener('mousedown',no_search);
           function view_poll(ref){
               var temp_ref = ref.slice(3);
               location.href= "form_template.php?ref="+temp_ref;
