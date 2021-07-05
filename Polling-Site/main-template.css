@@ -93,7 +93,7 @@ html,body{
 .box{
     border: 2px solid black;
     margin: 1.5em auto;
-    max-width: 650px;
+    max-width: 80%;
     color: black;
     font-family: 'Orbitron',sans-serif;
 }
