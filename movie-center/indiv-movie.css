@@ -114,13 +114,13 @@
     cursor: pointer;
 }
 #sr-0:hover ~ i{
-    color: blanchedalmond;
+    color: blanchedalmond !important;
 }#sr-1:hover ~ i{
-    color: blanchedalmond;
+    color: blanchedalmond !important;
 }#sr-2:hover ~ i{
-    color: blanchedalmond;
+    color: blanchedalmond !important;
 }#sr-3:hover ~ i{
-    color: blanchedalmond;
+    color: blanchedalmond !important;
 }#sr-4:hover ~ i{
-    color: blanchedalmond;
+    color: blanchedalmond !important;
 }

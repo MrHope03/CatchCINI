@@ -194,6 +194,9 @@
         movie_rating(4); // Substitute rating varaible in here
         function rate(id){
             id = Number(id.substring(3));
+            for (let i = 0; i <= 4; i++){
+                document.getElementById('sr-'+i).style.color = "whitesmoke";
+            }
             for (let i = 0; i <= id; i++){
                 document.getElementById('sr-'+i).style.color = "gold";
             }
