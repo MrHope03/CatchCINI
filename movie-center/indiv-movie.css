@@ -107,10 +107,20 @@
     margin: 3px;
 }
 .user-rating .fa-star{
+    color: whitesmoke;
+}
+.user-rating:hover  .fa-star{
+    color: gold;
+    cursor: pointer;
+}
+#sr-0:hover ~ i{
+    color: blanchedalmond;
+}#sr-1:hover ~ i{
+    color: blanchedalmond;
+}#sr-2:hover ~ i{
+    color: blanchedalmond;
+}#sr-3:hover ~ i{
+    color: blanchedalmond;
+}#sr-4:hover ~ i{
     color: blanchedalmond;
 }
-.user-rating .fa-star:hover{
-    color: gold;
-    cursor:pointer;
-}
-

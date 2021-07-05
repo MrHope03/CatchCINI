@@ -147,4 +147,7 @@ html,body{
 .fa-star{
     color: gold;
 }
+.fa-star:hover{
+    cursor:pointer;
+}
 

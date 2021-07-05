@@ -9,28 +9,6 @@
         ></script>
         <link rel="stylesheet" href="main-template.css" />
         <link rel="stylesheet" href="indiv-movie.css" />
-        <style>
-            body {
-                background-image: url("giphy.gif");
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-blend-mode: color-dodge;
-                background-color: #ffebcd25;
-                background-position: center;
-                background-size: 70vw;
-            }
-            @media (min-width: 1040px) {
-                body {
-                    background-image: url("tenor.gif");
-                    background-attachment: fixed;
-                    background-repeat: no-repeat;
-                    background-blend-mode: lighten;
-                    background-color: #ffebcd25;
-                    background-position: bottom right;
-                    background-size: 20vw;
-                }
-            }
-        </style>
     </head>
     <body>
         <header class="header">
@@ -161,11 +139,11 @@
             <div class="user-comments">
                 <span class="user">USERNAME - </span>
                 <span class="user-rating">
-                    <i class="fas fa-star fa-x" id="sr-0" onclick="rate(this.id)" onmouseover="color_star(this.id)" onmouseout="uncolor_star(this.id)"></i>
-                    <i class="fas fa-star fa-x" id="sr-1" onclick="rate(this.id)" onmouseover="color_star(this.id)" onmouseout="uncolor_star(this.id)"></i>
-                    <i class="fas fa-star fa-x" id="sr-2" onclick="rate(this.id)" onmouseover="color_star(this.id)" onmouseout="uncolor_star(this.id)"></i>
-                    <i class="fas fa-star fa-x" id="sr-3" onclick="rate(this.id)" onmouseover="color_star(this.id)" onmouseout="uncolor_star(this.id)"></i>
-                    <i class="fas fa-star fa-x" id="sr-4" onclick="rate(this.id)" onmouseover="color_star(this.id)" onmouseout="uncolor_star(this.id)"></i>
+                    <i class="fas fa-star fa-x" id="sr-0" onclick="rate(this.id)" ></i>
+                    <i class="fas fa-star fa-x" id="sr-1" onclick="rate(this.id)" ></i>
+                    <i class="fas fa-star fa-x" id="sr-2" onclick="rate(this.id)" ></i>
+                    <i class="fas fa-star fa-x" id="sr-3" onclick="rate(this.id)" ></i>
+                    <i class="fas fa-star fa-x" id="sr-4" onclick="rate(this.id)" ></i>
                 </span>
                 <div>
                     <textarea rows="3"></textarea>
@@ -214,23 +192,10 @@
             }
         }
         movie_rating(4); // Substitute rating varaible in here
-        function color_star(id){
-            id = Number(id.substring(3));
-            for (let i = 0; i <= id; i++){
-                document.getElementById('sr-'+i).style.color="gold";
-            }
-        }
-        function uncolor_star(id){
-            id = Number(id.substring(3));
-            for (let i = 0; i <= id; i++){
-                document.getElementById('sr-'+i).style.color="blanchedalmond";
-            }
-        }
         function rate(id){
             id = Number(id.substring(3));
             for (let i = 0; i <= id; i++){
-                document.getElementById('sr-'+i).style.color="gold";
-                document.getElementById('sr-'+i).removeEventListener('mouseout',uncolor_star);
+                document.getElementById('sr-'+i).style.color = "gold";
             }
         }
     </script>
