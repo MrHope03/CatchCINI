@@ -57,7 +57,7 @@
               </li>
               <li class="movie">
               <!-- CAn't able to link to movie center -->
-                  <a href=".../movie-center/movie_home.php"><i class="fas fa-film fa-2x"></i></a>
+                  <a href="../movie-center/movie_home.php"><i class="fas fa-film fa-2x"></i></a>
               </li>
               <li class="web-tag r-tag">
                 Movie center
