@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-*{
+* {
     box-sizing: border-box;
 }
-html,body{
+
+html,
+body {
     color: black;
     margin: 0px;
     padding: 0px;
 }
+
+
 /* Heading styling */
-.header{
+
+.header {
     /* Changed the blend to soft light it seemed better */
     background-image: url('poll.jpg');
     background-color: #111;
@@ -19,135 +24,188 @@ html,body{
     background-position: center right;
     height: 15em;
 }
-.nav{
+
+.nav {
     margin: 0px;
     padding: 0px;
     background-color: #00000055;
 }
-.nav ul{
+
+.nav ul {
     margin: 0px;
     padding: 0px;
     list-style-type: none;
     text-align: center;
     position: relative;
 }
-.nav ul li{
+
+.nav ul li {
     display: inline-block;
     padding: .5em 1.2em;
     margin: 0px;
     height: 3em;
 }
-.nav a,.btn{
+
+.nav a,
+.btn {
     color: #ffffffbb;
 }
-.nav a:hover,.btn:hover{
+
+.nav a:hover,
+.btn:hover {
     color: white;
     cursor: pointer;
 }
-.main-heading{
-    font-family: 'Stick', sans-serif ;
+
+.main-heading {
+    font-family: 'Stick', sans-serif;
     font-size: 3.2em;
     text-align: center;
     color: lightgoldenrodyellow;
 }
-.web-tag{
-    font-family: 'Stick',sans-serif;
+
+.web-tag {
+    font-family: 'Stick', sans-serif;
     font-size: 1.3em;
     text-decoration: underline;
     font-weight: bolder;
     letter-spacing: .15em;
-    color:rgb(250, 211, 250);
+    color: rgb(250, 211, 250);
 }
-.l-tag{
+
+.l-tag {
     position: absolute;
     left: 1.5em;
-    visibility: hidden;    
+    visibility: hidden;
 }
-.r-tag{
+
+.r-tag {
     position: absolute;
     right: 2em;
-    visibility: hidden;    
+    visibility: hidden;
 }
-.poll:hover + .l-tag{
-    visibility: visible;    
-}
-.movie:hover + .r-tag{
+
+.poll:hover+.l-tag {
     visibility: visible;
 }
-@media (max-width :800px){
-    .poll:hover + .l-tag{
-        visibility: hidden;    
+
+.movie:hover+.r-tag {
+    visibility: visible;
+}
+
+@media (max-width :800px) {
+    .poll:hover+.l-tag {
+        visibility: hidden;
     }
-    .movie:hover + .r-tag{
+    .movie:hover+.r-tag {
         visibility: hidden;
     }
 }
+
+
 /* container styling */
-.container{
+
+.container {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     position: relative;
     flex-grow: 0;
 }
- /* The poll box styling */
-.box{
+
+
+/* The poll box styling */
+
+.box {
     border: 2px solid black;
     margin: 1.5em auto;
     width: 60%;
     color: black;
-    font-family: 'Orbitron',sans-serif;
+    font-family: 'Orbitron', sans-serif;
 }
+
+
 /* footer */
-.end-credit{
+
+.end-credit {
     text-align: center;
-    font-family: 'Heebo',sans-serif ;
+    font-family: 'Heebo', sans-serif;
     background-color: #090909;
     font-size: 1em;
     margin: 0px;
     padding: 1em;
 }
+
+
 /* Coloring the box of create new poll */
-.search-bar{
+
+.search-bar {
     margin: auto;
     text-align: center;
 }
-.fa-search{
+
+.fa-search {
     vertical-align: top;
     color: lightgoldenrodyellow;
     margin: 0em 0.5em;
     font-size: 1.5em;
     opacity: 0.82;
 }
-.fa-search:hover{
+
+.fa-search:hover {
     opacity: 1;
-    cursor:pointer;
+    cursor: pointer;
     color: white;
 }
-#query{
+
+#query {
     width: 20em;
     height: 25px;
     resize: none;
 }
-.movie-tile{
+
+.movie-tile {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    align-items:center;
+    align-items: center;
 }
-.movie-tile div{
+
+.movie-tile div {
     margin: auto;
 }
-.sub-heading{
-    font-family: 'Stick', sans-serif ;
+
+.sub-heading {
+    font-family: 'Stick', sans-serif;
     font-size: 2em;
     text-align: center;
     color: lightgoldenrodyellow;
     margin: .5em;
 }
-.fa-star{
+
+.fa-star {
     color: gold;
 }
-.fa-star:hover{
+
+.fa-star:hover {
     cursor: pointer;
 }
 
+.star-ratings-sprite {
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+    font-size: 0;
+    height: 21px;
+    line-height: 0px;
+    overflow: hidden;
+    text-indent: -999em;
+    width: 110px;
+    margin: 10px auto;
+    float: left;
+}
+
+.star-ratings-sprite-rating {
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+    background-position: 0 100%;
+    float: left;
+    height: 21px;
+    display: block;
+}

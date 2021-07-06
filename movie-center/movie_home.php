@@ -72,6 +72,8 @@
             </div>
             <?php
             while($row = mysqli_fetch_assoc($data)){
+                $star = $row["star_rating"];
+                $percentage = ($star*100)/5;
                 echo  '<li class="box">';
                 echo  '<div class="item">';
                 echo  '<div class="movie-tile">';
@@ -84,12 +86,8 @@
                 echo  '<div>';
                 echo  '<p>'.$row["year"].'</p>';
                 echo  '</div>';
-                echo  '<div id="star_rating">';
-                echo  '<i class="fas fa-star fa-x"></i>';
-                echo  '<i class="fas fa-star fa-x"></i>';
-                echo  '<i class="fas fa-star fa-x"></i>';
-                echo  '<i class="fas fa-star fa-x"></i>';
-                echo  '<i class="fas fa-star fa-x"></i>';
+                echo  '<div id="star_rating" class="star-ratings-sprite">';
+                echo  '<span style="width:'.$percentage.'%" class="star-ratings-sprite-rating"></span>';
                 echo  '</div>';
                 echo  '</div>';
                 echo  '</div>';
@@ -120,13 +118,6 @@
             function redirect(id){
                 window.location.href = "movie-template.php?ref="+id;
             }
-            function movie_rating(rating){
-            // ratiing is the variable
-            for (let i = 0; i < rating; i++){
-                document.getElementById('r-'+i).style.color = "gold";
-            }
-            }
-            movie_rating(4); // Substitute rating varaible in here
     </script>
   </body>
 </html>

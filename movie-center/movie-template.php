@@ -34,6 +34,7 @@
     $crew_03 = $row["crew_03"];
     $trailer = $row["trailer"];
     $main_poster = $row["main_poster"];
+    $percentage = ($star_rating*100)/5;
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -73,12 +74,8 @@
             </nav>
             <div class="movie-heading" >
                 <h1><?=$movie_name?></h1>
-                <div class="movie-rating">
-                    <i class="fas fa-star fa-x" id="r-0"></i>
-                    <i class="fas fa-star fa-x" id="r-1"></i>
-                    <i class="fas fa-star fa-x" id="r-2"></i>
-                    <i class="fas fa-star fa-x" id="r-3"></i>
-                    <i class="fas fa-star fa-x" id="r-4"></i>
+                <div id="star_rating" class="movie-rating star-ratings-sprite">
+                    <span style="width:<?=$percentage?>%" class="star-ratings-sprite-rating"></span>
                 </div>
             </div>
         </header>
