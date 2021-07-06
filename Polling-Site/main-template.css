@@ -227,7 +227,8 @@ section.box{
     color: white;
 }
 #query{
-    width: 20em;
+    border-radius: 10px;
+    width: 60%;
     height: 25px;
     resize: none;
 }

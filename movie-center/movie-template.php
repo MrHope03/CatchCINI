@@ -22,7 +22,7 @@
                     <li class="web-tag l-tag">Popcorn Meter</li>
                     <li>
                         <a href="../Polling-Site/User.php"
-                            ><i class="fas fa-user fa-2x"></i
+                          title="User Profile"  ><i class="fas fa-user fa-2x"></i
                         ></a>
                     </li>
                     <li class="movie">
@@ -148,7 +148,7 @@
                 <div>
                     <textarea rows="3"></textarea>
                 </div>
-                <button onclick="submit()">SUBMIT</button>
+                <button class="submit-btn" onclick="submit()">SUBMIT</button>
             </div>
 
             <!-- READ COMMENTS INTO THIS DA -->

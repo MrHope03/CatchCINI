@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
 .universe{
     display: flex;
     flex-direction: column;
@@ -18,4 +19,27 @@
     cursor: pointer;
     background-color: rgb(228, 228, 228);
     box-shadow: 0px 5px 10px black;
+}
+#query-ans{
+    position: relative;
+    right: 26px ;
+    margin: auto;
+    list-style-type: none;
+    padding: 0px;
+    width: 60%;
+    box-shadow: 0px 2px 5px black;
+    border-radius: 0px 0px 5px 5px;
+    background-color: #222;
+}
+#query-ans li{
+    padding: 10px;
+    color: blanchedalmond;
+    font-family: "Raleway",sans-serif;
+    font-weight: 200;
+    letter-spacing: 1.5;
+}
+#query-ans li:hover{
+    background-color: #333;
+    cursor: pointer;
+    color: white;
 }

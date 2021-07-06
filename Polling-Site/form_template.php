@@ -44,6 +44,7 @@ if($actual_username==$username){
   echo '<script> function onload(){
       butt = document.getElementById("button");
       butt.type = "submit";
+      butt.value = "Results";
       butt.style.color = "black";
       butt.style.opacity = "100%";
       butt.style.backgroundColor = "rgb(245, 245, 245)";
@@ -98,7 +99,7 @@ else{
                 Popcorn Meter
               </li>
               <li>
-                  <a href="User.php"><i class="fas fa-user fa-2x"></i></a>
+                  <a href="User.php" title="User Profile"><i class="fas fa-user fa-2x"></i></a>
               </li>
               <li class="movie">
                   <a href="../movie-center/movie_home.php"><i class="fas fa-film fa-2x"></i></a>
@@ -123,11 +124,7 @@ else{
       } }
       ?>
     <div id="button-box">
-      <?php if ($flag){
-      echo '<input id="button" name="button" type="button" value="Results">';}
-      else {
-        echo '<input id="button" name="button" type="button" value="Vote">';}
-      ?>
+      <input id="button" name="button" type="button" value="Vote">
       <input type="hidden" name="hidden-value" id="hidden-value">
       <input type="hidden" name="check" value="true">
     </div>
@@ -343,6 +340,7 @@ else{
       echo "sel_opt.style.borderColor = 'rgb(2, 84, 244)';";}
       echo "first_click = true;";
       echo "post_first_click = true;";
+      echo "document.getElementById('button').value = 'Results';";
       echo "document.getElementById('graph-contain').style.display = 'flex';";
       echo "var graph_data = [];";
       for($i = 1; $i <= $total_options; $i++){
