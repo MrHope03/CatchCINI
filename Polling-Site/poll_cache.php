@@ -40,13 +40,13 @@
             $data = mysqli_query($con,$cmd);
           }
           else{
-            $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC LIMIT 3";
+            $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC LIMIT 0";
             $data = mysqli_query($con, $cmd);
           }
       }
     }
     else{
-      $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC LIMIT 3";
+      $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC LIMIT 0";
       $data = mysqli_query($con, $cmd);
     }
       if($data) {
