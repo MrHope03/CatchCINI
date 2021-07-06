@@ -1,8 +1,30 @@
+<?php
+    session_start();
+    $server = "localhost";
+    $user = "root";
+    $pass = "";
+    $db = "catchcini";
+    $con = mysqli_connect($server, $user, $pass, $db);
+    if (!$con) {
+        echo '<script> alert("Server Down!!! Try again Later"); </script>';
+    }
+
+    if (isset($_SESSION["username"])){
+    $username = $_SESSION["username"];
+    }
+
+    $cmd = "SELECT COUNT(*) FROM movie";
+    $data = mysqli_query($con, $cmd);
+    $total_movie = mysqli_fetch_row($data)[0];
+
+    $cmd = "SELECT home_poster,movie_name,year,star_rating,movie_ref FROM movie";
+    $data = mysqli_query($con, $cmd);
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Poll</title>
+    <title>Movie Site</title>
     <script
             src="https://kit.fontawesome.com/704ddf1c0b.js"
             crossorigin="anonymous">
@@ -48,44 +70,35 @@
                 <i class="fas fa-search fa-2x"></i>
                  <input type="text" id="query"></input>
             </div>
-            <li class="box">
-                <div class="item">
-                    <div class="movie-tile">
-                        <div>
-                            <img src="Jagame thandiram.gif" height="70px">
-                        </div>
-                        <div>
-                        <h3 class="movie-heading" onclick="location.href='movie-template.php'">JAGAME THANDIRAM</h3>
-                        </div>
-                        <div>
-                        <p>2021</p>
-                        </div>
-                        <div>
-                        <i class="fas fa-star fa-x"></i>
-                        <i class="fas fa-star fa-x"></i>
-                        <i class="fas fa-star fa-x"></i>
-                        <i class="fas fa-star fa-x"></i>
-                        <i class="fas fa-star fa-x"></i>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <!-- <?php
-            function read($data){
-              if($data) {
-                while(($row = mysqli_fetch_assoc($data))){
-                  if ($row["total_count"]==NULL) {$row["total_count"]=0;}
-                    echo '<li class="box">';
-                    echo '<div class="item">'; //Add function view_poll() to redirect for individual polls
-                    echo '<h3 id="ref'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</h3>';
-                    echo '<p> No of votes: '.$row["total_count"].'</p>';
-                    echo '</div>';
-                    echo '</li>';
-                }
-              }
+            <?php
+            while($row = mysqli_fetch_assoc($data)){
+                $i = 0;
+                $movie_ref[$i] = $row["movie_ref"];
+                echo  '<li class="box">';
+                echo  '<div class="item">';
+                echo  '<div class="movie-tile">';
+                echo  '<div>';
+                echo  '<img src="'.$row["home_poster"].'" height="70px">';
+                echo  '</div>';
+                echo  '<div>';
+                echo  '<h3 class="movie-heading" onclick="redirect()">'.$row["movie_name"].'</h3>';
+                echo  '</div>';
+                echo  '<div>';
+                echo  '<p>'.$row["year"].'</p>';
+                echo  '</div>';
+                echo  '<div id="star_rating">';
+                echo  '<i class="fas fa-star fa-x"></i>';
+                echo  '<i class="fas fa-star fa-x"></i>';
+                echo  '<i class="fas fa-star fa-x"></i>';
+                echo  '<i class="fas fa-star fa-x"></i>';
+                echo  '<i class="fas fa-star fa-x"></i>';
+                echo  '</div>';
+                echo  '</div>';
+                echo  '</div>';
+                echo  '</li>';
+                $i++;
             }
-            read($data);
-            ?> -->
+            ?>
         </ul>
     </section>
 
