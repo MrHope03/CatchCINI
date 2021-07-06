@@ -7,6 +7,7 @@
             src="https://kit.fontawesome.com/704ddf1c0b.js"
             crossorigin="anonymous"
         ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="main-template.css" />
         <link rel="stylesheet" href="indiv-movie.css" />
     </head>
@@ -127,7 +128,7 @@
         <section id="comments" class="comment-section">
             <h3 class="comm-heading">COMMENTS</h3>
             <div>
-                <i class="fas fa-filter fa-2x" onclick="filter()"></i> - 
+                <i class="fas fa-filter fa-2x" onclick="filter()"></i> -
                 <span>
                 <i class="fas fa-star fa-x"></i>
                 <i class="fas fa-star fa-x"></i>
@@ -185,6 +186,14 @@
         </footer>
     </body>
     <script>
+
+        $('a[href^="#"]').click(function() {
+            var href = $.attr(this, 'href');
+            $('html,body').animate({
+                scrollTop: $(href).offset().top
+            }, 500);
+        });
+
         function movie_rating(rating){
             // ratiing is the variable
             for (let i = 0; i < rating; i++){
