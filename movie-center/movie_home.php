@@ -72,8 +72,6 @@
             </div>
             <?php
             while($row = mysqli_fetch_assoc($data)){
-                $i = 0;
-                $movie_ref[$i] = $row["movie_ref"];
                 echo  '<li class="box">';
                 echo  '<div class="item">';
                 echo  '<div class="movie-tile">';
@@ -81,7 +79,7 @@
                 echo  '<img src="'.$row["home_poster"].'" height="70px">';
                 echo  '</div>';
                 echo  '<div>';
-                echo  '<h3 class="movie-heading" onclick="redirect()">'.$row["movie_name"].'</h3>';
+                echo  '<h3 class="movie-heading" id="'.$row["movie_ref"].'" onclick="redirect(this.id)">'.$row["movie_name"].'</h3>';
                 echo  '</div>';
                 echo  '<div>';
                 echo  '<p>'.$row["year"].'</p>';
@@ -96,7 +94,6 @@
                 echo  '</div>';
                 echo  '</div>';
                 echo  '</li>';
-                $i++;
             }
             ?>
         </ul>
@@ -120,6 +117,9 @@
         </div>
     </footer>
     <script>
+            function redirect(id){
+                window.location.href = "movie-template.php?ref="+id;
+            }
             function movie_rating(rating){
             // ratiing is the variable
             for (let i = 0; i < rating; i++){
