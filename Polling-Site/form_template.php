@@ -14,6 +14,7 @@ $username = $_SESSION["username"];
 }
 $ref = $_GET["ref"];
 $url = "form_template.php?ref=".$ref;
+$global_url = "https://localhost/catchCINI-main/Polling-Site/form_template.php?ref=".$ref;
 $cmd = "SELECT * FROM polls where ref LIKE '%$ref%'";
 $data = mysqli_query($con, $cmd);
 $row = mysqli_fetch_assoc($data);
@@ -111,6 +112,13 @@ else{
       </nav>
     <div>
       <h1 id="question"><?php echo $question; ?></h1>
+    </div>
+    <div>
+    <?php
+      if($flag){
+        echo '<h3 id="link">'.$global_url.'&nbsp;&nbsp;&nbsp;<button id="link_button" onclick="copy()"><i class="far fa-clipboard"></i> Copy </button></h3>';
+      }
+      ?>
     </div>
   </header>
   <section>
@@ -312,7 +320,17 @@ else{
         }
       }
     }
-
+    function copy() {
+      let link = document.getElementById("link");
+      let str = link.innerText;
+      let ele = document.createElement("textarea");
+      document.body.appendChild(ele);
+      ele.value = str.substr(0,str.length-7);
+      ele.select();
+      document.execCommand("copy");
+      document.body.removeChild(ele);
+      document.getElementById("link_button").innerHTML = '<i class="fas fa-clipboard"></i> Copied ';
+    }
     </script>
     <?php
     if(isset($_POST['hidden-value'])){

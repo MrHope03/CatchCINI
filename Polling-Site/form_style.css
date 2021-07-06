@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-
 * {
     box-sizing: border-box;
 }
@@ -60,8 +59,8 @@ body {
     font-size: 3.2em;
     text-align: center;
     color: lightgoldenrodyellow;
-    height: 3.75em;
-    margin: 0px;
+    height: 2.75 em;
+    margin: 0 px;
     overflow-y: scroll;
     overflow-wrap: break-word;
     -ms-overflow-style: none;
@@ -70,6 +69,11 @@ body {
 
 #question::-webkit-scrollbar {
     display: none;
+}
+
+#link {
+    text-align: center;
+    color: lightgoldenrodyellow;
 }
 
 .web-tag {
@@ -93,20 +97,19 @@ body {
     visibility: hidden;
 }
 
-.poll:hover + .l-tag {
+.poll:hover+.l-tag {
     visibility: visible;
 }
 
-.movie:hover + .r-tag {
+.movie:hover+.r-tag {
     visibility: visible;
 }
 
 @media (max-width :800px) {
-    .poll:hover + .l-tag {
+    .poll:hover+.l-tag {
         visibility: hidden;
     }
-
-    .movie:hover + .r-tag {
+    .movie:hover+.r-tag {
         visibility: hidden;
     }
 }
@@ -154,28 +157,28 @@ body {
     background-color: rgb(117, 117, 117) !important;
 }
 
-.color_1{
-  background: linear-gradient(90deg, white 95%, red 95%);
+.color_1 {
+    background: linear-gradient(90deg, white 95%, red 95%);
 }
 
-.color_2{
-  background: linear-gradient(90deg, white 95%, rgb(37, 53, 54) 95%);
+.color_2 {
+    background: linear-gradient(90deg, white 95%, rgb(37, 53, 54) 95%);
 }
 
-.color_3{
-  background: linear-gradient(90deg, white 95%, rgb(18, 151, 224) 95%);
+.color_3 {
+    background: linear-gradient(90deg, white 95%, rgb(18, 151, 224) 95%);
 }
 
-.color_4{
-  background: linear-gradient(90deg, white 95%, rgb(14, 172, 81) 95%);
+.color_4 {
+    background: linear-gradient(90deg, white 95%, rgb(14, 172, 81) 95%);
 }
 
-.color_5{
-  background: linear-gradient(90deg, white 95%, purple 95%);
+.color_5 {
+    background: linear-gradient(90deg, white 95%, purple 95%);
 }
 
-.color_6{
-  background: linear-gradient(90deg, white 95%, rgb(241, 137, 45) 95%);
+.color_6 {
+    background: linear-gradient(90deg, white 95%, rgb(241, 137, 45) 95%);
 }
 
 #graph-contain {
@@ -193,10 +196,12 @@ body {
 
 .bottom-space,
 .top-space {
-  font-family: 'Heebo', sans-serif;
+    font-family: 'Heebo', sans-serif;
 }
 
+
 /* the graph for the page */
+
 #graph {
     display: inherit;
     height: 421px;
@@ -207,7 +212,9 @@ body {
     border-top: 2px;
 }
 
+
 /* Indivual popcorn height */
+
 .popcorn {
     display: flex;
     margin: 0 1.2em;
@@ -223,7 +230,9 @@ body {
     /*To keep the popcorn in the bottom of the element*/
 }
 
+
 /* CHange acc */
+
 img {
     width: 35px;
     height: 18px;
@@ -258,13 +267,16 @@ img {
     background-color: whitesmoke;
 }
 
+
 /*the body of the popcorn box*/
+
 .container {
     display: flex;
     justify-content: space-evenly;
     margin: 0em 1em;
     opacity: 60%;
 }
+
 
 /* The properties of every individual box */
 
@@ -279,22 +291,22 @@ img {
 }
 
 .tooltip {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .tooltiptext {
-  visibility: hidden;
-  background-color: whitesmoke;
-  color: black;
-  text-align: center;
-  position: absolute;
-  z-index: 1;
-  top: -5px;
-  left: 35%;
-  font-size: 2em;
-  font-family: 'Heebo', sans-serif;
-  border: rgb(11, 174, 185) 2.5px solid;
-  border-radius: 50px;
-  padding: 0px 20px;
+    visibility: hidden;
+    background-color: whitesmoke;
+    color: black;
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 35%;
+    font-size: 2em;
+    font-family: 'Heebo', sans-serif;
+    border: rgb(11, 174, 185) 2.5px solid;
+    border-radius: 50px;
+    padding: 0px 20px;
 }
