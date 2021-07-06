@@ -14,7 +14,7 @@ $username = $_SESSION["username"];
 }
 $ref = $_GET["ref"];
 $url = "form_template.php?ref=".$ref;
-$global_url = "https://localhost/catchCINI-main/Polling-Site/form_template.php?ref=".$ref;
+$global_url = "https://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
 $cmd = "SELECT * FROM polls where ref LIKE '%$ref%'";
 $data = mysqli_query($con, $cmd);
 $row = mysqli_fetch_assoc($data);
