@@ -1,17 +1,18 @@
-body{
+body {
     background-color: #f5deb365;
 }
-.header{
+
+.header {
     background-color: unset;
     background-blend-mode: soft-light;
-    background-image: url('JT-poster.jpg'),linear-gradient(to bottom,#000000,#5f5f5f);
     background-position: center;
     background-repeat: no-repeat;
     height: 400px;
     position: relative;
 }
-.movie-heading{
-    font-family: 'Stick', sans-serif ;
+
+.movie-heading {
+    font-family: 'Stick', sans-serif;
     font-size: 1.5em;
     text-align: left;
     color: lightgoldenrodyellow;
@@ -19,46 +20,54 @@ body{
     bottom: 0px;
     margin: 5px;
 }
-.movie-heading h1{
+
+.movie-heading h1 {
     margin: 0px;
     border-bottom: 1px dashed lightgoldenrodyellow;
     padding: 0px;
 }
-.movie-rating .fa-star{
+
+.movie-rating .fa-star {
     color: blanchedalmond;
 }
-.links{
+
+.links {
     background-color: burlywood;
     list-style-type: none;
-    font-family: 'Orbitron',sans-serif;
+    font-family: 'Orbitron', sans-serif;
     margin: 0.2em auto;
     text-align: center;
     padding: 0px;
 }
-.links li{
+
+.links li {
     display: inline-block;
     margin: 1em;
 }
-.links li a{
+
+.links li a {
     text-decoration: none;
     color: #333;
 }
+
 @keyframes line-draw {
-    from{
+    from {
         text-decoration: none;
     }
-    to{
+    to {
         text-decoration: underline;
     }
 }
-.links li a:hover{
-    color:black;
+
+.links li a:hover {
+    color: black;
     animation-name: line-draw;
     animation-fill-mode: forwards;
     animation-duration: 60ms;
     animation-timing-function: ease-in;
 }
-.box{
+
+.box {
     margin: 10px auto;
     width: 80%;
     border: 1px solid #222;
@@ -66,56 +75,69 @@ body{
     box-shadow: 0px 0px 7px black;
     background-color: #f3f2ed;
 }
-.text{
+
+.text {
     color: #444;
-    font-family: 'Heebo',sans-serif;
+    font-family: 'Heebo', sans-serif;
 }
-.character{
+
+.character {
     color: black;
 }
-.cast{
+
+.cast {
     color: red;
 }
-.trailer{
+
+.trailer {
     display: block;
     margin: 2px auto;
     height: 320px;
     width: 400px;
 }
-.comment-section{
+
+.comment-section {
     border-top: 1px groove #333;
     margin: 50px auto;
     text-align: center;
     width: 80%;
 }
-.comment-section h3{
+
+.comment-section h3 {
     color: black;
-    font-family: 'Orbitron',sans-serif;
+    font-family: 'Orbitron', sans-serif;
 }
-.star{
+
+.star {
     display: inline-block;
 }
-.user{
-    font-family: 'Orbitron',sans-serif;
+
+.user {
+    font-family: 'Orbitron', sans-serif;
     text-transform: uppercase;
     font-weight: bold;
 }
-.fa-filter{
+
+.fa-filter {
     color: #333;
 }
-.fa-filter:hover{
+
+.fa-filter:hover {
     color: black;
     cursor: pointer;
 }
-.user-comments{
+
+.user-comments {
     margin: 1.2em;
 }
-.user-comments textarea{
+
+.user-comments textarea {
     width: 80%;
     resize: none;
     margin: 3px;
 }
-.submit-btn{
+
+.submit-btn {
     color: #e1e1e1;
     background-color: #945629;
     border-radius: 5px;
@@ -124,27 +146,38 @@ body{
     text-align: center;
     border: 2px outset saddlebrown;
 }
-.submit-btn:hover{
+
+.submit-btn:hover {
     color: white;
     background-color: saddlebrown;
     cursor: pointer;
 }
-.user-rating .fa-star{
+
+.user-rating .fa-star {
     color: whitesmoke;
 }
+
 .user-rating:hover .fa-star {
     color: gold;
     cursor: pointer;
 }
-#sr-0:hover ~ i{
-    color: blanchedalmond !important;
-}#sr-1:hover ~ i{
-    color: blanchedalmond !important;
-}#sr-2:hover ~ i{
-    color: blanchedalmond !important;
-}#sr-3:hover ~ i{
-    color: blanchedalmond !important;
-}#sr-4:hover ~ i{
+
+#sr-0:hover~i {
     color: blanchedalmond !important;
 }
 
+#sr-1:hover~i {
+    color: blanchedalmond !important;
+}
+
+#sr-2:hover~i {
+    color: blanchedalmond !important;
+}
+
+#sr-3:hover~i {
+    color: blanchedalmond !important;
+}
+
+#sr-4:hover~i {
+    color: blanchedalmond !important;
+}

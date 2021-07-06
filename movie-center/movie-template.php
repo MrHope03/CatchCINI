@@ -1,8 +1,45 @@
+<?php
+    session_start();
+    $server = "localhost";
+    $user = "root";
+    $pass = "";
+    $db = "catchcini";
+    $con = mysqli_connect($server, $user, $pass, $db);
+    if (!$con) {
+        echo '<script> alert("Server Down!!! Try again Later"); </script>';
+    }
+
+    if (isset($_SESSION["username"])){
+    $username = $_SESSION["username"];
+    }
+    $movie_ref = $_GET["ref"];
+
+    $cmd = "SELECT * FROM movie where movie_ref LIKE '$movie_ref'";
+    $data = mysqli_query($con, $cmd);
+    if(!$data){echo $con->error;}
+    $row = mysqli_fetch_assoc($data);
+    $movie_name = $row["movie_name"];
+    $year = $row["year"];
+    $star_rating = $row["star_rating"];
+    $total_votes = $row["total_votes"];
+    $story = $row["story"];
+    $cast_01 = $row["cast_01"];
+    $cast_02 = $row["cast_02"];
+    $cast_03 = $row["cast_03"];
+    $char_01 = $row["char_01"];
+    $char_02 = $row["char_02"];
+    $char_03 = $row["char_03"];
+    $crew_01 = $row["crew_01"];
+    $crew_02 = $row["crew_02"];
+    $crew_03 = $row["crew_03"];
+    $trailer = $row["trailer"];
+    $main_poster = $row["main_poster"];
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8" />
-        <title>Poll</title>
+        <title><?=$movie_name?></title>
         <script
             src="https://kit.fontawesome.com/704ddf1c0b.js"
             crossorigin="anonymous"
@@ -12,7 +49,7 @@
         <link rel="stylesheet" href="indiv-movie.css" />
     </head>
     <body>
-        <header class="header">
+        <header class="header" style="background-image: url(<?=$main_poster?>),linear-gradient(to bottom, #000000, #5f5f5f);">
             <nav class="nav">
                 <ul>
                     <li class="poll">
@@ -34,8 +71,8 @@
                     <li class="web-tag r-tag">Movie center</li>
                 </ul>
             </nav>
-            <div class="movie-heading">
-                <h1>JAGAME THANDIRAM</h1>
+            <div class="movie-heading" >
+                <h1><?=$movie_name?></h1>
                 <div class="movie-rating">
                     <i class="fas fa-star fa-x" id="r-0"></i>
                     <i class="fas fa-star fa-x" id="r-1"></i>
@@ -68,30 +105,26 @@
             <!-- READ THE MOVIE INFO INTO THIS DA -->
             <div id="story">
                 <h3>STORY</h3>
-                <p class="text">
-                    A nomadic gangster finds himself caught between good and
-                    evil in a fight for a place to call home. Starring Dhanush,
-                    Aishwarya Lekshmi and James Cosmo.
-                </p>
+                <p class="text"><?=$story?></p>
             </div>
             <div id="cast">
                 <h3>CAST</h3>
                 <ul>
                     <li class="text">
-                        <span class="cast">DHANUSH</span> as
-                        <span class="character">SURULI</span>
+                        <span class="cast"><?=$cast_01?></span> as
+                        <span class="character"><?=$char_01?></span>
                     </li>
                 </ul>
                 <ul>
                     <li class="text">
-                        <span class="cast">DHANUSH</span> as
-                        <span class="character">SURULI</span>
+                        <span class="cast"><?=$cast_02?></span> as
+                        <span class="character"><?=$char_02?></span>
                     </li>
                 </ul>
                 <ul>
                     <li class="text">
-                        <span class="cast">DHANUSH</span> as
-                        <span class="character">SURULI</span>
+                        <span class="cast"><?=$cast_03?></span> as
+                        <span class="character"><?=$char_03?></span>
                     </li>
                 </ul>
                 <!-- Continue so on upto 5 is enough -->
@@ -100,20 +133,20 @@
                 <h3>CREW</h3>
                 <ul>
                     <li class="text">
-                        <span class="cast">DIRECTOR: </span>
-                        <span class="character">KARTHIK SUBBURAJ</span>
+                        <span class="cast">DIRECTED BY: </span>
+                        <span class="character"><?=$crew_01?></span>
                     </li>
                 </ul>
                 <ul>
                     <li class="text">
                         <span class="cast">MUSIC BY: </span>
-                        <span class="character">SHANTOSH NARAYANAN</span>
+                        <span class="character"><?=$crew_02?></span>
                     </li>
                 </ul>
                 <ul>
                     <li class="text">
-                        <span class="cast">MUSIC BY: </span>
-                        <span class="character">SHANTOSH NARAYANAN</span>
+                        <span class="cast">PRODUCED BY: </span>
+                        <span class="character"><?=$crew_03?></span>
                     </li>
                 </ul>
                 <!-- Continue so on upto 3/5 is enough -->
@@ -121,7 +154,7 @@
             <div id="trailer">
                 <h3>TRAILER</h3>
                 <video autoplay controls muted class="trailer">
-                    <source src="Jagame-thandiram.mp4" type="video/mp4" />
+                    <source src=<?=$trailer?> type="video/mp4" />
                 </video>
             </div>
         </section>
