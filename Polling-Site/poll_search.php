@@ -74,55 +74,11 @@
               </ul>
       </div>
   </header>
-
-  <?php
-
-          $i = 0;
-          $array = array();
-          while(!empty($_GET['var'.$i])){
-              array_push($array,$_GET['var'.$i]);
-              $i++;
-          }
-          if (!empty($array)){
-            $cmd = "SELECT question,total_count,ref FROM polls WHERE question LIKE ";
-            for ($i = 0; $i < count($array); $i++){
-              $str = $array[$i];
-              $cmd .= "'%$str%'";
-              if ($i != (count($array) -1)){
-                $cmd .= "AND question LIKE";
-              }
-            }
-            $cmd_2 = str_replace("question,total_count,ref",'COUNT(*)',$cmd);
-            $ct_info = mysqli_query($con, $cmd_2);
-            $count = mysqli_fetch_row($ct_info)[0];
-            if ($count > 0){
-              $cmd .= " ORDER BY reg_date DESC";
-              $data = mysqli_query($con, $cmd);
-            }
-            else{
-              echo "<p style='color:red;text-align:center;'>We couldn't find your search. But Here are some matching results</p>";
-                $cmd_2 = str_replace("AND","OR",$cmd_2);
-                $ct_info = mysqli_query($con, $cmd_2);
-                $count = mysqli_fetch_row($ct_info)[0];
-                if ($count > 0){
-                  $cmd = str_replace("AND","OR",$cmd);
-                  $cmd .= " ORDER BY reg_date DESC";
-                  $data = mysqli_query($con,$cmd);
-                }
-                else{
-                  $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC";
-                  $data = mysqli_query($con, $cmd);
-                }
-            }
-          }
-          else{
-            $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC";
-            $data = mysqli_query($con, $cmd);
-          }
-  ?>
   <section>
         <ul class="universe" id="polls">
           <?php
+           $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC";
+           $data = mysqli_query($con, $cmd);
           function read($data){
             if($data) {
               while(($row = mysqli_fetch_assoc($data))){
@@ -141,30 +97,45 @@
         </ul>
   </section>
     <script>
-
-        $(document).ready(function(){
-            function send_data(){
+          $(document).ready(function(){
+          function send_data(){
               $.ajax({
                   type: "GET",
-                  url: "poll_cache.php",
+                  url: "poll_cache.php?search=float",
                   data: search(),
                 success:function(data){
                   document.getElementById('query-ans').innerHTML = data;
                 }
               });
             }
-            
+          function send(){
+              $.ajax({
+                  type: "GET",
+                  url: "poll_cache.php?search=static",
+                  data: search(),
+                  success:function(data){
+                      document.getElementById('polls').innerHTML = data
+                  }
+              });
+            }
+            $("#query").keypress(function(event){
+              var key = (event.keyCode ? event.keyCode : event.which);
+              if(key == '13'){
+                  send();
+                  $('#query').blur();
+                  no_search();
+              }
+            });
             $('#query').keyup(send_data);
           });
-
-          function no_search(){
-              document.getElementById('query-ans').innerHTML = "";
-          }
           document.getElementById('polls').addEventListener('mousedown',no_search);
           function view_poll(ref){
               var temp_ref = ref.slice(3);
               location.href= "form_template.php?ref="+temp_ref;
             }
+          function no_search(){
+              document.getElementById('query-ans').innerHTML = "";
+          }
         function search(){
           var msg = "";
 
@@ -179,20 +150,6 @@
               }
             }
             return msg;
-        }
-        function complete_search(){
-          var msg = "poll_search.php?";
-          var query = document.getElementById('query').value;
-          query = query.trim();
-          var search_string = query.split(' ');
-          for (let i = 0; i < search_string.length; i++){
-            let str = search_string[i];
-              msg += ("var"+i+"="+str);
-              if (i != (search_string.length - 1)){
-                msg += "&";
-              }
-            }
-          window.location.href = msg;
         }
     </script>
   </body>

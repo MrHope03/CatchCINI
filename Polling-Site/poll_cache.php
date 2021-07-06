@@ -8,6 +8,7 @@
     if (!$con) {
         echo '<script> alert("Server Down!!! Try again Later"); </script>';
     }
+    $search = $_GET["search"];
     $i = 0;
     $array = array();
     while(!empty($_GET['var'.$i])){
@@ -52,9 +53,18 @@
       if($data) {
         while(($row = mysqli_fetch_assoc($data))){
           if ($row["total_count"]==NULL) {$row["total_count"]=0;}
-            echo '<li>';
-            echo '<b id="ref'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</b>';
-            echo '</li>';
+            if($search=="float"){
+              echo '<li>';
+              echo '<b id="ref'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</b>';
+              echo '</li>';
+            } else if ($search=="static") {
+              echo '<li class="box">';
+              echo '<div class="item">'; 
+              echo '<h3 id="ref'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</h3>';
+              echo '<p> No of votes: '.$row["total_count"].'</p>';
+              echo '</div>';
+              echo '</li>';
+            }
         }
       }
       exit();
