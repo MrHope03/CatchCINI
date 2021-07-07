@@ -13,28 +13,7 @@
     $username = $_SESSION["username"];
     }
     $movie_ref = $_GET["ref"];
-
-    $cmd = "SELECT * FROM movie where movie_ref LIKE '$movie_ref'";
-    $data = mysqli_query($con, $cmd);
-    if(!$data){echo $con->error;}
-    $row = mysqli_fetch_assoc($data);
-    $movie_name = $row["movie_name"];
-    $year = $row["year"];
-    $star_rating = $row["star_rating"];
-    $total_votes = $row["total_votes"];
-    $story = $row["story"];
-    $cast_01 = $row["cast_01"];
-    $cast_02 = $row["cast_02"];
-    $cast_03 = $row["cast_03"];
-    $char_01 = $row["char_01"];
-    $char_02 = $row["char_02"];
-    $char_03 = $row["char_03"];
-    $crew_01 = $row["crew_01"];
-    $crew_02 = $row["crew_02"];
-    $crew_03 = $row["crew_03"];
-    $trailer = $row["trailer"];
-    $main_poster = $row["main_poster"];
-    $percentage = ($star_rating*100)/5;
+    include 'movie_poll.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -154,6 +133,21 @@
                     <source src=<?=$trailer?> type="video/mp4" />
                 </video>
             </div>
+            <div id="polls">
+                <h3>POLLS</h3>
+                <ul class="universe">
+                    <?php
+                        if(isset($data)){
+                            while($row = mysqli_fetch_assoc($data)){
+                                echo $row["question"];
+                                echo $row["total_count"];
+                                echo $row["ref"];
+                            }
+                        }
+                    ?>
+                </ul>
+            </div>
+            
         </section>
         <section id="comments" class="comment-section">
             <h3 class="comm-heading">COMMENTS</h3>
