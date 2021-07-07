@@ -19,7 +19,7 @@ body {
     background-blend-mode: soft-light;
     background-size: cover;
     background-position: center right;
-    height: 22em;
+    height: auto;
 }
 
 .nav {
