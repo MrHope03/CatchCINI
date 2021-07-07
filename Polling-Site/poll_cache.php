@@ -40,17 +40,9 @@
             $cmd .= " ORDER BY reg_date DESC LIMIT 4";
             $data = mysqli_query($con,$cmd);
           }
-          else{
-            $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC LIMIT 0";
-            $data = mysqli_query($con, $cmd);
-          }
       }
     }
-    else{
-      $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC LIMIT 0";
-      $data = mysqli_query($con, $cmd);
-    }
-      if($data) {
+      if(isset($data)) {
         while(($row = mysqli_fetch_assoc($data))){
           if ($row["total_count"]==NULL) {$row["total_count"]=0;}
             if($search=="float"){
