@@ -128,6 +128,7 @@ else{
           var close = document.getElementById('share-box');
           close.style.display = "none";
         }
+      </script>
   </header>
   <section>
     <form method="post" action=<?=$url?>>

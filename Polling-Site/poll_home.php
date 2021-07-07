@@ -99,25 +99,25 @@
     <ul class="universe">
       <li class="box">
         <div  class="item">
-          <h3 id=<?php if(isset($ref[0])){echo $ref[0];} ?> onclick="view_polls(this.id)"><?php if(isset($question[0])){echo $question[0];} else {echo $null_msg;} ?></h3>
+          <h3 class="wrap" id=<?php if(isset($ref[0])){echo $ref[0];} ?> onclick="view_polls(this.id)"><?php if(isset($question[0])){echo $question[0];} else {echo $null_msg;} ?></h3>
           <p><?php if(isset($total_count[0])){echo $total_count[0];} else {echo $create_msg;} ?></p>
         </div>
       </li>
       <li class="box">
         <div  class="item">
-          <h3 id=<?php if(isset($ref[1])){echo $ref[1];}?> onclick="view_polls(this.id)"><?php if(isset($question[1])){echo $question[1];} else {echo $null_msg;} ?></h3>
+          <h3 class="wrap" id=<?php if(isset($ref[1])){echo $ref[1];}?> onclick="view_polls(this.id)"><?php if(isset($question[1])){echo $question[1];} else {echo $null_msg;} ?></h3>
           <p><?php if(isset($total_count[1])){echo $total_count[1];} else {echo $create_msg;} ?></p>
         </div>
       </li>
       <li class="box">
         <div  class="item">
-          <h3 id=<?php if(isset($ref[2])){echo $ref[2];}?> onclick="view_polls(this.id)"><?php if(isset($question[2])){echo $question[2];} else {echo $null_msg;} ?></h3>
+          <h3 class="wrap" id=<?php if(isset($ref[2])){echo $ref[2];}?> onclick="view_polls(this.id)"><?php if(isset($question[2])){echo $question[2];} else {echo $null_msg;} ?></h3>
           <p><?php if(isset($total_count[2])){echo $total_count[2];} else {echo $create_msg;} ?></p>
         </div>
       </li>
       <li  class="box">
         <div  class="item">
-          <h3 id=<?php if(isset($ref[3])){echo $ref[3];}?> onclick="view_polls(this.id)"><?php if(isset($question[3])){echo $question[3];} else {echo $null_msg;} ?></h3>
+          <h3 class="wrap" id=<?php if(isset($ref[3])){echo $ref[3];}?> onclick="view_polls(this.id)"><?php if(isset($question[3])){echo $question[3];} else {echo $null_msg;} ?></h3>
           <p><?php if(isset($total_count[3])){echo $total_count[3];} else {echo $create_msg;} ?></p>
         </div>
       </li>

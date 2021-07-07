@@ -161,7 +161,7 @@
                   if ($row["total_count"]==NULL) {$row["total_count"]=0;}
                   echo '<li class="box"  id='. $row['ref'].'>';
                   echo '<div class="item">'; //Add function manage_poll() to redirect for individual polls
-                  echo '<h3 id="ref'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</h3>';
+                  echo '<h3 class="wrap" id="ref'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</h3>';
                   echo '<p> No of votes: '.$row["total_count"].'</p>';
                   echo '<i class="far fa-times-circle fa-2x close" onclick="remove(this.id);" id="rem'. $row['ref'].'"></i>';
                   echo '</div>';

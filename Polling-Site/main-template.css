@@ -97,6 +97,9 @@ html,body{
     color: black;
     font-family: 'Orbitron',sans-serif;
 }
+.wrap{
+    word-wrap: break-word;
+}
 /* Poll Qn section */
 .poll-qn{
     margin: 1em;
