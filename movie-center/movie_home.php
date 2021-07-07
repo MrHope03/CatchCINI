@@ -162,6 +162,9 @@
                 var msg = "";
 
                 var query = document.getElementById('query').value;
+                if(query==""){
+                    location.href="movie_home.php";
+                }
                 query = query.trim();
                 var search_string = query.split(' ');
                 for (let i = 0; i < search_string.length; i++){

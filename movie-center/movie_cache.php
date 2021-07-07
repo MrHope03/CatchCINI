@@ -46,7 +46,7 @@
         while(($row = mysqli_fetch_assoc($data))){
             if($search=="float"){
             echo '<li>';
-            echo '<b id="ref'.$row['movie_ref'].'" onclick="redirect(this.id);">'.$row["movie_name"].'</b>';
+            echo '<b id="'.$row['movie_ref'].'" onclick="redirect(this.id);">'.$row["movie_name"].'</b>';
             echo '</li>';
             } else if ($search=="static") {
                     $star = $row["star_rating"];
