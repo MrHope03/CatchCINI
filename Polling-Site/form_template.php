@@ -113,13 +113,21 @@ else{
     <div>
       <h1 id="question"><?php echo $question; ?></h1>
     </div>
-    <div>
-    <?php
-      if($flag){
-        echo '<h3 id="link">'.$global_url.'&nbsp;&nbsp;&nbsp;<button id="link_button" onclick="copy()"><i class="far fa-clipboard"></i> Copy </button></h3>';
-      }
+    <i class="fas fa-share-alt fa-2x share" onclick="open_share();"></i>
+    <div id="share-box">
+      <?php
+          echo "<i class='fas fa-times fa-2x' onclick='close_share()'></i>";
+          echo '<h3 id="link">'.$global_url.'&nbsp;&nbsp;&nbsp;<button id="link_button" onclick="copy()"><i class="far fa-clipboard"></i> Copy </button></h3>';
       ?>
     </div>
+    <script>
+        function open_share(){
+          document.getElementById('share-box').style.display = "block";
+        }
+        function close_share(){
+          var close = document.getElementById('share-box');
+          close.style.display = "none";
+        }
   </header>
   <section>
     <form method="post" action=<?=$url?>>

@@ -33,7 +33,7 @@
             </div>
             <div class="item item-2 right-bg">
                 <div>
-                    <a class="main-heading">MOVIES CENTER</a>
+                    <a href="../movie-center/movie_home.php" class="main-heading">MOVIES CENTER</a>
                     <p class="caption">Catch the Latest movies</p>
                 </div>
             </div>
