@@ -69,7 +69,7 @@
       </div>
       <div class="search-bar">
            <input type="text" id="query"></input>
-           <i class="fas fa-search fa-2x"></i>
+           <i class="fas fa-search fa-2x" onclick="complete_search();"></i>
               <ul id="query-ans">
               </ul>
       </div>
@@ -140,9 +140,6 @@
           var msg = "";
 
           var query = document.getElementById('query').value;
-          if(query==""){
-            location.href="poll_search.php";
-          }
           query = query.trim();
           var search_string = query.split(' ');
           for (let i = 0; i < search_string.length; i++){
