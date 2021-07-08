@@ -59,6 +59,29 @@ body{
     text-align: center;
     color: lightgoldenrodyellow;
 }
+/* Additional changes #1 */
+#question {
+    font-family: 'Stick', sans-serif;
+    font-size: 3.2em;
+    text-align: center;
+    color: lightgoldenrodyellow;
+    height: 2.75 em;
+    margin: 0 px;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#question::-webkit-scrollbar {
+    display: none;
+}
+
+#link {
+    text-align: center;
+    color: lightgoldenrodyellow;
+}
+/* #1 */
 .web-tag{
     font-family: 'Stick',sans-serif;
     font-size: 1.3em;

@@ -105,6 +105,7 @@
         <i id="dark" class="far fa-moon fa-2x"></i>
       </div>
   </header>
+  
   <section class="box">
     <button class="btn new-poll" onclick="location.href='poll_create.php'">Create New Poll</button>
   </section>
