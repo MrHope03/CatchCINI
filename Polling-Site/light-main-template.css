@@ -9,6 +9,9 @@ html,body{
     margin: 0px;
     padding: 0px;
 }
+body{
+    background-color: #ffebcd25;
+}
 /* Heading styling */
 .header{
     /* Changed the blend to soft light it seemed better */
@@ -18,6 +21,12 @@ html,body{
     background-size: cover;
     background-position: center right;
     height: 15em;
+}
+.theme{
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: blanchedalmond;
 }
 .nav{
     margin: 0px;

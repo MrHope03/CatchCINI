@@ -8,7 +8,9 @@
     if (!$con) {
         echo '<script> alert("Server Down!!! Try again Later"); </script>';
     }
-
+    if (!isset($_SESSION['theme'])){
+      $_SESSION['theme'] = 'light';
+    }
     $cmd = "SELECT COUNT(*) FROM polls";
     $data = mysqli_query($con, $cmd);
     $total_polls = mysqli_fetch_row($data)[0];
@@ -41,15 +43,16 @@
             src="https://kit.fontawesome.com/704ddf1c0b.js"
             crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="main-template.css">
-    <link rel="stylesheet" href="box-arrange.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" id="page-theme" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-main-template.css';}else{echo 'dark-main-template.css';} ?>">
+    <link rel="stylesheet" id="box-theme" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-box.css';}else{echo 'dark-box.css';} ?>">
     <style>
       body{
             background-image: url('giphy.gif');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-blend-mode: color-dodge;
-            background-color: #ffebcd25;
             background-position: center;
             background-size: 70vw;
       }
@@ -59,12 +62,19 @@
           background-attachment: fixed;
           background-repeat: no-repeat;
           background-blend-mode:lighten;
-          background-color: #ffebcd25;
           background-position: bottom right;
           background-size: 20vw;
         }
       }
     </style>
+    <?php 
+          if ($_SESSION['theme'] != "light"){
+            echo "<style>
+                .item{background-color: rgb(228, 228, 228);}
+                .item:hover{background-color: whitesmoke;box-shadow: 0px 0px 15px cyan;z-index:5;}
+                </style>";
+          }
+      ?>
   </head>
   <body>
     <header class="header">
@@ -89,6 +99,10 @@
       </nav>
       <div>
           <h1 class="main-heading">Popcorn Meter</h1>
+      </div>
+      <div class="theme">
+        <i id="light" class="far fa-sun fa-2x"></i>
+        <i id="dark" class="far fa-moon fa-2x"></i>
       </div>
   </header>
   <section class="box">
@@ -129,7 +143,7 @@
     </ul>
   </section>
 
-    <footer class="end-credit">
+  <footer class="end-credit">
       <b style="color: white">POPCORNCRUNCHERS</b>
       <div class="white">
           <a href="#"
@@ -152,5 +166,31 @@
   function view_polls(id){
     location.href = "form_template.php?ref=" + id;
   }
+  $(document).ready(function(){
+  function dark_theme(){
+      $.ajax({
+          type: "GET",
+          url: "../Homepage/page_theme.php",
+          data: "msg=dark",
+          success: function(data){
+              document.getElementById("page-theme").setAttribute("href", "dark-main-template.css");
+              document.getElementById("box-theme").setAttribute("href", "dark-box.css");
+          }
+      });
+  }
+  function light_theme(){
+      $.ajax({
+          type: "GET",
+          url: "../Homepage/page_theme.php",
+          data: "msg=light",
+          success: function(data){
+              document.getElementById("page-theme").setAttribute("href", "light-main-template.css");
+              document.getElementById("box-theme").setAttribute("href", "light-box.css");
+            }                    
+      });
+  }
+      $('#light').click(light_theme);
+      $('#dark').click(dark_theme);
+  });
 </script>
 

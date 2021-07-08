@@ -8,6 +8,9 @@
     if (!$con) {
         echo '<script> alert("Server Down!!! Try again Later"); </script>';
     }
+    if (!isset($_SESSION['theme'])){
+      $_SESSION['theme'] = 'light';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -18,24 +21,20 @@
             src="https://kit.fontawesome.com/704ddf1c0b.js"
             crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="main-template.css">
-    <link rel="stylesheet" href="box-arrange.css">
+    <link rel="stylesheet" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-main-template.css';}else{echo 'dark-main-template.css';} ?>">
+    <link rel="stylesheet" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-box.css';}else{echo 'dark-box.css';} ?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
     .header{
       background-image: url('search.png');
       background-position: center;
     }
-      body{
-          background-color: #ffebcd25;
-      }
       @media (min-width : 1040px){
         body{
           background-image: url('tenor.gif');
           background-attachment: fixed;
           background-repeat: no-repeat;
           background-blend-mode:lighten;
-          background-color: #ffebcd25;
           background-position: bottom right;
           background-size: 20vw;
         }
@@ -114,7 +113,7 @@
                   url: "poll_cache.php?search=static",
                   data: search(),
                   success:function(data){
-                      document.getElementById('polls').innerHTML = data
+                      document.getElementById('polls').innerHTML = data;
                   }
               });
             }

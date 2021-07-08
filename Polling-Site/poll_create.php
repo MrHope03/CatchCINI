@@ -7,6 +7,9 @@
     $_SESSION["location"] = "polling_site";
     echo '<script> window.location.href="../login/User_Login.php"; </script>';
   }
+  if (!isset($_SESSION['theme'])){
+    $_SESSION['theme'] = 'light';
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -14,10 +17,20 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
   <script src="https://kit.fontawesome.com/704ddf1c0b.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="main-template.css" />
+  <link rel="stylesheet" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-main-template.css';}else{echo 'dark-main-template.css';} ?>" />
   <title>Create a Poll</title>
+  <?php
+  if ($_SESSION['theme'] != 'light'){
+    echo "<style>
+    .box{
+      border: 2px solid rgb(213, 240, 235); */
+      color: rgb(224, 218, 218);
+      box-shadow: 0px 0px 20px cyan;
+    }
+    </style>";
+  }
+  ?>
 </head>
-
 <body>
   <header class="header">
     <nav class="nav">
@@ -48,7 +61,7 @@
       <form action="poll_update.php" method="POST">
         <div class="poll-qn">
           <label for="question"> Give Poll Question </label>
-          <textarea placeholder="Type your question here" name="question" id="q"></textarea>
+          <textarea placeholder="Type your question here" name="question" id="q" required></textarea>
           <input type="button" class="btn add" value="Add an option" onclick="add_option()" />
         </div>
         <div class="option-table" id="options">
@@ -57,12 +70,12 @@
             <span id="error"></span>
           </div>
           <div class="option-box" id="#1">
-            <input type="text" class="poll-option" name="options1" id="1" />
+            <input type="text" class="poll-option" name="options1" id="1" required/>
             <i id="rem1" onclick="remove_option(this.id)" class="far fa-times-circle fa-2x close"></i>
             <i id="swa1" onclick="swap_val(this.id)" class="far fa-dot-circle fa-2x edit"></i>
           </div>
           <div class="option-box" id="#2">
-            <input type="text" class="poll-option" name="options2" id="2" />
+            <input type="text" class="poll-option" name="options2" id="2" required/>
             <i id="rem2" onclick="remove_option(this.id)" class="far fa-times-circle fa-2x close"></i>
             <i id="swa2" onclick="swap_val(this.id)" class="far fa-dot-circle fa-2x edit"></i>
           </div>
