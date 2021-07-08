@@ -185,6 +185,7 @@ body {
     color: blanchedalmond !important;
 }
 
+<<<<<<< HEAD
 .user-star{
   text-align: center;
   float: right;
@@ -255,6 +256,8 @@ body {
   overflow-y: visible;
   margin-bottom: 0px;
 }
+=======
+>>>>>>> 247f698922b1d2881da7be6b7f626186664960aa
 
 /* The POLL box styling */
 
@@ -286,4 +289,8 @@ body {
 .link {
     text-align: center;
     font-family: 'Orbitron', sans-serif;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 247f698922b1d2881da7be6b7f626186664960aa
