@@ -75,6 +75,9 @@
                 <li>
                     <a href="#comments">COMMENTS</a>
                 </li>
+                <li>
+                    <a href="#polls">POLLS</a>
+                </li>
             </ul>
         </nav>
         <section class="box">
@@ -137,12 +140,27 @@
                 <h3>POLLS</h3>
                 <ul class="universe">
                     <?php
+                        $i = 0;
                         if(isset($data)){
                             while($row = mysqli_fetch_assoc($data)){
-                                echo $row["question"];
-                                echo $row["total_count"];
-                                echo $row["ref"];
+                                if($row["total_count"]==null){$row["total_count"]=0;}
+                                echo '<li class="outline">';
+                                echo '<div  class="item">';
+                                echo '<h3 class="wrap" id="'.$row["ref"].'" onclick="view_polls(this.id)">'.$row["question"].'</h3>';
+                                echo '<p>No of Votes: '.$row["total_count"].'</p>';
+                                echo '</div>';
+                                echo '</li>';
+                                $i++;
                             }
+                        }
+                        if($i<3){
+                            $location = "location.href='../Polling-Site/poll_create.php'";
+                            echo '<li class="outline">';
+                            echo '<div  class="item" onclick="'.$location.'">';
+                            echo '<h3 class="wrap"> #No More Polls Found </h3>';
+                            echo '<p>Click to Create</p>';
+                            echo '</div>';
+                            echo '</li>';
                         }
                     ?>
                 </ul>
@@ -210,7 +228,9 @@
         </footer>
     </body>
     <script>
-
+        function view_polls(id){
+            location.href = "../Polling-Site/form_template.php?ref="+id;
+        }
         $('a[href^="#"]').click(function() {
             var href = $.attr(this, 'href');
             $('html,body').animate({
