@@ -119,7 +119,7 @@
         var swa = "swa" + id;
         var options = document.getElementById("options");
         options.innerHTML +=
-          '<div class="option-box" id="#'+ id + '"><input type="text"class="poll-option" name="options' + id + '" id="' +
+          '<div class="option-box" id="#'+ id + '"><input type="text"class="poll-option" required name="options' + id + '" id="' +
           id +
           '"><i id="' +
           rem +
