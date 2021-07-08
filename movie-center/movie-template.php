@@ -13,7 +13,7 @@
     $username = $_SESSION["username"];
     }
     $movie_ref = $_GET["ref"];
-    include 'movie_poll.php';
+    include 'movie_poll_cache.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -161,8 +161,13 @@
                             echo '<p>Click to Create</p>';
                             echo '</div>';
                             echo '</li>';
-                        }
+                        } // Add link to else part 
                     ?>
+                    <li>
+                        <div class="link">
+                        <b>for more </b><a href="movie_search.php">Click here</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
             

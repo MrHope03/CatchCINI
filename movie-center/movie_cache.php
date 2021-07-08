@@ -15,31 +15,72 @@
         array_push($array,$_GET['var'.$i]);
         $i++;
     }
-    if (!empty($array)){
-      $cmd = "SELECT * FROM movie WHERE movie_name LIKE ";
-      for ($i = 0; $i < count($array); $i++){
-        $str = $array[$i];
-        $cmd .= "'%$str%'";
-        if ($i != (count($array) -1)){
-          $cmd .= "AND movie_name LIKE";
+    if ($search == 'float'){
+      if (!empty($array)){
+        $cmd = "SELECT * FROM movie WHERE movie_name LIKE ";
+        for ($i = 0; $i < count($array); $i++){
+          $str = $array[$i];
+          $cmd .= "'%$str%'";
+          if ($i != (count($array) -1)){
+            $cmd .= "AND movie_name LIKE";
+          }
         }
-      }
-      $cmd_2 = str_replace("*",'COUNT(*)',$cmd);
-      $ct_info = mysqli_query($con, $cmd_2);
-      $count = mysqli_fetch_row($ct_info)[0];
-      if ($count > 0){
-        $cmd .= " ORDER BY year DESC";
+        $cmd_2 = str_replace("*",'COUNT(*)',$cmd);
+        $ct_info = mysqli_query($con, $cmd_2);
+        $count = mysqli_fetch_row($ct_info)[0];
+        if ($count > 0){
+          $cmd .= " ORDER BY year DESC LIMIT 4";
+          $data = mysqli_query($con, $cmd);
+        } else{
+            $cmd_2 = str_replace("AND","OR",$cmd_2);
+            $ct_info = mysqli_query($con, $cmd_2);
+            $count = mysqli_fetch_row($ct_info)[0];
+            if ($count > 0){
+              $cmd = str_replace("AND","OR",$cmd);
+              $cmd .= " ORDER BY year DESC LIMIT 4";
+              $data = mysqli_query($con,$cmd);
+            } else{
+              $cmd = "SELECT * FROM movie ORDER BY year DESC LIMIT 0";
+              $data = mysqli_query($con, $cmd);
+            }
+        }
+      } else{
+        $cmd = "SELECT * FROM movie ORDER BY year DESC LIMIT 0";
         $data = mysqli_query($con, $cmd);
       }
-      else{
-          $cmd_2 = str_replace("AND","OR",$cmd_2);
-          $ct_info = mysqli_query($con, $cmd_2);
-          $count = mysqli_fetch_row($ct_info)[0];
-          if ($count > 0){
-            $cmd = str_replace("AND","OR",$cmd);
-            $cmd .= " ORDER BY year DESC";
-            $data = mysqli_query($con,$cmd);
+    }  else if ($search == "static") {
+      if (!empty($array)){
+        $cmd = "SELECT * FROM movie WHERE movie_name LIKE ";
+        for ($i = 0; $i < count($array); $i++){
+          $str = $array[$i];
+          $cmd .= "'%$str%'";
+          if ($i != (count($array) -1)){
+            $cmd .= "AND movie_name LIKE";
           }
+        }
+        $cmd_2 = str_replace("*",'COUNT(*)',$cmd);
+        $ct_info = mysqli_query($con, $cmd_2);
+        $count = mysqli_fetch_row($ct_info)[0];
+        if ($count > 0){
+          $cmd .= " ORDER BY year DESC";
+          $data = mysqli_query($con, $cmd);
+        } else{
+            $cmd_2 = str_replace("AND","OR",$cmd_2);
+            $ct_info = mysqli_query($con, $cmd_2);
+            $count = mysqli_fetch_row($ct_info)[0];
+            if ($count > 0){
+              $cmd = str_replace("AND","OR",$cmd);
+              $cmd .= " ORDER BY year DESC";
+              $data = mysqli_query($con,$cmd);
+            } else{
+              echo "<em style='color:red;text-align:center;'>Couldn't Find your Result. Here are other results you may be interested in</em>";
+              $cmd = "SELECT * FROM movie ORDER BY year DESC";
+              $data = mysqli_query($con, $cmd);
+            }
+        }
+      } else{
+        $cmd = "SELECT * FROM movie ORDER BY year DESC";
+        $data = mysqli_query($con, $cmd);
       }
     }
       if(isset($data)) {
