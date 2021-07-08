@@ -113,8 +113,7 @@ body {
 }
 
 .user {
-    font-family: 'Orbitron', sans-serif;
-    text-transform: uppercase;
+    font-family: 'Heebo', sans-serif;
     font-weight: bold;
 }
 
@@ -157,6 +156,10 @@ body {
     color: whitesmoke;
 }
 
+.root .fa-star{
+  color: blanchedalmond;
+}
+
 .user-rating:hover .fa-star {
     color: gold;
     cursor: pointer;
@@ -180,4 +183,75 @@ body {
 
 #sr-4:hover~i {
     color: blanchedalmond !important;
+}
+
+.user-star{
+  text-align: center;
+  float: right;
+}
+
+.root{
+  background-color: white;
+  border-radius: 5px;
+}
+
+.shw-rpl {
+  padding: 0;
+  margin: 0;
+  text-decoration: underline;
+  cursor: pointer;
+  width: 110px;
+}
+
+.root .username{
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 75%;
+}
+
+.root .text{
+  text-align: left;
+  padding-top: 0px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-y: visible;
+  margin-bottom: 0px;
+}
+
+.shw-rpl i{
+  padding: 0 5px;
+}
+
+.reply{
+  margin-left: 13%;
+  background-color: white;
+  border-radius: 5px;
+  width: 87%;
+}
+
+.reply .username{
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 75%;
+}
+
+.reply .text{
+  text-align: left;
+  padding-top: 0px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-y: visible;
+  margin-bottom: 0px;
 }

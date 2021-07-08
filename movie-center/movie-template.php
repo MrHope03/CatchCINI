@@ -183,18 +183,38 @@
             </div>
 
             <!-- READ COMMENTS INTO THIS DA -->
-            <div class="comment box">
-                <p>
-                    <span class="user">username</span> -
-                    <!-- FOR LOOP USE PANNI STARS PRINT PANNU DA AUTOMATICALLY GOLD AH THAN VARUM -->
-                        <i class="fas fa-star fa-x"></i>
-                        <i class="fas fa-star fa-x"></i>
-                        <i class="fas fa-star fa-x"></i>
-                        <i class="fas fa-star fa-x"></i>
-                        <i class="fas fa-star fa-x"></i>
-                </p>
-                <p class="text">Was an excellent Commercial movie</p>
-            </div>
+                  <?php
+                  $cmd = "SELECT * from comments WHERE movie_ref like '%$movie_ref%'";
+                  $data = mysqli_query($con, $cmd);
+                  $i = 1;
+                  if ($data){
+                    while(($row = mysqli_fetch_assoc($data)) && ($i<=10)){
+                      echo '<div class="comment" id="comment_'.$i.'"><div class="root"><p class="username">';
+                      //$replies = explode(';',$row['replies']);
+                      $temp = $row['root'];
+                      //echo "<script>alert('$replies[0]');</script>";
+                      if ($row['username']){
+                        echo '<span class="user">'.$row['username'].' commented</span>';
+                      }
+                      else{
+                        echo '<span class="user">Anonymous commented</span>';
+                      }
+                      if ($row['star_rating']==NULL) {
+                        $row['star_rating'] = 0;
+                      }
+                      echo "<span class='user-star'>";
+                      for($j=1; $j<=$row['star_rating']; $j++){
+                        echo '<i class="fas fa-star fa-x" style="color: gold"></i>';
+                      }
+                      for($j=$row['star_rating']+1; $j<=5; $j++){
+                        echo '<i class="fas fa-star fa-x" ></i>';
+                      }
+                      echo "</span>";
+                      $i++;
+                      echo '</p><p class="text">'.$temp.'</p><p class="shw-rpl"><span class="sel-rpl" style="display:none">'.$row['com_ref'].'</span><i class="fas fa-caret-down"></i>Show Replies</p></div></div>';
+                    }
+                  }
+                  ?>
         </section>
 
         <footer class="end-credit">
@@ -216,6 +236,37 @@
         </footer>
     </body>
     <script>
+        $('.shw-rpl').click(function() {
+          if ($(this).find('i').hasClass('fa-caret-down')){
+            var obj = $(this).find('span').text();
+            var id = $(this).parent().parent().attr('id');
+            //alert(id);
+          $(this).html('<span class="sel-rpl" style="display:none">'+obj+'</span><i class="fas fa-caret-up"></i>Hide Replies');
+          obj = 'com_ref='+obj;
+          $.ajax({
+              type: "GET",
+              url: "movie-replies.php",
+              data: obj,
+              success:function(data){
+                  //alert(data);
+                  $('#'+id).append(data);
+                  //document.getElementById(id).innerHTML += data;
+              }
+          });
+          }
+          else{
+          var obj = $(this).find('span').text();
+          $(this).html('<span class="sel-rpl" style="display:none">'+obj+'</span><i class="fas fa-caret-down"></i>Show Replies');
+          var id = $(this).parent().parent().attr('id');
+          var i = 1;
+          while($('#'+id+' div').length>1){
+            $('#reply_'+obj+'_'+i).remove();
+            i++;
+          }
+          }
+        });
+
+        var star = 0;
 
         $('a[href^="#"]').click(function() {
             var href = $.attr(this, 'href');
@@ -233,6 +284,7 @@
         movie_rating(4); // Substitute rating varaible in here
         function rate(id){
             id = Number(id.substring(3));
+            star = id+1;
             for (let i = 0; i <= 4; i++){
                 document.getElementById('sr-'+i).style.color = "whitesmoke";
             }
