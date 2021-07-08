@@ -13,28 +13,7 @@
     $username = $_SESSION["username"];
     }
     $movie_ref = $_GET["ref"];
-
-    $cmd = "SELECT * FROM movie where movie_ref LIKE '$movie_ref'";
-    $data = mysqli_query($con, $cmd);
-    if(!$data){echo $con->error;}
-    $row = mysqli_fetch_assoc($data);
-    $movie_name = $row["movie_name"];
-    $year = $row["year"];
-    $star_rating = $row["star_rating"];
-    $total_votes = $row["total_votes"];
-    $story = $row["story"];
-    $cast_01 = $row["cast_01"];
-    $cast_02 = $row["cast_02"];
-    $cast_03 = $row["cast_03"];
-    $char_01 = $row["char_01"];
-    $char_02 = $row["char_02"];
-    $char_03 = $row["char_03"];
-    $crew_01 = $row["crew_01"];
-    $crew_02 = $row["crew_02"];
-    $crew_03 = $row["crew_03"];
-    $trailer = $row["trailer"];
-    $main_poster = $row["main_poster"];
-    $percentage = ($star_rating*100)/5;
+    include 'movie_poll_cache.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -96,6 +75,9 @@
                 <li>
                     <a href="#comments">COMMENTS</a>
                 </li>
+                <li>
+                    <a href="#polls">POLLS</a>
+                </li>
             </ul>
         </nav>
         <section class="box">
@@ -154,6 +136,44 @@
                     <source src=<?=$trailer?> type="video/mp4" />
                 </video>
             </div>
+            <div id="polls">
+                <h3>POLLS</h3>
+                <ul class="universe">
+                    <?php
+                        $i = 0;
+                        if(isset($data)){
+                            while($row = mysqli_fetch_assoc($data)){
+                                if($row["total_count"]==null){$row["total_count"]=0;}
+                                echo '<li class="outline">';
+                                echo '<div  class="item">';
+                                echo '<h3 class="wrap" id="'.$row["ref"].'" onclick="view_polls(this.id)">'.$row["question"].'</h3>';
+                                echo '<p>No of Votes: '.$row["total_count"].'</p>';
+                                echo '</div>';
+                                echo '</li>';
+                                $i++;
+                            }
+                        }
+                        if($i<3){
+                            $location = "location.href='../Polling-Site/poll_create.php'";
+                            echo '<li class="outline">';
+                            echo '<div  class="item" onclick="'.$location.'">';
+                            echo '<h3 class="wrap"> #No More Polls Found </h3>';
+                            echo '<p>Click to Create</p>';
+                            echo '</div>';
+                            echo '</li>';
+                            // Add else part of link here to check
+                        } else {
+                            echo '<li>';
+                            echo '<div class="link">';
+                            echo '<b> for more </b><a href="movie_poll_site.php?ref='.$movie_ref.'">Click here</a>';
+                            echo '</div>';
+                            echo '</li>';
+                        }
+                    ?>
+
+                </ul>
+            </div>
+
         </section>
         <section id="comments" class="comment-section">
             <h3 class="comm-heading">COMMENTS</h3>
@@ -267,6 +287,10 @@
         });
 
         var star = 0;
+
+        function view_polls(id){
+            location.href = "../Polling-Site/form_template.php?ref="+id;
+        }
 
         $('a[href^="#"]').click(function() {
             var href = $.attr(this, 'href');

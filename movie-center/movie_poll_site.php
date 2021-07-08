@@ -18,12 +18,12 @@
             src="https://kit.fontawesome.com/704ddf1c0b.js"
             crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="main-template.css">
-    <link rel="stylesheet" href="box-arrange.css">
+    <link rel="stylesheet" href="../Polling-Site/main-template.css">
+    <link rel="stylesheet" href="../Polling-Site/box-arrange.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
     .header{
-      background-image: url('search.png');
+      background-image: url('../Polling-Site/search.png');
       background-position: center;
     }
       body{
@@ -77,22 +77,19 @@
   <section>
         <ul class="universe" id="polls">
           <?php
-           $cmd = "SELECT question,total_count,ref FROM polls ORDER BY sno DESC";
-           $data = mysqli_query($con, $cmd);
-          function read($data){
-            if($data) {
+          $movie_ref = $_GET["ref"];
+           include 'movie_poll_cache.php';
+            if($site_data) {
               while(($row = mysqli_fetch_assoc($data))){
-                if ($row["total_count"]==NULL) {$row["total_count"]=0;}
-                  echo '<li class="box">';
-                  echo '<div class="item">'; //Add function view_poll() to redirect for individual polls
-                  echo '<h3 class="wrap" id="ref'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</h3>';
-                  echo '<p> No of votes: '.$row["total_count"].'</p>';
-                  echo '</div>';
-                  echo '</li>';
+                if($row["total_count"]==null){$row["total_count"]=0;}
+                echo '<li class="box">';
+                echo '<div  class="item">';
+                echo '<h3 class="wrap" id="'.$row["ref"].'" onclick="view_poll(this.id)">'.$row["question"].'</h3>';
+                echo '<p>No of Votes: '.$row["total_count"].'</p>';
+                echo '</div>';
+                echo '</li>';
               }
             }
-          }
-          read($data);
           ?>
         </ul>
   </section>
@@ -101,7 +98,7 @@
           function send_data(){
               $.ajax({
                   type: "GET",
-                  url: "poll_cache.php?search=float",
+                  url: "movie_poll_cache.php?search=float",
                   data: search(),
                 success:function(data){
                   document.getElementById('query-ans').innerHTML = data;
@@ -111,7 +108,7 @@
           function send(){
               $.ajax({
                   type: "GET",
-                  url: "poll_cache.php?search=static",
+                  url: "movie_poll_cache.php?search=static",
                   data: search(),
                   success:function(data){
                       document.getElementById('polls').innerHTML = data
@@ -130,8 +127,7 @@
           });
           document.getElementById('polls').addEventListener('mousedown',no_search);
           function view_poll(ref){
-              var temp_ref = ref.slice(3);
-              location.href= "form_template.php?ref="+temp_ref;
+              location.href= "../Polling-Site/form_template.php?ref="+ref;
             }
           function no_search(){
               document.getElementById('query-ans').innerHTML = "";
@@ -141,7 +137,7 @@
 
           var query = document.getElementById('query').value;
           if(query==""){
-            location.href="poll_search.php";
+            location.href="movie_poll_site.php?ref=<?=$movie_ref?>";
           }
           query = query.trim();
           var search_string = query.split(' ');
@@ -152,6 +148,7 @@
                 msg += "&";
               }
             }
+            msg += "&ref=<?=$movie_ref?>";
             return msg;
         }
     </script>

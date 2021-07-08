@@ -255,3 +255,35 @@ body {
   overflow-y: visible;
   margin-bottom: 0px;
 }
+
+/* The POLL box styling */
+
+.universe {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0px;
+}
+
+.outline {
+    margin: 1em auto;
+    width: 85%;
+}
+
+.item {
+    border: 2px solid black;
+    padding: 10px;
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+.item:hover {
+    cursor: pointer;
+    background-color: rgb(228, 228, 228);
+    box-shadow: 0px 5px 10px black;
+}
+
+.link {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+}
