@@ -161,13 +161,16 @@
                             echo '<p>Click to Create</p>';
                             echo '</div>';
                             echo '</li>';
-                        } // Add link to else part 
+                            // Add else part of link here to check 
+                        } else {
+                            echo '<li>';
+                            echo '<div class="link">';
+                            echo '<b> for more </b><a href="movie_poll_site.php?ref='.$movie_ref.'">Click here</a>';
+                            echo '</div>';
+                            echo '</li>';
+                        } 
                     ?>
-                    <li>
-                        <div class="link">
-                        <b>for more </b><a href="movie_search.php">Click here</a>
-                        </div>
-                    </li>
+                    
                 </ul>
             </div>
             
