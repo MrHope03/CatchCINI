@@ -161,32 +161,19 @@
                             echo '<p>Click to Create</p>';
                             echo '</div>';
                             echo '</li>';
-<<<<<<< HEAD
                             // Add else part of link here to check
-=======
-                            // Add else part of link here to check 
->>>>>>> 247f698922b1d2881da7be6b7f626186664960aa
                         } else {
                             echo '<li>';
                             echo '<div class="link">';
                             echo '<b> for more </b><a href="movie_poll_site.php?ref='.$movie_ref.'">Click here</a>';
                             echo '</div>';
                             echo '</li>';
-<<<<<<< HEAD
                         }
                     ?>
 
                 </ul>
             </div>
 
-=======
-                        } 
-                    ?>
-                    
-                </ul>
-            </div>
-            
->>>>>>> 247f698922b1d2881da7be6b7f626186664960aa
         </section>
         <section id="comments" class="comment-section">
             <h3 class="comm-heading">COMMENTS</h3>
@@ -269,7 +256,6 @@
         </footer>
     </body>
     <script>
-<<<<<<< HEAD
         $('.shw-rpl').click(function() {
           if ($(this).find('i').hasClass('fa-caret-down')){
             var obj = $(this).find('span').text();
@@ -306,11 +292,6 @@
             location.href = "../Polling-Site/form_template.php?ref="+id;
         }
 
-=======
-        function view_polls(id){
-            location.href = "../Polling-Site/form_template.php?ref="+id;
-        }
->>>>>>> 247f698922b1d2881da7be6b7f626186664960aa
         $('a[href^="#"]').click(function() {
             var href = $.attr(this, 'href');
             $('html,body').animate({
