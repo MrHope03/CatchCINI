@@ -178,7 +178,7 @@
           ?>
           <li  class="box">
             <div class="item">
-              <h3>#No Polls</h3>
+              <h3>New Polls</h3>
               <p><a href='poll_create.php'>Create</a></p> <!-- Add styling here -->
             </div>
           </li>
