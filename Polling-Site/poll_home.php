@@ -67,14 +67,6 @@
         }
       }
     </style>
-    <?php 
-          if ($_SESSION['theme'] != "light"){
-            echo "<style>
-                .item{background-color: rgb(228, 228, 228);}
-                .item:hover{background-color: whitesmoke;box-shadow: 0px 0px 15px cyan;z-index:5;}
-                </style>";
-          }
-      ?>
   </head>
   <body>
     <header class="header">
