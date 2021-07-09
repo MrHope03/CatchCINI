@@ -149,6 +149,9 @@
             <tr>
                 <td>No. of Polls Created :</td> <td><?php echo $total_polls; ?></td>
             </tr>
+            <tr>
+                <td colspan="2"><button class="btn new-poll"  id="logout">Logout</button></td>
+            </tr>
         </table>
     </section>
 
@@ -287,6 +290,19 @@
         }
             $('#light').click(light_theme);
             $('#dark').click(dark_theme);
+        
+            function logout(){
+          $.ajax({
+              type: "GET",
+              url: "../login/logout.php",
+              success: function(msg){
+                if(msg=="Logged_Out"){
+                  window.location.href = '../Homepage/home.php';
+                }
+              }
+          });
+        }
+        $("#logout").click(logout);
     });
     </script>
   </html>

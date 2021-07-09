@@ -1,43 +1,57 @@
-.header{
+.header {
     /* Changed the blend to soft light it seemed better */
     background-image: url('popcorn-monster.jpg');
     background-color: #111111ff;
-    background-blend-mode:soft-light;
+    background-blend-mode: soft-light;
     background-repeat: no-repeat;
     background-position: center;
     height: 15em;
 }
-table.box{
+
+table.box {
     background-color: rgb(235, 235, 235);
     width: 50%;
     margin: 2em;
 }
-table tr{
+
+table tr {
     padding: 2em;
 }
-table tr td:nth-child(odd){
+
+table tr td:nth-child(odd) {
     text-align: right;
     width: 50%;
     padding: 8px;
 }
-table tr td:nth-child(even){
+
+table tr td:nth-child(even) {
     text-align: left;
     width: 50%;
     padding: 8px;
 }
-.manage{
-    background-color:#000000ef;
+
+.manage {
+    background-color: #000000ef;
     margin: 1em auto;
     box-shadow: 0px 0px 5px white;
 }
-.manage:hover{
+
+.manage:hover,
+#logout:hover {
     background-color: #000000;
 }
-#reset{
+
+#logout {
+    background-color: #000000ef;
+    box-shadow: 0px 0px 5px white;
+}
+
+#reset {
     display: none;
     text-align: center;
     margin: 5px;
 }
-.reset:hover{
+
+.reset:hover {
     transform: rotate(250deg);
 }
