@@ -87,12 +87,15 @@ else{
           background-size: 20vw;
         }
       }
+<<<<<<< Updated upstream
       .container {
           display: flex;
           justify-content: space-evenly;
           margin: 0em 1em;
           opacity: 60%;
       }
+=======
+>>>>>>> Stashed changes
       .header{
         height: auto;
       }
@@ -272,8 +275,8 @@ else{
     });
 
     $('.container').mouseleave(function(){
-      $(this).css("opacity", "60%");
-      $(this).prev().css("opacity", "60%");
+      $(this).css("opacity", "80%");
+      $(this).prev().css("opacity", "80%");
       $(this).prev().prev().css("visibility","hidden");
     });
 
@@ -284,8 +287,8 @@ else{
     });
 
     $('img').mouseleave(function(){
-      $(this).css("opacity", "60%");
-      $(this).next().css("opacity", "60%");
+      $(this).css("opacity", "80%");
+      $(this).next().css("opacity", "80%");
       $(this).prev().css("visibility","hidden");
     });
 

@@ -199,7 +199,11 @@ body{
 img {
     width: 35px;
     height: 18px;
+<<<<<<< Updated upstream
     opacity: 60%;
+=======
+    opacity: 80%;
+>>>>>>> Stashed changes
 }
 
 .red {
@@ -237,7 +241,11 @@ img {
     display: flex;
     justify-content: space-evenly;
     margin: 0em 1em;
+<<<<<<< Updated upstream
     opacity: 60%;
+=======
+    opacity: 80%;
+>>>>>>> Stashed changes
 }
 
 

@@ -1,6 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+<<<<<<< Updated upstream
+=======
+<<<<<<<< Updated upstream:Polling-Site/light-form-style.css
+========
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    color: black;
+    margin: 0px;
+    padding: 0px;
+}
+
+.header {
+    /* Changed the blend to soft light it seemed better */
+    background-image: url('poll.jpg');
+    background-color: #111;
+    background-blend-mode: soft-light;
+    background-size: cover;
+    background-position: center right;
+    height: auto;
+}
+
+.nav {
+    margin: 0px;
+    padding: 0px;
+    background-color: #00000055;
+}
+
+.nav ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    text-align: center;
+    position: relative;
+}
+
+.nav ul li {
+    display: inline-block;
+    padding: .5em 1.2em;
+    margin: 0px;
+    height: 3em;
+}
+
+.nav a,
+.btn {
+    color: #ffffffbb;
+}
+
+.nav a:hover,
+.btn:hover {
+    color: white;
+    cursor: pointer;
+}
+>>>>>>>> Stashed changes:Polling-Site/form_style.css
+>>>>>>> Stashed changes
 
 /*change Main-heading to question */
 #question {
@@ -185,7 +243,11 @@
 img {
     width: 35px;
     height: 18px;
+<<<<<<< Updated upstream
     opacity: 60%;
+=======
+    opacity: 80%;
+>>>>>>> Stashed changes
 }
 
 .red {
@@ -223,7 +285,11 @@ img {
     display: flex;
     justify-content: space-evenly;
     margin: 0em 1em;
+<<<<<<< Updated upstream
     opacity: 60%;
+=======
+    opacity: 80%;
+>>>>>>> Stashed changes
 }
 
 
