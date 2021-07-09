@@ -1,7 +1,9 @@
 <?php
     session_start();
+    if(empty($_SESSION['theme'])){
+        $_SESSION['theme'] = 'light';
+    }
 ?>
-<!-- TODO: NEED TO ADD LINK TO WEBPAGES -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,8 +18,9 @@
             id="mode"
             rel="stylesheet"
             type="text/css"
-            href="home-light.css"
+            href="<?php if($_SESSION['theme'] == 'light'){echo 'home-light.css';}else{echo 'home-dark.css';}  ?>""
         />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <header class="container">
@@ -43,7 +46,7 @@
             <div class="white">
                 <a href="#"
                     ><i style="color: white" class="fab fa-instagram fa-2x"></i
-                ></a>
+                <!-- ></a>
                 <a href="#"
                     ><i style="color: white" class="fab fa-twitter fa-2x"></i
                 ></a>
@@ -56,20 +59,30 @@
             </div>
         </footer>
         <script>
-            var sun = document.getElementById("light");
-            var night = document.getElementById("dark");
-            sun.addEventListener("click", lightmode);
-            night.addEventListener("click", darkmode);
-            function lightmode() {
-                document
-                    .getElementById("mode")
-                    .setAttribute("href", "home-light.css");
+            $(document).ready(function(){
+            function dark_theme(){
+                $.ajax({
+                    type: "GET",
+                    url: "page_theme.php",
+                    data: "msg=dark",
+                    success: function(data){
+                        document.getElementById("mode").setAttribute("href", "home-dark.css");
+                    }
+                });
             }
-            function darkmode() {
-                document
-                    .getElementById("mode")
-                    .setAttribute("href", "home-dark.css");
+            function light_theme(){
+                $.ajax({
+                    type: "GET",
+                    url: "page_theme.php",
+                    data: "msg=light",
+                    success: function(data){
+                        document.getElementById("mode").setAttribute("href", "home-light.css");
+                    }                    
+                });
             }
+                $('#light').click(light_theme);
+                $('#dark').click(dark_theme);
+        });
         </script>
     </body>
 </html>

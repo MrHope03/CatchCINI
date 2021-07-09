@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['theme'])){
+  $_SESSION['theme'] = 'light';
+}
 $server = "localhost";
 $user = "root";
 $pass = "";
@@ -69,23 +72,32 @@ else{
     <meta charset="utf-8">
     <script src="https://kit.fontawesome.com/704ddf1c0b.js" crossorigin="anonymous"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="form_style.css">
+     <link rel="stylesheet" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-main-template.css';}else{echo 'dark-main-template.css';} ?>">
+    <link rel="stylesheet" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-form-style.css';}else{echo 'dark-form-style.css';} ?>">
     <link rel="stylesheet" href="pop_animate.css">
     <title><?php $ques ?></title>
     <style>
-      body{
-          background-color: #ffebcd25;
-      }
       @media (min-width : 1040px){
         body{
           background-image: url('tenor.gif');
           background-attachment: fixed;
           background-repeat: no-repeat;
           background-blend-mode:lighten;
-          background-color: #ffebcd25;
           background-position: bottom right;
           background-size: 20vw;
         }
+      }
+<<<<<<< Updated upstream
+      .container {
+          display: flex;
+          justify-content: space-evenly;
+          margin: 0em 1em;
+          opacity: 60%;
+      }
+=======
+>>>>>>> Stashed changes
+      .header{
+        height: auto;
       }
     </style>
   </head>
@@ -120,6 +132,7 @@ else{
           echo '<h3 id="link">'.$global_url.'&nbsp;&nbsp;&nbsp;<button id="link_button" onclick="copy()"><i class="far fa-clipboard"></i> Copy </button></h3>';
       ?>
     </div>
+    <br><br>
     <script>
         function open_share(){
           document.getElementById('share-box').style.display = "block";
@@ -154,7 +167,7 @@ else{
       </div>
     <div id="graph">
         <div id="pop_1" class="popcorn tooltip">
-          <span class="tooltiptext" id="tool_1"></span>
+          <span class="tooltiptext  color_1" id="tool_1"></span>
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
@@ -170,7 +183,7 @@ else{
             </div>
         </div>
         <div id="pop_2" class="popcorn tooltip">
-          <span class="tooltiptext" id="tool_2"></span>
+          <span class="tooltiptext color_2" id="tool_2"></span>
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
@@ -186,7 +199,7 @@ else{
             </div>
         </div>
         <div id="pop_3" class="popcorn tooltip">
-          <span class="tooltiptext" id="tool_3"></span>
+          <span class="tooltiptext color_3" id="tool_3"></span>
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
@@ -202,7 +215,7 @@ else{
             </div>
         </div>
         <div id="pop_4" class="popcorn tooltip">
-          <span class="tooltiptext" id="tool_4"></span>
+          <span class="tooltiptext color_4" id="tool_4"></span>
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
@@ -218,7 +231,7 @@ else{
             </div>
         </div>
         <div id="pop_5" class="popcorn tooltip">
-          <span class="tooltiptext" id="tool_5"></span>
+          <span class="tooltiptext color_5" id="tool_5"></span>
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
@@ -234,7 +247,7 @@ else{
             </div>
         </div>
         <div id="pop_6" class="popcorn tooltip">
-          <span class="tooltiptext" id="tool_6"></span>
+          <span class="tooltiptext color_6" id="tool_6"></span>
             <img src="popcorn.png">
             <div class="container">
                 <!-- RED -->
@@ -262,8 +275,8 @@ else{
     });
 
     $('.container').mouseleave(function(){
-      $(this).css("opacity", "60%");
-      $(this).prev().css("opacity", "60%");
+      $(this).css("opacity", "80%");
+      $(this).prev().css("opacity", "80%");
       $(this).prev().prev().css("visibility","hidden");
     });
 
@@ -274,8 +287,8 @@ else{
     });
 
     $('img').mouseleave(function(){
-      $(this).css("opacity", "60%");
-      $(this).next().css("opacity", "60%");
+      $(this).css("opacity", "80%");
+      $(this).next().css("opacity", "80%");
       $(this).prev().css("visibility","hidden");
     });
 
@@ -299,6 +312,7 @@ else{
       if (!first_click){
       sel_opt = document.getElementById(opt_id);
       document.getElementById('hidden-value').value = "count_" + sel_opt.id;
+      sel_opt.style.backgroundColor = 'rgba(108, 228, 236,0.3)';
       sel_opt.style.borderColor = 'rgb(2, 84, 244)';
       first_click = true;
       butt = document.getElementById('button');
@@ -311,11 +325,13 @@ else{
       butt.classList.add('button-style-active');
       }
       else if(!post_first_click){
+        sel_opt.style.backgroundColor = 'rgb(48,48,48)';
         sel_opt.style.borderColor = 'rgb(11, 174, 185)';
         if (sel_opt.id != opt_id){
         sel_opt = document.getElementById(opt_id);
         document.getElementById('hidden-value').value = "count_" + sel_opt.id;
         sel_opt.style.borderColor = 'rgb(2, 84, 244)';
+        sel_opt.style.backgroundColor = 'rgba(108, 228, 236,0.3)';
         }
         else{
           butt.style.color = 'grey';
@@ -364,15 +380,17 @@ else{
       if($upd_id){$sel_id = substr($upd_id,6);
       //echo "alert('$sel_id');";
       echo "sel_opt = document.getElementById('$sel_id');";
-      echo "sel_opt.style.borderColor = 'rgb(2, 84, 244)';";}
+      echo "sel_opt.style.backgroundColor = 'rgba(108, 228, 236,0.3)';";
+      echo "sel_opt.style.borderColor = 'rgb(2, 84, 244)';";
+      }
       echo "first_click = true;";
       echo "post_first_click = true;";
       echo "document.getElementById('button').value = 'Results';";
       echo "document.getElementById('graph-contain').style.display = 'flex';";
       echo "var graph_data = [];";
       for($i = 1; $i <= $total_options; $i++){
-        //echo "document.getElementById('pop_$i').style.visibility = 'visible';";
-        //echo "document.getElementById('$i').classList.add('color_$i');";
+        echo "document.getElementById('pop_$i').style.visibility = 'visible';";
+        echo "document.getElementById('$i').classList.add('color_$i');";
         if ($row['total_count']!=0){
         $temp = ($row['count_'.$i]/$row['total_count'])*400;
         echo "graph_data[$i] = $temp;";}

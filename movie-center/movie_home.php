@@ -1,5 +1,8 @@
 <?php
     session_start();
+    if (!isset($_SESSION['theme'])){
+        $_SESSION['theme'] = 'light';
+    }
     $server = "localhost";
     $user = "root";
     $pass = "";
@@ -29,8 +32,13 @@
             src="https://kit.fontawesome.com/704ddf1c0b.js"
             crossorigin="anonymous">
     </script>
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="main-template.css">
     <link rel="stylesheet" href="box-arrange.css">
+=======
+    <link rel="stylesheet" id="page-theme" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-main-template.css';}else{echo 'dark-main-template.css';}?> ">
+    <link rel="stylesheet" id="box-theme" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-box.css';}else{echo 'dark-box.css';}?> ">
+>>>>>>> Stashed changes
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         .header{
@@ -63,13 +71,21 @@
         <div>
             <h1 class="main-heading">Movie Center</h1>
         </div>
+        <div class="theme">
+            <i id="light" class="far fa-sun fa-2x"></i>
+            <i id="dark" class="far fa-moon fa-2x"></i>
+        </div>
     </header>
     <section>
         <div class="universe">
             <div class="sub-heading">Check Out Latest Movies</div>
             <div class="search-bar">
+                <input type="text" id="query"></input>
                 <i class="fas fa-search fa-2x"></i>
+<<<<<<< Updated upstream
                  <input type="text" id="query"></input>
+=======
+>>>>>>> Stashed changes
                  <ul id="query-ans">
                  </ul>
             </div>
@@ -176,6 +192,35 @@
                     }
                 return msg;
             }
+<<<<<<< Updated upstream
+=======
+        $(document).ready(function(){
+            function dark_theme(){
+                $.ajax({
+                    type: "GET",
+                    url: "../Homepage/page_theme.php",
+                    data: "msg=dark",
+                    success: function(data){
+                        document.getElementById("page-theme").setAttribute("href", "dark-main-template.css");
+                        document.getElementById("box-theme").setAttribute("href", "dark-box.css");
+                    }
+                });
+            }
+            function light_theme(){
+                $.ajax({
+                    type: "GET",
+                    url: "../Homepage/page_theme.php",
+                    data: "msg=light",
+                    success: function(data){
+                        document.getElementById("page-theme").setAttribute("href", "light-main-template.css");
+                        document.getElementById("box-theme").setAttribute("href", "light-box.css");
+                        }                    
+                });
+            }
+                $('#light').click(light_theme);
+                $('#dark').click(dark_theme);
+            });
+>>>>>>> Stashed changes
     </script>
   </body>
 </html>
