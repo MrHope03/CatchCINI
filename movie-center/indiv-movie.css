@@ -92,8 +92,6 @@ body {
 .trailer {
     display: block;
     margin: 2px auto;
-    height: 320px;
-    width: 400px;
 }
 
 .comment-section {
@@ -127,13 +125,7 @@ body {
 }
 
 .user-comments {
-    margin: 1.2em;
-}
-
-.user-comments textarea {
-    width: 80%;
-    resize: none;
-    margin: 3px;
+    margin: 1.2em 0;
 }
 
 .submit-btn {
@@ -286,4 +278,22 @@ body {
 .link {
     text-align: center;
     font-family: 'Orbitron', sans-serif;
+}
+
+/*Comment*/
+
+#new-comment{
+  font-family: 'Heebo', sans-serif;
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  min-height: 50px;
+  max-height: 100px;
+  border-radius: 5px;
+  border-style: none;
+  margin-bottom: 10px;
+}
+
+.new-comment{
+  text-align: right;
 }

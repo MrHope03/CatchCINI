@@ -73,10 +73,10 @@
                     <a href="#trailer">TRAILER</a>
                 </li>
                 <li>
-                    <a href="#comments">COMMENTS</a>
+                    <a href="#polls">POLLS</a>
                 </li>
                 <li>
-                    <a href="#polls">POLLS</a>
+                    <a href="#comments">COMMENTS</a>
                 </li>
             </ul>
         </nav>
@@ -132,9 +132,10 @@
             </div>
             <div id="trailer">
                 <h3>TRAILER</h3>
-                <video autoplay controls muted class="trailer">
-                    <source src=<?=$trailer?> type="video/mp4" />
-                </video>
+                <iframe class="trailer" src="https://www.youtube.com/embed/zheMCw4J-jI" width="560" height="315" frameborder="0"></iframe>
+                <!--<video autoplay controls muted class="trailer">
+                    <source src= type="video/mp4" />
+                </video>-->
             </div>
             <div id="polls">
                 <h3>POLLS</h3>
@@ -196,8 +197,8 @@
                     <i class="fas fa-star fa-x" id="sr-3" onclick="rate(this.id)" ></i>
                     <i class="fas fa-star fa-x" id="sr-4" onclick="rate(this.id)" ></i>
                 </span>
-                <div>
-                    <textarea rows="3"></textarea>
+                <div class="new-comment">
+                    <textarea placeholder="Comment Here..." id="new-comment" oninput="auto_grow(this)"></textarea>
                 </div>
                 <button class="submit-btn" onclick="submit()">SUBMIT</button>
             </div>
@@ -256,6 +257,12 @@
         </footer>
     </body>
     <script>
+        function auto_grow(element) {
+            element.style.height = "5px";
+            element.style.height = (element.scrollHeight)+"px";
+        }
+        //document.getElementById('youtube').innerHTML = '<iframe src="https://www.youtube.com/embed/2OtgYcd83Qg" width="560" height="315" frameborder="0"></iframe>';
+
         $('.shw-rpl').click(function() {
           if ($(this).find('i').hasClass('fa-caret-down')){
             var obj = $(this).find('span').text();
