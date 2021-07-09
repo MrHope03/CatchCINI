@@ -29,7 +29,7 @@
         $ct_info = mysqli_query($con, $cmd_2);
         $count = mysqli_fetch_row($ct_info)[0];
         if ($count > 0){
-          $cmd .= " ORDER BY reg_date DESC";
+          $cmd .= " ORDER BY reg_date DESC LIMIT 4";
           $data = mysqli_query($con, $cmd);
         }
         else{

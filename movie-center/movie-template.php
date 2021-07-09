@@ -13,28 +13,7 @@
     $username = $_SESSION["username"];
     }
     $movie_ref = $_GET["ref"];
-
-    $cmd = "SELECT * FROM movie where movie_ref LIKE '$movie_ref'";
-    $data = mysqli_query($con, $cmd);
-    if(!$data){echo $con->error;}
-    $row = mysqli_fetch_assoc($data);
-    $movie_name = $row["movie_name"];
-    $year = $row["year"];
-    $star_rating = $row["star_rating"];
-    $total_votes = $row["total_votes"];
-    $story = $row["story"];
-    $cast_01 = $row["cast_01"];
-    $cast_02 = $row["cast_02"];
-    $cast_03 = $row["cast_03"];
-    $char_01 = $row["char_01"];
-    $char_02 = $row["char_02"];
-    $char_03 = $row["char_03"];
-    $crew_01 = $row["crew_01"];
-    $crew_02 = $row["crew_02"];
-    $crew_03 = $row["crew_03"];
-    $trailer = $row["trailer"];
-    $main_poster = $row["main_poster"];
-    $percentage = ($star_rating*100)/5;
+    include 'movie_poll_cache.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -94,6 +73,9 @@
                     <a href="#trailer">TRAILER</a>
                 </li>
                 <li>
+                    <a href="#polls">POLLS</a>
+                </li>
+                <li>
                     <a href="#comments">COMMENTS</a>
                 </li>
             </ul>
@@ -150,10 +132,49 @@
             </div>
             <div id="trailer">
                 <h3>TRAILER</h3>
-                <video autoplay controls muted class="trailer">
-                    <source src=<?=$trailer?> type="video/mp4" />
-                </video>
+                <iframe class="trailer" src="https://www.youtube.com/embed/zheMCw4J-jI" width="560" height="315" frameborder="0"></iframe>
+                <!--<video autoplay controls muted class="trailer">
+                    <source src= type="video/mp4" />
+                </video>-->
             </div>
+            <div id="polls">
+                <h3>POLLS</h3>
+                <ul class="universe">
+                    <?php
+                        $i = 0;
+                        if(isset($data)){
+                            while($row = mysqli_fetch_assoc($data)){
+                                if($row["total_count"]==null){$row["total_count"]=0;}
+                                echo '<li class="outline">';
+                                echo '<div  class="item">';
+                                echo '<h3 class="wrap" id="'.$row["ref"].'" onclick="view_polls(this.id)">'.$row["question"].'</h3>';
+                                echo '<p>No of Votes: '.$row["total_count"].'</p>';
+                                echo '</div>';
+                                echo '</li>';
+                                $i++;
+                            }
+                        }
+                        if($i<3){
+                            $location = "location.href='../Polling-Site/poll_create.php'";
+                            echo '<li class="outline">';
+                            echo '<div  class="item" onclick="'.$location.'">';
+                            echo '<h3 class="wrap"> #No More Polls Found </h3>';
+                            echo '<p>Click to Create</p>';
+                            echo '</div>';
+                            echo '</li>';
+                            // Add else part of link here to check
+                        } else {
+                            echo '<li>';
+                            echo '<div class="link">';
+                            echo '<b> for more </b><a href="movie_poll_site.php?ref='.$movie_ref.'">Click here</a>';
+                            echo '</div>';
+                            echo '</li>';
+                        }
+                    ?>
+
+                </ul>
+            </div>
+
         </section>
         <section id="comments" class="comment-section">
             <h3 class="comm-heading">COMMENTS</h3>
@@ -176,25 +197,47 @@
                     <i class="fas fa-star fa-x" id="sr-3" onclick="rate(this.id)" ></i>
                     <i class="fas fa-star fa-x" id="sr-4" onclick="rate(this.id)" ></i>
                 </span>
-                <div>
-                    <textarea rows="3"></textarea>
+                <div class="new-comment">
+                    <textarea placeholder="Comment Here..." id="new-comment" oninput="auto_grow(this)"></textarea>
                 </div>
                 <button class="submit-btn" onclick="submit()">SUBMIT</button>
             </div>
 
             <!-- READ COMMENTS INTO THIS DA -->
-            <div class="comment box">
-                <p>
-                    <span class="user">username</span> -
-                    <!-- FOR LOOP USE PANNI STARS PRINT PANNU DA AUTOMATICALLY GOLD AH THAN VARUM -->
-                        <i class="fas fa-star fa-x"></i>
-                        <i class="fas fa-star fa-x"></i>
-                        <i class="fas fa-star fa-x"></i>
-                        <i class="fas fa-star fa-x"></i>
-                        <i class="fas fa-star fa-x"></i>
-                </p>
-                <p class="text">Was an excellent Commercial movie</p>
-            </div>
+                  <?php
+                  $cmd = "SELECT * from comments WHERE movie_ref like '%$movie_ref%'";
+                  $data = mysqli_query($con, $cmd);
+                  $i = 1;
+                  if ($data){
+                    while(($row = mysqli_fetch_assoc($data)) && ($i<=10)){
+                      echo '<div class="comment" id="comment_'.$i.'"><div class="root"><p class="username">';
+                      //$replies = explode(';',$row['replies']);
+                      $temp = $row['root'];
+                      //echo "<script>alert('$replies[0]');</script>";
+                      if ($row['username']){
+                        echo '<span class="user">'.$row['username'].' commented</span>';
+                      }
+                      else{
+                        echo '<span class="user">Anonymous commented</span>';
+                      }
+                      if ($row['star_rating']==NULL) {
+                        $row['star_rating'] = 0;
+                      }
+                      echo "<span class='user-star'>";
+                      for($j=1; $j<=$row['star_rating']; $j++){
+                        echo '<i class="fas fa-star fa-x" style="color: gold"></i>';
+                      }
+                      for($j=$row['star_rating']+1; $j<=5; $j++){
+                        echo '<i class="fas fa-star fa-x" ></i>';
+                      }
+                      echo "</span>";
+                      $i++;
+                      echo '</p><p class="text">'.$temp.'</p><p class="shw-rpl"><span class="sel-rpl" style="display:none">'.$row['com_ref'].'</span><i class="fas fa-caret-down"></i>Show Replies</p></div></div>';
+                    }
+                  }
+                  echo "<script>var mov = '$movie_ref';</script>";
+                  echo "<script>var usern = '$username';</script>";
+                  ?>
         </section>
 
         <footer class="end-credit">
@@ -217,6 +260,62 @@
     </body>
     <script>
 
+        $('.submit-btn').click(function(){
+          var comm = "new-comment=" + document.getElementById('new-comment').value;
+          comm += "&movie-ref=" + mov + "&star=" + star + "&user=" + usern;
+          alert(comm);
+          $.ajax({
+            type: "GET",
+            url: "movie-replies.php",
+            data: comm,
+            success:function(data){
+              $('.comments-section').append(data);
+            }
+          });
+        });
+
+        function auto_grow(element) {
+            element.style.height = "5px";
+            element.style.height = (element.scrollHeight)+"px";
+        }
+        //document.getElementById('youtube').innerHTML = '<iframe src="https://www.youtube.com/embed/2OtgYcd83Qg" width="560" height="315" frameborder="0"></iframe>';
+
+        $('.shw-rpl').click(function() {
+          if ($(this).find('i').hasClass('fa-caret-down')){
+            var obj = $(this).find('span').text();
+            var id = $(this).parent().parent().attr('id');
+            //alert(id);
+          $(this).html('<span class="sel-rpl" style="display:none">'+obj+'</span><i class="fas fa-caret-up"></i>Hide Replies');
+          obj = 'com_ref='+obj;
+          $.ajax({
+              type: "GET",
+              url: "movie-replies.php",
+              data: obj,
+              success:function(data){
+                  //alert(data);
+                  $('#'+id).append(data);
+                  //document.getElementById(id).innerHTML += data;
+              }
+          });
+          }
+          else{
+          var obj = $(this).find('span').text();
+          $(this).html('<span class="sel-rpl" style="display:none">'+obj+'</span><i class="fas fa-caret-down"></i>Show Replies');
+          var id = $(this).parent().parent().attr('id');
+          var i = 1;
+          while($('#'+id+' div').length > 1){
+            $('#reply_'+obj+'_'+i).remove();
+            i++;
+          }
+          }
+        });
+
+        var star = 0;
+
+        function view_polls(id){
+            location.href = "../Polling-Site/form_template.php?ref="+id;
+        }
+
         $('a[href^="#"]').click(function() {
             var href = $.attr(this, 'href');
             $('html,body').animate({
@@ -233,6 +332,7 @@
         movie_rating(4); // Substitute rating varaible in here
         function rate(id){
             id = Number(id.substring(3));
+            star = id+1;
             for (let i = 0; i <= 4; i++){
                 document.getElementById('sr-'+i).style.color = "whitesmoke";
             }

@@ -92,8 +92,6 @@ body {
 .trailer {
     display: block;
     margin: 2px auto;
-    height: 320px;
-    width: 400px;
 }
 
 .comment-section {
@@ -113,8 +111,7 @@ body {
 }
 
 .user {
-    font-family: 'Orbitron', sans-serif;
-    text-transform: uppercase;
+    font-family: 'Heebo', sans-serif;
     font-weight: bold;
 }
 
@@ -128,13 +125,7 @@ body {
 }
 
 .user-comments {
-    margin: 1.2em;
-}
-
-.user-comments textarea {
-    width: 80%;
-    resize: none;
-    margin: 3px;
+    margin: 1.2em 0;
 }
 
 .submit-btn {
@@ -155,6 +146,10 @@ body {
 
 .user-rating .fa-star {
     color: whitesmoke;
+}
+
+.root .fa-star{
+  color: blanchedalmond;
 }
 
 .user-rating:hover .fa-star {
@@ -180,4 +175,125 @@ body {
 
 #sr-4:hover~i {
     color: blanchedalmond !important;
+}
+
+.user-star{
+  text-align: center;
+  float: right;
+}
+
+.root{
+  background-color: white;
+  border-radius: 5px;
+}
+
+.shw-rpl {
+  padding: 0;
+  margin: 0;
+  text-decoration: underline;
+  cursor: pointer;
+  width: 110px;
+}
+
+.root .username{
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 75%;
+}
+
+.root .text{
+  text-align: left;
+  padding-top: 0px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-y: visible;
+  margin-bottom: 0px;
+}
+
+.shw-rpl i{
+  padding: 0 5px;
+}
+
+.reply{
+  margin-left: 13%;
+  background-color: white;
+  border-radius: 5px;
+  width: 87%;
+}
+
+.reply .username{
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 75%;
+}
+
+.reply .text{
+  text-align: left;
+  padding-top: 0px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-y: visible;
+  margin-bottom: 0px;
+}
+
+/* The POLL box styling */
+
+.universe {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0px;
+}
+
+.outline {
+    margin: 1em auto;
+    width: 85%;
+}
+
+.item {
+    border: 2px solid black;
+    padding: 10px;
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+.item:hover {
+    cursor: pointer;
+    background-color: rgb(228, 228, 228);
+    box-shadow: 0px 5px 10px black;
+}
+
+.link {
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/*Comment*/
+
+#new-comment{
+  font-family: 'Heebo', sans-serif;
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  min-height: 50px;
+  max-height: 100px;
+  border-radius: 5px;
+  border-style: none;
+  margin-bottom: 10px;
+}
+
+.new-comment{
+  text-align: right;
 }

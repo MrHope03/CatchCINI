@@ -31,6 +31,7 @@
     </script>
     <link rel="stylesheet" href="main-template.css">
     <link rel="stylesheet" href="box-arrange.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         .header{
             background-image: url('Movie.jpg');
@@ -64,12 +65,15 @@
         </div>
     </header>
     <section>
-        <ul class="universe" id="polls">
+        <div class="universe">
             <div class="sub-heading">Check Out Latest Movies</div>
             <div class="search-bar">
                 <i class="fas fa-search fa-2x"></i>
                  <input type="text" id="query"></input>
+                 <ul id="query-ans">
+                 </ul>
             </div>
+            <div class="polls-sub" id="polls">
             <?php
             while($row = mysqli_fetch_assoc($data)){
                 $star = $row["star_rating"];
@@ -94,7 +98,8 @@
                 echo  '</li>';
             }
             ?>
-        </ul>
+            </div>
+        </div>
     </section>
 
     <footer class="end-credit">
@@ -115,8 +120,61 @@
         </div>
     </footer>
     <script>
+            $(document).ready(function(){
+          function send_data(){
+              $.ajax({
+                  type: "GET",
+                  url: "movie_cache.php?search=float",
+                  data: search(),
+                success:function(data){
+                  document.getElementById('query-ans').innerHTML = data;
+                }
+              });
+            }
+            function send(){
+              $.ajax({
+                  type: "GET",
+                  url: "movie_cache.php?search=static",
+                  data: search(),
+                  success:function(data){
+                      document.getElementById('polls').innerHTML = data
+                  }
+              });
+            }
+            $("#query").keypress(function(event){
+              var key = (event.keyCode ? event.keyCode : event.which);
+              if(key == '13'){
+                  send();
+                  $('#query').blur();
+                  no_search();
+              }
+            });
+            $('#query').keyup(send_data);
+          });
+          document.getElementById('polls').addEventListener('mousedown',no_search);
             function redirect(id){
                 window.location.href = "movie-template.php?ref="+id;
+            }
+            function no_search(){
+              document.getElementById('query-ans').innerHTML = "";
+          }
+            function search(){
+                var msg = "";
+
+                var query = document.getElementById('query').value;
+                if(query==""){
+                    location.href="movie_home.php";
+                }
+                query = query.trim();
+                var search_string = query.split(' ');
+                for (let i = 0; i < search_string.length; i++){
+                    let str = search_string[i];
+                    msg += ("var"+i+"="+str);
+                    if (i != (search_string.length - 1)){
+                        msg += "&";
+                    }
+                    }
+                return msg;
             }
     </script>
   </body>
