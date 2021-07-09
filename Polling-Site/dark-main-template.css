@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Stick&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+*{
+    box-sizing: border-box;
+}
+html,body{
+    color: black;
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: #000000de;
+}
+/* Heading styling */
+.header{
+    /* Changed the blend to soft light it seemed better */
+    background-image: url('poll.jpg');
+    background-color: #111;
+    background-blend-mode: soft-light;
+    background-size: cover;
+    background-position: center right;
+    height: 15em;
+}
+.nav{
+    margin: 0px;
+    padding: 0px;
+    background-color: #00000055;
+}
+.nav ul{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    text-align: center;
+    position: relative;
+}
+.nav ul li{
+    display: inline-block;
+    padding: .5em 1.2em;
+    margin: 0px;
+    height: 3em;
+}
+.nav a,.btn{
+    color: #ffffffbb;
+}
+.nav a:hover,.btn:hover{
+    color: white;
+    cursor: pointer;
+}
+.main-heading{
+    font-family: 'Stick', sans-serif ;
+    font-size: 3.2em;
+    text-align: center;
+    color: lightgoldenrodyellow;
+}
+.web-tag{
+    font-family: 'Stick',sans-serif;
+    font-size: 1.3em;
+    text-decoration: underline;
+    font-weight: bolder;
+    letter-spacing: .15em;
+    color:rgb(250, 211, 250);
+}
+.l-tag{
+    position: absolute;
+    left: 1.5em;
+    visibility: hidden;    
+}
+.r-tag{
+    position: absolute;
+    right: 2em;
+    visibility: hidden;    
+}
+.poll:hover + .l-tag{
+    visibility: visible;    
+}
+.movie:hover + .r-tag{
+    visibility: visible;
+}
+.theme{
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: palegoldenrod;
+}
+@media (max-width :800px){
+    .poll:hover + .l-tag{
+        visibility: hidden;    
+    }
+    .movie:hover + .r-tag{
+        visibility: hidden;
+    }
+}
+/* container styling */
+.container{
+    display: flex;
+    justify-content:center;
+    position: relative;
+    flex-grow: 0;
+}
+ /* The poll box styling */
+.box{
+    margin: 1.5em auto;
+    width: 65%;
+    font-family: 'Orbitron',sans-serif; 
+}
+.wrap{
+    word-wrap: break-word;
+}
+/* Poll Qn section */
+.poll-qn{
+    margin: 1em;
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom: 2px groove rgb(253, 225, 229);
+    color: white;
+    text-shadow: 0px 0px 5px cyan;
+}
+.poll-qn textarea{
+    font-size: 1em;
+    margin: 1em auto;
+    text-align: center;
+    display: block;
+    height: 3em;
+    width: 80%;
+}
+/* Poll options section */
+.option-header{
+    margin: .5em;
+    font-size: 1.5em;
+    color: #f3dccc;
+    text-shadow: 0px 0px 3px red;
+}
+#error{
+    color: red;
+    font-size: 0.7em;
+    font-family: 'Heebo',sans-serif;
+}
+.option-table{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.add{
+    background-color: #34adf3;
+    padding: .7em;
+    width: 35%;
+    font-size: .7em;
+    font-family: 'Heebo',sans-serif;
+    margin: 3px auto 15px;
+    border: none;
+    z-index: 10;
+    box-shadow: 0px 0px 5px #000;
+}
+.option-box{
+    min-width: 450px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.poll-option{
+    margin: 5px 13px;
+    height: 40px;
+    width: 75%;
+    font-size: 1em;
+}
+/* Close option */
+.close{
+    color: #f13535;
+}   
+/* edit option */
+.edit{
+    color: rgb(204, 202, 202);
+}
+.edit:hover{
+    color:rgb(33, 228, 33) !important;
+    cursor: pointer;
+}
+.close:hover{
+    color: red;
+    cursor: pointer;
+}
+.submit{
+    display: block;
+    background-color: #ff0202;
+    padding: 1em;
+    font-size: .9em;
+    font-family: 'Heebo',sans-serif;
+    margin: 25px auto 15px;
+    border: 2px groove red;
+    z-index: 10;
+    box-shadow: 0px 0px 7px #000;
+}
+/* footer */
+.end-credit{
+    text-align: center;
+    font-family: 'Heebo',sans-serif ;
+    background-color: #090909;
+    font-size: 1em;
+    margin: 0px;
+    padding: 1em;
+}
+/* Coloring the box of create new poll */
+section.box{
+    border: 2px dashed green;
+    padding: 2em;
+}
+.new-poll{
+    display: block;
+    background-color: rgb(72, 199, 72);
+    text-align: center;
+    font-size: 1.2em;
+    margin: auto;
+    border: none;
+    padding: 10px;
+}
+.new-poll:hover{
+    background-color: #00ff00;
+}
+.sub-heading{
+    font-family: 'Orbitron',sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+    color: white;
+    text-shadow: 0px 0px 5px cyan;
+    
+}
+/* link to search */
+.link{
+    color: white;
+    text-shadow: 0px 0px 5px #f59fdf;
+    text-shadow: 0px 0px 8px #ee73cf;    
+    font-size: larger;
+    text-align: center;
+    font-family: 'Orbitron',sans-serif;
+}
+.link a:link,.link a:visited{
+    color:rgb(196, 251, 255);
+    text-shadow: 0px 0px 3px powderblue;
+    text-decoration: none;
+}
+.link a:hover{
+    color: #5dffffef;
+    text-shadow: 0px 0px 5px cyan;
+    text-decoration: underline;
+}
+
+.search-bar{
+    margin: auto;
+    text-align: center;
+}
+.fa-search{
+    vertical-align: top;
+    color: lightgoldenrodyellow;
+    margin: 0em 0.5em;
+    font-size: 1.5em;
+    opacity: 0.82;
+}
+.fa-search:hover{
+    opacity: 1;
+    cursor:pointer;
+    color: white;
+}
+#query{
+    border-radius: 10px;
+    width: 60%;
+    height: 25px;
+    resize: none;
+}

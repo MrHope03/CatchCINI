@@ -9,7 +9,8 @@
 }
 table.box{
     background-color: rgb(235, 235, 235);
-    min-width: 425px;
+    width: 50%;
+    margin: 2em;
 }
 table tr{
     padding: 2em;
@@ -27,6 +28,7 @@ table tr td:nth-child(even){
 .manage{
     background-color:#000000ef;
     margin: 1em auto;
+    box-shadow: 0px 0px 5px white;
 }
 .manage:hover{
     background-color: #000000;
@@ -34,6 +36,7 @@ table tr td:nth-child(even){
 #reset{
     display: none;
     text-align: center;
+    margin: 5px;
 }
 .reset:hover{
     transform: rotate(250deg);
