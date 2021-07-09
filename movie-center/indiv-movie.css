@@ -128,7 +128,8 @@ body {
     margin: 1.2em 0;
 }
 
-.submit-btn {
+.submit-btn,
+.rep-submit-btn {
     color: #e1e1e1;
     background-color: #945629;
     border-radius: 5px;
@@ -138,7 +139,8 @@ body {
     border: 2px outset saddlebrown;
 }
 
-.submit-btn:hover {
+.submit-btn:hover,
+.rep-submit-btn:hover {
     color: white;
     background-color: saddlebrown;
     cursor: pointer;
@@ -192,7 +194,8 @@ body {
   margin: 0;
   text-decoration: underline;
   cursor: pointer;
-  width: 110px;
+  width: 350px;
+  text-align: left;
 }
 
 .root .username{
@@ -214,10 +217,6 @@ body {
   word-wrap: break-word;
   overflow-y: visible;
   margin-bottom: 0px;
-}
-
-.shw-rpl i{
-  padding: 0 5px;
 }
 
 .reply{
@@ -282,7 +281,8 @@ body {
 
 /*Comment*/
 
-#new-comment{
+#new-comment,
+.reply-text {
   font-family: 'Heebo', sans-serif;
   width: 100%;
   resize: none;
@@ -296,4 +296,31 @@ body {
 
 .new-comment{
   text-align: right;
+}
+
+#input-star{
+  text-align: left;
+  width: 100%;
+  display: inline-block;
+}
+
+.fa-reply{
+  padding-left: 20px;
+}
+
+.fa-caret-down,
+.fa-caret-up{
+  padding-left: 5px;
+}
+
+.reply-here{
+  font-weight: normal;
+  text-decoration: underline;
+  padding-left: 5px;
+}
+
+.show, .hide{
+  font-weight: normal;
+  text-decoration: underline;
+  padding-left: 5px;
 }

@@ -14,14 +14,30 @@ if(isset($_GET['new-comment'])){
   $mov = $_GET['movie-ref'];
   $username = $_GET['user'];
   $star = $_GET['star'];
-  $data = 1;
-  while($data){
+  //echo "<script>alert('hi');</script>";
   $ref = base_convert(mt_rand(100000000000,208827064575),10,36);
   $cmd = "SELECT * FROM comments where com_ref LIKE '%$ref%'";
   $data = mysqli_query($con, $cmd);
-}
   $cmd = "INSERT INTO comments (movie_ref, root, username, star_rating, com_ref) VALUES ('$mov','$new','$username','$star','$ref')";
-
+  $data = mysqli_query($con, $cmd);
+  echo '<div class="comment" id="comment_'.$_GET['no'].'"><div class="root"><p class="username">';
+  //echo "<script>alert('$replies[0]');</script>";
+  if ($username){
+    echo '<span class="user">'.$username.' commented</span>';
+  }
+  echo "<span class='user-star'>";
+  for($j=1; $j<=$star; $j++){
+    echo '<i class="fas fa-star fa-x" style="color: gold"></i>';
+  }
+  for($j=$star+1; $j<=5; $j++){
+    echo '<i class="fas fa-star fa-x" ></i>';
+  }
+  echo "</span>";
+  echo "</p>";
+  echo '<p class="text">'.$new.'</p>';
+  echo '<p class="shw-rpl"><i class="fas fa-caret-down"><span class="show">
+  <span class="sel-rpl" style="display:none">'.$ref.
+  '</span>Show Replies</span></i><i class="fas fa-reply"><span class="reply-here">Reply Here</span></i></p></div></div>';
 }
 
 if(isset($_GET['com_ref'])){

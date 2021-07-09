@@ -189,7 +189,8 @@
                 </span>
             </div>
             <div class="user-comments">
-                <span class="user">USERNAME - </span>
+              <span id="input-star">
+                <span class="user">Rate Here - </span>
                 <span class="user-rating">
                     <i class="fas fa-star fa-x" id="sr-0" onclick="rate(this.id)" ></i>
                     <i class="fas fa-star fa-x" id="sr-1" onclick="rate(this.id)" ></i>
@@ -197,10 +198,11 @@
                     <i class="fas fa-star fa-x" id="sr-3" onclick="rate(this.id)" ></i>
                     <i class="fas fa-star fa-x" id="sr-4" onclick="rate(this.id)" ></i>
                 </span>
+              </span>
                 <div class="new-comment">
                     <textarea placeholder="Comment Here..." id="new-comment" oninput="auto_grow(this)"></textarea>
                 </div>
-                <button class="submit-btn" onclick="submit()">SUBMIT</button>
+                <button class="submit-btn">SUBMIT</button>
             </div>
 
             <!-- READ COMMENTS INTO THIS DA -->
@@ -232,11 +234,23 @@
                       }
                       echo "</span>";
                       $i++;
-                      echo '</p><p class="text">'.$temp.'</p><p class="shw-rpl"><span class="sel-rpl" style="display:none">'.$row['com_ref'].'</span><i class="fas fa-caret-down"></i>Show Replies</p></div></div>';
+                      echo '</p>';
+                      echo '<p class="text">'.$temp.'</p>';
+                      //echo '<p class="reply-here">Reply Here</p>';
+                      echo '<p class="shw-rpl"><i class="fas fa-caret-down">
+                      <span class="sel-rpl" style="display:none">'.$row['com_ref'].
+                      '</span><span class="show">Show Replies</span></i><i class="fas fa-reply">
+                      <span class="reply-here">Reply Here</span></i></p></div></div>';
                     }
                   }
-                  echo "<script>var mov = '$movie_ref';</script>";
-                  echo "<script>var usern = '$username';</script>";
+                  echo "<script>var no = $i; var mov = '$movie_ref';</script>";
+                  if (isset($username)){
+                    echo "<script>var usern = '$usern';</script>";
+                  }
+                  else{
+                    echo "<script>var usern = 'Anonymous';</script>";
+                  }
+
                   ?>
         </section>
 
@@ -262,14 +276,20 @@
 
         $('.submit-btn').click(function(){
           var comm = "new-comment=" + document.getElementById('new-comment').value;
-          comm += "&movie-ref=" + mov + "&star=" + star + "&user=" + usern;
-          alert(comm);
+          comm += "&movie-ref=" + mov + "&star=" + star + "&user=" + usern + "&no=" + no;
+          no++;
+          //alert(comm);
           $.ajax({
             type: "GET",
             url: "movie-replies.php",
             data: comm,
             success:function(data){
-              $('.comments-section').append(data);
+              for (let i = 0; i <= 4; i++){
+                  document.getElementById('sr-'+i).style="";
+              }
+              star = 0;
+              document.getElementById('new-comment').value = "";
+              $('.comment-section').append(data);
             }
           });
         });
@@ -280,34 +300,96 @@
         }
         //document.getElementById('youtube').innerHTML = '<iframe src="https://www.youtube.com/embed/2OtgYcd83Qg" width="560" height="315" frameborder="0"></iframe>';
 
-        $('.shw-rpl').click(function() {
-          if ($(this).find('i').hasClass('fa-caret-down')){
-            var obj = $(this).find('span').text();
-            var id = $(this).parent().parent().attr('id');
+        $('.rep-submit-btn').click(function(){
+
+        });
+
+        var corr = [];
+        $('.fa-caret-down').click(reply_modify);
+          function reply_modify() {
+            var obj = $(this).find('.sel-rpl').text();
+            var id = $(this).parent().parent().parent().attr('id');
             //alert(id);
-          $(this).html('<span class="sel-rpl" style="display:none">'+obj+'</span><i class="fas fa-caret-up"></i>Hide Replies');
-          obj = 'com_ref='+obj;
+          obje = 'com_ref='+obj;
+          if (typeof corr[id.substr(-1)] === 'undefined'){
+            corr[id.substr(-1)]=1;
+          }
+          else{
+            corr[id.substr(-1)]++;
+          }
+          //alert(corr[id.substr(-1)]);
+          if ((corr[id.substr(-1)]%2)==1)
+        {
+          $(this).html('<span class="sel-rpl" style="display:none">'+obj+'</span><span class="hide">Hide Replies</span>');
+          $(this).removeClass('fa-caret-down').addClass('fa-caret-up');
           $.ajax({
               type: "GET",
               url: "movie-replies.php",
-              data: obj,
+              data: obje,
               success:function(data){
                   //alert(data);
                   $('#'+id).append(data);
                   //document.getElementById(id).innerHTML += data;
               }
           });
+        }
+        else
+        {
+          $(this).addClass('fa-caret-down').removeClass('fa-caret-up');
+          $(this).html('<span class="sel-rpl" style="display:none">'+obj+'</span><span class="show">Show Replies</span>');
+          id = $(this).parent().parent().parent().attr('id');
+          while($('#'+id+' div').length >= 2){
+            $('#'+id+' div').last().remove();
+          }
+          $(this).next().css('display','inline-block');
+        }
+        }
+
+        $('.reply-here').click(function(){
+          var pre = $(this).parent().prev();
+          var obj = pre.find('.sel-rpl').text();
+          var id = pre.parent().parent().parent().attr('id');
+          //alert(id);
+          obje = 'com_ref='+obj;
+          if (typeof corr[id.substr(-1)] === 'undefined'){
+            corr[id.substr(-1)]=1;
           }
           else{
-          var obj = $(this).find('span').text();
-          $(this).html('<span class="sel-rpl" style="display:none">'+obj+'</span><i class="fas fa-caret-down"></i>Show Replies');
-          var id = $(this).parent().parent().attr('id');
-          var i = 1;
-          while($('#'+id+' div').length > 1){
-            $('#reply_'+obj+'_'+i).remove();
-            i++;
+            corr[id.substr(-1)]++;
           }
+          if ((corr[id.substr(-1)]%2)==1)
+          {
+            pre.html('<span class="sel-rpl" style="display:none">'+obj+'</span><span class="hide">Hide Replies</span>');
+            pre.removeClass('fa-caret-down').addClass('fa-caret-up');
+            $.ajax({
+              type: "GET",
+              url: "movie-replies.php",
+              data: obje,
+              success:function(data){
+                $('#'+id).append(data);
+              }
+            });
           }
+          else{
+            corr[id.substr(-1)]--;
+            while($('#'+id+' div').length >= 2){
+              $('#'+id+' div').last().remove();
+            }
+            $.ajax({
+              type: "GET",
+              url: "movie-replies.php",
+              data: obje,
+              success:function(data){
+                $('#'+id).append(data);
+              }
+            });
+          }
+          var str = '<div class="reply"><textarea class="reply-text" oninput="auto_grow(this)"></textarea><input type="button" class="rep-submit-btn" value="Submit Reply"></div>';
+          $('#'+id).append(str);
+          pre.parent().parent().css('margin-bottom','20px');
+          pre.parent().parent().next().css('background-color','#00000000');
+          $(this).parent().css('display','none');
+          return false;
         });
 
         var star = 0;
