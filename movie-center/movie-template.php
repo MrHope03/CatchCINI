@@ -235,6 +235,8 @@
                       echo '</p><p class="text">'.$temp.'</p><p class="shw-rpl"><span class="sel-rpl" style="display:none">'.$row['com_ref'].'</span><i class="fas fa-caret-down"></i>Show Replies</p></div></div>';
                     }
                   }
+                  echo "<script>var mov = '$movie_ref';</script>";
+                  echo "<script>var usern = '$username';</script>";
                   ?>
         </section>
 
@@ -257,6 +259,21 @@
         </footer>
     </body>
     <script>
+
+        $('.submit-btn').click(function(){
+          var comm = "new-comment=" + document.getElementById('new-comment').value;
+          comm += "&movie-ref=" + mov + "&star=" + star + "&user=" + usern;
+          alert(comm);
+          $.ajax({
+            type: "GET",
+            url: "movie-replies.php",
+            data: comm,
+            success:function(data){
+              $('.comments-section').append(data);
+            }
+          });
+        });
+
         function auto_grow(element) {
             element.style.height = "5px";
             element.style.height = (element.scrollHeight)+"px";
@@ -286,7 +303,7 @@
           $(this).html('<span class="sel-rpl" style="display:none">'+obj+'</span><i class="fas fa-caret-down"></i>Show Replies');
           var id = $(this).parent().parent().attr('id');
           var i = 1;
-          while($('#'+id+' div').length>1){
+          while($('#'+id+' div').length > 1){
             $('#reply_'+obj+'_'+i).remove();
             i++;
           }
