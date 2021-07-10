@@ -207,11 +207,11 @@
 
             <!-- READ COMMENTS INTO THIS DA -->
                   <?php
-                  $cmd = "SELECT * from comments WHERE movie_ref like '%$movie_ref%'";
+                  $cmd = "SELECT * from comments WHERE movie_ref like '%$movie_ref%' ORDER BY sno DESC";
                   $data = mysqli_query($con, $cmd);
                   $i = 1;
                   if ($data){
-                    while(($row = mysqli_fetch_assoc($data)) && ($i<=10)){
+                    while(($row = mysqli_fetch_assoc($data))){
                       echo '<div class="comment" id="comment_'.$i.'"><div class="root"><p class="username">';
                       //$replies = explode(';',$row['replies']);
                       $temp = $row['root'];
@@ -278,7 +278,6 @@
           var comm = "new-comment=" + document.getElementById('new-comment').value;
           comm += "&movie-ref=" + mov + "&star=" + star + "&user=" + usern + "&no=" + no;
           no++;
-          //alert(comm);
           $.ajax({
             type: "GET",
             url: "movie-replies.php",
@@ -289,6 +288,9 @@
               }
               star = 0;
               document.getElementById('new-comment').value = "";
+              while($('.comment-section div').length >= 4){
+                $('.comment-section div').last().remove();
+              }
               $('.comment-section').append(data);
             }
           });
@@ -298,15 +300,34 @@
             element.style.height = "5px";
             element.style.height = (element.scrollHeight)+"px";
         }
-        //document.getElementById('youtube').innerHTML = '<iframe src="https://www.youtube.com/embed/2OtgYcd83Qg" width="560" height="315" frameborder="0"></iframe>';
 
-        $('.rep-submit-btn').click(function(){
-
+        $(document).on('click','.rep-submit-btn',function(){
+          var rep_msg = $(this).prev().val();
+          var id = $(this).parent().prev();
+          rep_msg = "rep_msg=" + rep_msg;
+          rep_msg = rep_msg + "&comm_ref=" + $(this).parent().prev().find('.sel-rpl').text();
+          rep_msg = rep_msg + "&usern=" + usern;
+          //alert(rep_msg);
+          $.ajax({
+            type: "GET",
+            url: "movie-replies.php",
+            data: rep_msg,
+            success:function(data){
+              id.next().remove();
+              id.find('.fa-reply').css('display','inline-block');
+              var tl = id.parent().attr('id');
+              while($('#'+tl+' div').length >= 2){
+                $('#'+tl+' div').last().remove();
+              }
+              id.parent().append(data);
+              //alert(tl);
+            }
+          });
         });
 
         var corr = [];
-        $('.fa-caret-down').click(reply_modify);
-          function reply_modify() {
+        //$(document).on('click','.fa-caret-down',reply_modify());
+        $(document).on('click', '.fa-caret-down, .fa-caret-up', function() {
             var obj = $(this).find('.sel-rpl').text();
             var id = $(this).parent().parent().parent().attr('id');
             //alert(id);
@@ -344,8 +365,9 @@
           $(this).next().css('display','inline-block');
         }
         }
+      );
 
-        $('.reply-here').click(function(){
+        $(document).on('click', '.reply-here', function(){
           var pre = $(this).parent().prev();
           var obj = pre.find('.sel-rpl').text();
           var id = pre.parent().parent().parent().attr('id');
