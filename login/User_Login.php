@@ -21,7 +21,6 @@
                 </div>
                 <div>
                     <label for="password_id"> PASSWORD </label>
-                    <a href="reset_password.php">Forgot Password?</a>
                     <input type="password" name="password" id="password_id"><br>
                 </div>
                 

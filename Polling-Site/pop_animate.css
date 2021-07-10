@@ -12,7 +12,7 @@
     display: inline-block;
     width: 7px;
     animation-name: popcorn_1;
-    animation-duration: 5s;
+    animation-duration: 2.5s;
     animation-fill-mode: forwards;
     /*fill-mode edukada da this will keep
     the object remain in the same height after
@@ -34,7 +34,7 @@
     display: inline-block;
     width: 7px;
     animation-name: popcorn_2;
-    animation-duration: 5s;
+    animation-duration: 2.5s;
     animation-fill-mode: forwards;
     /*fill-mode edukada da this will keep
     the object remain in the same height after
@@ -56,7 +56,7 @@
     display: inline-block;
     width: 7px;
     animation-name: popcorn_3;
-    animation-duration: 5s;
+    animation-duration: 2.5s;
     animation-fill-mode: forwards;
     /*fill-mode edukada da this will keep
     the object remain in the same height after
@@ -78,7 +78,7 @@
     display: inline-block;
     width: 7px;
     animation-name: popcorn_4;
-    animation-duration: 5s;
+    animation-duration: 2.5s;
     animation-fill-mode: forwards;
     /*fill-mode edukada da this will keep
     the object remain in the same height after
@@ -100,7 +100,7 @@
     display: inline-block;
     width: 7px;
     animation-name: popcorn_5;
-    animation-duration: 5s;
+    animation-duration: 2.5s;
     animation-fill-mode: forwards;
     /*fill-mode edukada da this will keep
     the object remain in the same height after
@@ -122,7 +122,7 @@
     display: inline-block;
     width: 7px;
     animation-name: popcorn_6;
-    animation-duration: 5s;
+    animation-duration: 2.5s;
     animation-fill-mode: forwards;
     /*fill-mode edukada da this will keep
     the object remain in the same height after
