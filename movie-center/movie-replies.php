@@ -108,11 +108,15 @@ if(isset($_GET['new-comment'])){
   $username = $_GET['user'];
   $star = $_GET['star'];
   //echo "<script>alert('hi');</script>";
-  $ref = base_convert(mt_rand(100000000000,208827064575),10,36);
-  $cmd = "SELECT * FROM comments where com_ref LIKE '%$ref%'";
-  $data = mysqli_query($con, $cmd);
-  $cmd = "INSERT INTO comments (movie_ref, root, username, star_rating, com_ref) VALUES ('$mov','$new','$username','$star','$ref')";
-  $data = mysqli_query($con, $cmd);
+  $flag = true;
+    while($flag){
+        $ref = base_convert(mt_rand(100000000000,208827064575),10,36);
+        $cmd = "INSERT INTO comments (movie_ref, root, username, star_rating, com_ref) VALUES ('$mov','$new','$username','$star','$ref')";
+        $data = mysqli_query($con, $cmd);
+        if($data){
+          $flag=false;
+        }
+      }
   $sel = $_GET['sel-sort'];
   if ($sel == 'r1'){
     $cond = "sno DESC";
@@ -126,7 +130,7 @@ if(isset($_GET['new-comment'])){
   else {
     $cond = "star_rating";
   }
-  $cmd = "SELECT * from comments WHERE movie_ref like '%$mov%' ORDER BY".$cond;
+  $cmd = "SELECT * from comments WHERE movie_ref like '%$mov%' ORDER BY ".$cond;
   $data = mysqli_query($con, $cmd);
   $i = 1;
   if ($data){
