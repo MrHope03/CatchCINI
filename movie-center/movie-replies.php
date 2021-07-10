@@ -136,9 +136,9 @@ if(isset($_GET['new-comment'])){
   if ($data){
     while(($row = mysqli_fetch_assoc($data))){
       echo '<div class="comment" id="comment_'.$i.'"><div class="root"><p class="username">';
-      //$replies = explode(';',$row['replies']);
+    //$replies = explode(';',$row['replies']);
       $temp = $row['root'];
-      //echo "<script>alert('$replies[0]');</script>";
+    //echo "<script>alert('$replies[0]');</script>";
       if ($row['username']){
         echo '<span class="user">'.$row['username'].' commented</span>';
       }
