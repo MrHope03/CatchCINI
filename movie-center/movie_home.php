@@ -32,13 +32,8 @@
             src="https://kit.fontawesome.com/704ddf1c0b.js"
             crossorigin="anonymous">
     </script>
-<<<<<<< Updated upstream
-    <link rel="stylesheet" href="main-template.css">
-    <link rel="stylesheet" href="box-arrange.css">
-=======
     <link rel="stylesheet" id="page-theme" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-main-template.css';}else{echo 'dark-main-template.css';}?> ">
     <link rel="stylesheet" id="box-theme" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-box.css';}else{echo 'dark-box.css';}?> ">
->>>>>>> Stashed changes
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         .header{
@@ -82,10 +77,6 @@
             <div class="search-bar">
                 <input type="text" id="query"></input>
                 <i class="fas fa-search fa-2x"></i>
-<<<<<<< Updated upstream
-                 <input type="text" id="query"></input>
-=======
->>>>>>> Stashed changes
                  <ul id="query-ans">
                  </ul>
             </div>
@@ -192,8 +183,6 @@
                     }
                 return msg;
             }
-<<<<<<< Updated upstream
-=======
         $(document).ready(function(){
             function dark_theme(){
                 $.ajax({
@@ -220,7 +209,6 @@
                 $('#light').click(light_theme);
                 $('#dark').click(dark_theme);
             });
->>>>>>> Stashed changes
     </script>
   </body>
 </html>

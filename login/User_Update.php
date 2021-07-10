@@ -23,13 +23,34 @@
     $data = mysqli_query($con, $cmd);
     if($data) {
         while($row = mysqli_fetch_assoc($data)){
+            $user_check = 1;
+            $mail_check = 1;
+            $phone_check = 1;
             if($row["username"]==$username || $row["mail"]==$mail || $row["phone_no"]==$phone_no){
+                if ($row["username"] == $username){
+                    $user_check = 0;
+                }
+                if ($row["mail"] == $mail){
+                    $mail_check = 0;
+                }
+                if ($row["phone_no"] == $phone_no){
+                    $phone_check = 0;
+                }
                 $flag = 0;
                 break;
             }
         }
         if(!$flag){
-            echo '<script> alert("Mail or Phone No already Registered.\nLogin using your mail or phone."); </script>';
+            if ($user_check == 0){
+                echo '<script> alert("Username Already Registered.\nUse the Check Username Availability feature!!!\n"); </script>';
+            }
+            if ($mail_check == 0){
+                echo '<script> alert("Mail already Registered.\nLogin using your mail or phone."); </script>';
+            }
+            if ($phone_check == 0){
+                echo '<script> alert("Phone No already Registered.\nLogin using your mail or phone."); </script>';
+            }
+            echo '<script> document.location.href="User_Signup.php";</script>';
         } else {
             echo '<script> alert("Successful.\nLogin using your credentials."); </script>';
             $cmd = "INSERT INTO user_details (first_name, last_name, mail, username, phone_no, password) VALUES ('$first_name', '$last_name', '$mail', '$username', '$phone_no', '$password')";
@@ -59,10 +80,9 @@
                 `reg_date` date NOT NULL DEFAULT current_timestamp()
               ) ";
             $data = mysqli_query($con,$cmd);
+            echo '<script> document.location.href="User_Login.php";</script>';
         }
     } else {
         echo $con->error;
     }
-    echo '<script> document.location.href="User_Login.php";</script>';
-
 ?>
