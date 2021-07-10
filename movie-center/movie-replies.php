@@ -126,15 +126,15 @@ if(isset($_GET['new-comment'])){
   else {
     $cond = "star_rating";
   }
-  $cmd = "SELECT * from comments WHERE movie_ref like '%$mov%' ORDER BY".$cond;
+  $cmd = "SELECT * from comments WHERE movie_ref like '%$mov%' ORDER BY ".$cond;
   $data = mysqli_query($con, $cmd);
   $i = 1;
   if ($data){
     while(($row = mysqli_fetch_assoc($data))){
       echo '<div class="comment" id="comment_'.$i.'"><div class="root"><p class="username">';
-      //$replies = explode(';',$row['replies']);
+    //$replies = explode(';',$row['replies']);
       $temp = $row['root'];
-      //echo "<script>alert('$replies[0]');</script>";
+    //echo "<script>alert('$replies[0]');</script>";
       if ($row['username']){
         echo '<span class="user">'.$row['username'].' commented</span>';
       }
