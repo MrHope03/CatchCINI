@@ -11,6 +11,8 @@
 
     if (isset($_SESSION["username"])){
     $username = $_SESSION["username"];
+    }else {
+      $username = "Anounymous";
     }
     $movie_ref = $_GET["ref"];
     include 'movie_poll_cache.php';
@@ -132,7 +134,7 @@
             </div>
             <div id="trailer">
                 <h3>TRAILER</h3>
-                <iframe class="trailer" src="https://www.youtube.com/embed/zheMCw4J-jI" width="560" height="315" frameborder="0"></iframe>
+                <iframe class="trailer" src=<?=$trailer?> width="560" height="315" frameborder="0"></iframe>
                 <!--<video autoplay controls muted class="trailer">
                     <source src= type="video/mp4" />
                 </video>-->
@@ -248,7 +250,7 @@
                   echo "<script>var no = $i; var mov = '$movie_ref';
                   var sel_sort = $('#sel-sort').attr('class');</script>";
                   if (isset($username)){
-                    echo "<script>var usern = '$usern';</script>";
+                    echo "<script>var usern = '$username';</script>";
                   }
                   else{
                     echo "<script>var usern = 'Anonymous';</script>";
