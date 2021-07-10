@@ -328,3 +328,11 @@ html{
   text-decoration: underline;
   padding-left: 5px;
 }
+
+.sort{
+  font-family: 'Heebo', sans-serif;
+}
+
+#sel-sort{
+  font-weight: bold;
+}

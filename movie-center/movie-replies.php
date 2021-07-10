@@ -9,6 +9,59 @@ if (!$con) {
     echo '<script> alert("Server Down!!! Try again Later"); </script>';
 }
 
+if(isset($_GET['sel_sort'])){
+  $sel = $_GET['sel_sort'];
+  $mov = $_GET['movie-ref'];
+  if ($sel == 'r1'){
+    $cond = "sno DESC";
+  }
+  else if ($sel == 'r2'){
+    $cond = "sno";
+  }
+  else if ($sel == 'r3'){
+    $cond = "star_rating DESC";
+  }
+  else {
+    $cond = "star_rating";
+  }
+  $cmd = "SELECT * from comments WHERE movie_ref like '%$mov%' ORDER BY ".$cond;
+  $data = mysqli_query($con, $cmd);
+  $i = 1;
+  if ($data){
+    while(($row = mysqli_fetch_assoc($data))){
+      echo '<div class="comment" id="comment_'.$i.'"><div class="root"><p class="username">';
+      //$replies = explode(';',$row['replies']);
+      $temp = $row['root'];
+      //echo "<script>alert('$replies[0]');</script>";
+      if ($row['username']){
+        echo '<span class="user">'.$row['username'].' commented</span>';
+      }
+      else{
+        echo '<span class="user">Anonymous commented</span>';
+      }
+      if ($row['star_rating']==NULL) {
+        $row['star_rating'] = 0;
+      }
+      echo "<span class='user-star'>";
+      for($j=1; $j<=$row['star_rating']; $j++){
+        echo '<i class="fas fa-star fa-x" style="color: gold"></i>';
+      }
+      for($j=$row['star_rating']+1; $j<=5; $j++){
+        echo '<i class="fas fa-star fa-x" ></i>';
+      }
+      echo "</span>";
+      $i++;
+      echo '</p>';
+      echo '<p class="text">'.$temp.'</p>';
+      //echo '<p class="reply-here">Reply Here</p>';
+      echo '<p class="shw-rpl"><i class="fas fa-caret-down">
+      <span class="sel-rpl" style="display:none">'.$row['com_ref'].
+      '</span><span class="show">Show Replies</span></i><i class="fas fa-reply">
+      <span class="reply-here">Reply Here</span></i></p></div></div>';
+    }
+  }
+}
+
 if (isset($_GET['rep_msg'])){
   $rep_msg = $_GET['rep_msg'];
   $com_ref = $_GET['comm_ref'];
@@ -60,7 +113,20 @@ if(isset($_GET['new-comment'])){
   $data = mysqli_query($con, $cmd);
   $cmd = "INSERT INTO comments (movie_ref, root, username, star_rating, com_ref) VALUES ('$mov','$new','$username','$star','$ref')";
   $data = mysqli_query($con, $cmd);
-  $cmd = "SELECT * from comments WHERE movie_ref like '%$mov%' ORDER BY sno DESC";
+  $sel = $_GET['sel-sort'];
+  if ($sel == 'r1'){
+    $cond = "sno DESC";
+  }
+  else if ($sel == 'r2'){
+    $cond = "sno";
+  }
+  else if ($sel == 'r3'){
+    $cond = "star_rating DESC";
+  }
+  else {
+    $cond = "star_rating";
+  }
+  $cmd = "SELECT * from comments WHERE movie_ref like '%$mov%' ORDER BY".$cond;
   $data = mysqli_query($con, $cmd);
   $i = 1;
   if ($data){

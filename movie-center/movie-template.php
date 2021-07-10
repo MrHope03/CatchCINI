@@ -180,12 +180,14 @@
             <h3 class="comm-heading">COMMENTS</h3>
             <div>
                 <i class="fas fa-filter fa-2x" onclick="filter()"></i> -
-                <span>
-                <i class="fas fa-star fa-x"></i>
-                <i class="fas fa-star fa-x"></i>
-                <i class="fas fa-star fa-x"></i>
-                <i class="fas fa-star fa-x"></i>
-                <i class="fas fa-star fa-x"></i>
+                <span class='sort'>
+                  <span class="r1" id="sel-sort">Most Recent</span>
+                  |
+                  <span class="r2">Least Recent</span>
+                  |
+                  <span class="r3">Most Rated</span>
+                  |
+                  <span class="r4">Least Rated</span>
                 </span>
             </div>
             <div class="user-comments">
@@ -243,7 +245,8 @@
                       <span class="reply-here">Reply Here</span></i></p></div></div>';
                     }
                   }
-                  echo "<script>var no = $i; var mov = '$movie_ref';</script>";
+                  echo "<script>var no = $i; var mov = '$movie_ref';
+                  var sel_sort = $('#sel-sort').attr('class');</script>";
                   if (isset($username)){
                     echo "<script>var usern = '$usern';</script>";
                   }
@@ -274,9 +277,29 @@
     </body>
     <script>
 
+        $(document).on('click','.r1, .r2, .r3, .r4', function(){
+          document.getElementById('sel-sort').id = "";
+          $(this).attr('id','sel-sort');
+          sel_sort = $(this).attr('class');
+          var filt = "sel_sort="+sel_sort+"&movie-ref="+mov;
+          //alert(sel_sort);
+          $.ajax({
+            type: "GET",
+            url: "movie-replies.php",
+            data: filt,
+            success:function(data){
+          while($('.comment-section div').length >= 4){
+            $('.comment-section div').last().remove();
+          }
+          $('.comment-section').append(data);
+        }
+        });
+
+        });
+
         $('.submit-btn').click(function(){
           var comm = "new-comment=" + document.getElementById('new-comment').value;
-          comm += "&movie-ref=" + mov + "&star=" + star + "&user=" + usern + "&no=" + no;
+          comm += "&movie-ref=" + mov + "&star=" + star + "&user=" + usern + "&no=" + no + "&sel-sort=" + sel_sort;
           no++;
           $.ajax({
             type: "GET",
