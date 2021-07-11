@@ -52,7 +52,7 @@
                 <label>
                 PASSWORD <span id="pass_msg" class="error"></span>
                 <span class="imp"> </span>
-                <input style="width: 46.5%;" type="password" name="password" id="password_id" placeholder="Password" required>
+                <input style="width: 46.5%;" type="password" name="password" id="password_id" placeholder="Password" onkeyup="check();" required>
                 </label>
                 <label>
                 CONFIRM PASSWORD <span class="imp"> </span>
