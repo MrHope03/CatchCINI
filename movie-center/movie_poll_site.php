@@ -21,24 +21,20 @@
             src="https://kit.fontawesome.com/704ddf1c0b.js"
             crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-main-template.css';}else{echo 'dark-main-template.css';} ?>">
-    <link rel="stylesheet" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-box.css';}else{echo 'dark-box.css';} ?>">
+    <link rel="stylesheet" href="<?php if($_SESSION['theme'] == 'light'){echo '../Polling-Site/light-main-template.css';}else{echo '../Polling-Site/dark-main-template.css';} ?>">
+    <link rel="stylesheet" href="<?php if($_SESSION['theme'] == 'light'){echo '../Polling-Site/light-box.css';}else{echo '../Polling-Site/dark-box.css';} ?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
     .header{
       background-image: url('../Polling-Site/search.png');
       background-position: center;
     }
-      body{
-          background-color: #ffebcd25;
-      }
       @media (min-width : 1040px){
         body{
           background-image: url('tenor.gif');
           background-attachment: fixed;
           background-repeat: no-repeat;
           background-blend-mode:lighten;
-          background-color: #ffebcd25;
           background-position: bottom right;
           background-size: 20vw;
         }
@@ -83,7 +79,7 @@
           $movie_ref = $_GET["ref"];
            include 'movie_poll_cache.php';
             if($site_data) {
-              while(($row = mysqli_fetch_assoc($data))){
+              while(($row = mysqli_fetch_assoc($site_data))){
                 if($row["total_count"]==null){$row["total_count"]=0;}
                 echo '<li class="box">';
                 echo '<div  class="item">';

@@ -17,15 +17,18 @@
     }
     $username = $_SESSION["username"];
     $flag = true;
+    $ref = 'a';
     while($flag){
-    $str_collection = "1234567890abcdefghijklmnopqrstuvwxyz";
-    $ref = substr(str_shuffle($str_collection),0,8);
+        $str_collection = "1234567890abcdefghijklmnopqrstuvwxyz";
+        $ref = substr(str_shuffle($str_collection),0,8);
+        $cmd = "SELECT * from polls where ref LIKE '%$ref%'";
+        $data = mysqli_query($con, $cmd);
+        if (mysqli_num_rows($data) == 0){
+          $flag = false;
+        }
+      }
     $cmd = "INSERT INTO $username (question, total_options, ref) VALUES ('$question', '$hidden_val', '$ref')";
     $data = mysqli_query($con,$cmd);
-    if($data){
-      $flag=false;
-    }
-  }
     $cmd = "SELECT phone_no FROM $username WHERE ref LIKE '%$ref%'";
     $data = mysqli_query($con, $cmd);
     $row = mysqli_fetch_assoc($data);

@@ -12,7 +12,7 @@
     if (isset($_SESSION["username"])){
     $username = $_SESSION["username"];
     }else {
-      $username = "Anounymous";
+      $username = "Anonymous";
     }
     $movie_ref = $_GET["ref"];
     include 'movie_poll_cache.php';
