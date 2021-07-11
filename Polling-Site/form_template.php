@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION['theme'])){
   $_SESSION['theme'] = 'light';
 }
+  $theme = $_SESSION['theme'];
 $server = "localhost";
 $user = "root";
 $pass = "";
@@ -76,6 +77,7 @@ else{
     <link rel="stylesheet" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-form-style.css';}else{echo 'dark-form-style.css';} ?>">
     <link rel="stylesheet" href="pop_animate.css">
     <title><?php $ques ?></title>
+    <?php echo "<script>var theme = '$theme';</script>"; ?>
     <style>
       @media (min-width : 1040px){
         body{
@@ -87,15 +89,6 @@ else{
           background-size: 20vw;
         }
       }
-<<<<<<< Updated upstream
-      .container {
-          display: flex;
-          justify-content: space-evenly;
-          margin: 0em 1em;
-          opacity: 60%;
-      }
-=======
->>>>>>> Stashed changes
       .header{
         height: auto;
       }
@@ -325,7 +318,12 @@ else{
       butt.classList.add('button-style-active');
       }
       else if(!post_first_click){
+        if (theme === 'light'){
+          sel_opt.style.backgroundColor = 'white';
+        }
+        else {
         sel_opt.style.backgroundColor = 'rgb(48,48,48)';
+        }
         sel_opt.style.borderColor = 'rgb(11, 174, 185)';
         if (sel_opt.id != opt_id){
         sel_opt = document.getElementById(opt_id);
