@@ -110,7 +110,8 @@ if(isset($_GET['new-comment'])){
   //echo "<script>alert('hi');</script>";
   $flag = true;
     while($flag){
-        $ref = base_convert(mt_rand(100000000000,208827064575),10,36);
+        $str_collection = "1234567890abcdefghijklmnopqrstuvwxyz";
+        $ref = substr(str_shuffle($str_collection),0,8);
         $cmd = "INSERT INTO comments (movie_ref, root, username, star_rating, com_ref) VALUES ('$mov','$new','$username','$star','$ref')";
         $data = mysqli_query($con, $cmd);
         if($data){
