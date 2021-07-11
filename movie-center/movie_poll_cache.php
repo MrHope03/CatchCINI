@@ -155,12 +155,12 @@
             if ($row["total_count"]==NULL) {$row["total_count"]=0;}
                 if($search=="float"){
                 echo '<li>';
-                echo '<b class="wrap" id="ref'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</b>';
+                echo '<b class="wrap" id="'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</b>';
                 echo '</li>';
                 } else if ($search=="static") {
                 echo '<li class="box">';
                 echo '<div class="item">'; 
-                echo '<h3 class="wrap" id="ref'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</h3>';
+                echo '<h3 class="wrap" id="'.$row['ref'].'" onclick="view_poll(this.id);">'.$row["question"].'</h3>';
                 echo '<p> No of votes: '.$row["total_count"].'</p>';
                 echo '</div>';
                 echo '</li>';

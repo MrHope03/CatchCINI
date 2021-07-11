@@ -8,6 +8,9 @@
     if (!$con) {
         echo '<script> alert("Server Down!!! Try again Later"); </script>';
     }
+    if (!isset($_SESSION['theme'])){
+      $_SESSION['theme'] = 'light';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -18,8 +21,8 @@
             src="https://kit.fontawesome.com/704ddf1c0b.js"
             crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="../Polling-Site/main-template.css">
-    <link rel="stylesheet" href="../Polling-Site/box-arrange.css">
+    <link rel="stylesheet" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-main-template.css';}else{echo 'dark-main-template.css';} ?>">
+    <link rel="stylesheet" href="<?php if($_SESSION['theme'] == 'light'){echo 'light-box.css';}else{echo 'dark-box.css';} ?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
     .header{
@@ -47,17 +50,17 @@
       <nav class="nav">
           <ul>
               <li class="poll">
-                  <a href="poll_home.php"><i class="fas fa-poll fa-2x"></i></a>
+                  <a href="../Polling-Site/poll_home.php"><i class="fas fa-poll fa-2x"></i></a>
               </li>
               <li class="web-tag l-tag">
                 Popcorn Meter
               </li>
               <li>
-                  <a href="User.php" title="User Profile"><i class="fas fa-user fa-2x"></i></a>
+                  <a href="../Polling-Site/User.php" title="User Profile"><i class="fas fa-user fa-2x"></i></a>
               </li>
               <li class="movie">
               <!-- CAn't able to link to movie center -->
-                  <a href="../movie-center/movie_home.php"><i class="fas fa-film fa-2x"></i></a>
+                  <a href="movie_home.php"><i class="fas fa-film fa-2x"></i></a>
               </li>
               <li class="web-tag r-tag">
                 Movie center
