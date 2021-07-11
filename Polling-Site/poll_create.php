@@ -10,6 +10,7 @@
   if (!isset($_SESSION['theme'])){
     $_SESSION['theme'] = 'light';
   }
+  $theme = $_SESSION['theme'];
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -29,6 +30,7 @@
     }
     </style>";
   }
+  echo "<script>var theme = '$theme';</script>";
   ?>
 </head>
 <body>
@@ -212,8 +214,14 @@
         b1.value = a1.value;
         a1.value = temp;
       }
+      if (theme == 'light'){
       document.getElementById('swa'+sw_1).style.color="gray";
       document.getElementById('swa'+sw_2).style.color="gray";
+    }
+    else{
+      document.getElementById('swa'+sw_1).style.color="rgb(204, 202, 202)";
+      document.getElementById('swa'+sw_2).style.color="rgb(204, 202, 202)";
+    }
       sw_1 = sw_2 = 1000;
       butt = false;
       cl = false;
